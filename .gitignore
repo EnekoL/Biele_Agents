@@ -1,0 +1,32 @@
+# Archivos y carpetas específicos del proyecto que no se suben
+Variables_Biele_TIA_Portal.csv
+export.zip
+export/
+.cache/
+
+# Entorno virtual Python
+Lib/
+Scripts/
+Include/
+share/
+pyvenv.cfg
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Tests/cache
+.pytest_cache/
+
+# Variables de entorno
+.env
+.env.*
+
+# VS Code
+.vscode/
+
+# Logs
+*.log

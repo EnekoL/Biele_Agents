@@ -1,0 +1,29 @@
+06:00:00 - SISTEMA_OS: Arranque del servicio Operation Supervisor v4.8.2
+06:00:05 - BD_CONEXION: Conexión establecida con SQL Server (BieleOA)
+06:00:15 - PLC_CONEXION: S7-1500_Main [192.168.0.10] ONLINE y comunicando
+06:02:30 - OF_ACTIVA: Carga de Orden de Fabricación WO-88432 completada (Producto: DoorFrames 80x200)
+06:02:35 - RECETA: Parámetros enviados a escáner LIMAB con éxito.
+06:05:00 - ESTADO_ZONA: Zona 1 (Alimentación) en modo RUN.
+06:05:12 - TRACKING: Entrada de pieza ID-9901 en estación de cepillado.
+06:05:45 - TRACKING: Salida de pieza ID-9901 -> Transfer a Mesa 2.
+06:06:10 - LIMAB_SCAN: Grosor detectado 40.2mm en ID-9901 (Tolerancia OK).
+06:10:05 - TRACKING: Entrada de pieza ID-9902 en estación de cepillado.
+06:12:00 - WARNING_210: Caída de presión neumática detectada en Grupo de Prensado A (Valor: 4.8 bar).
+06:12:15 - ESTADO_ZONA: Ajuste automático de presión ejecutado. Presión estabilizada a 6.0 bar.
+06:15:22 - TRACKING: Entrada de pieza ID-9903 en estación de cepillado.
+06:15:55 - TRACKING: Salida de pieza ID-9903 -> Transfer a Mesa 2.
+06:20:00 - OEE_UPDATE: Resumen horario (OF: WO-88432) -> Piezas OK: 45 | Rechazos: 0
+06:25:10 - ALARMA_105: Fallo de lectura RFID en pulmón de acumulación. Reintento 1/3...
+06:25:12 - ALARMA_105: Fallo de lectura RFID en pulmón de acumulación. Reintento 2/3...
+06:25:15 - EVENTO: Lectura RFID recuperada con éxito.
+06:30:40 - TRACKING: Entrada de paquete finalizado a enfardadora (Paquete PKG-102).
+06:35:10 - ALARMA_CRITICA_502: Seta de emergencia pulsada en Pupitre Principal.
+06:35:11 - ESTADO_ZONA: Zona 1, Zona 2 y Prensa pasan a estado E-STOP.
+06:35:11 - EVENTO_PLC: Parada rápida de variadores ejecutada.
+06:40:00 - ESTADO_ZONA: Rearme de seguridad confirmado por Operario_02.
+06:40:15 - ESTADO_ZONA: Sistema recuperando estado RUN.
+06:42:00 - TRACKING: Entrada de pieza ID-9904 en estación de cepillado.
+06:45:30 - LIMAB_SCAN: Grosor detectado 42.1mm en ID-9904 (RECHAZO - Excede tolerancia).
+06:45:35 - EVENTO_PLC: Activando compuerta de rechazo neumática. Pieza ID-9904 desviada a Bin de merma.
+06:50:00 - INFO: El sistema está trabajando a velocidad nominal (12 piezas/minuto).
+06:55:10 - WARNING_304: Temperatura elevada en motor de sierra transversal (68°C). Se recomienda inspección visual en la próxima parada programada.

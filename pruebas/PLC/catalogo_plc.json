@@ -1,0 +1,1828 @@
+{
+    "old_db9000": {
+        "pcomm1_oa_manda_los_datos_de_work_order_nota_en_b0489_strip_cutting_line_seguramente_recibira_el_dato_de_numero_de_pila_tambi_n_ya_que_se_introduciran_los_datos_de_cada_pila_tras_leer_el_codigo_de_barras": {
+            "descripcion": "PComm1  OA Manda los datos de Work Order NOTA: EN B0489 STRIP CUTTING LINE SEGURAMENTE RECIBIRA EL DATO DE NUMERO DE PILA TAMBIÉN. YA QUE SE INTRODUCIRAN LOS DATOS DE CADA PILA TRAS LEER EL CODIGO DE BARRAS",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW12\".\"PComm1  OA Manda los datos de Work Order NOTA: EN B0489 STRIP CUTTING LINE SEGURAMENTE RECIBIRA EL DATO DE NUMERO DE PILA TAMBIÉN. YA QUE SE INTRODUCIRAN LOS DATOS DE CADA PILA TRAS LEER EL CODIGO DE BARRAS\""
+        },
+        "pcomm1_workorder_request_head_status": {
+            "descripcion": "PComm1_WorkOrder.Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW14\".\"PComm1_WorkOrder.Request Head. Status\""
+        },
+        "pcomm1_workorder_request_recipe_identifier_record_number": {
+            "descripcion": "PComm1_WorkOrder.Request. Recipe Identifier Record number",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9000.DBW64\".\"PComm1_WorkOrder.Request. Recipe Identifier Record number\""
+        },
+        "pcomm1_workorder_request_quantity_target": {
+            "descripcion": "PComm1_WorkOrder.Request. Quantity Target",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9000.DBW68\".\"PComm1_WorkOrder.Request. Quantity Target\""
+        },
+        "pcomm1_workorder_response_head_confirmation": {
+            "descripcion": "PComm1_WorkOrder.Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW72\".\"PComm1_WorkOrder.Response Head. Confirmation\""
+        },
+        "pcomm1_workorder_response_head_status": {
+            "descripcion": "PComm1_WorkOrder.Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW74\".\"PComm1_WorkOrder.Response Head. Status\""
+        },
+        "pcomm2_plc_manda_a_oa_comienzo_de_alimentaci_n_de_pila": {
+            "descripcion": "PComm2 PLC manda a OA comienzo de alimentación de Pila",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW76\".\"PComm2 PLC manda a OA comienzo de alimentación de Pila\""
+        },
+        "pcomm2_stackfeedstart_request_head_status": {
+            "descripcion": "PComm2_StackFeedStart.Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW78\".\"PComm2_StackFeedStart.Request Head. Status\""
+        },
+        "pcomm2_stackfeedstart_request_wo_identifier_id": {
+            "descripcion": "PComm2_StackFeedStart.Request. WO_Identifier ID",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9000.DBW102\".\"PComm2_StackFeedStart.Request. WO_Identifier ID\""
+        },
+        "pcomm2_stackfeedstart_request_stack_id_number": {
+            "descripcion": "PComm2_StackFeedStart.Request.Stack ID number",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW106\".\"PComm2_StackFeedStart.Request.Stack ID number\""
+        },
+        "pcomm2_stackfeedstart_response_head_confirmation": {
+            "descripcion": "PComm2_StackFeedStart.Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW108\".\"PComm2_StackFeedStart.Response Head. Confirmation\""
+        },
+        "pcomm2_stackfeedstart_response_head_status": {
+            "descripcion": "PComm2_StackFeedStart.Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW110\".\"PComm2_StackFeedStart.Response Head. Status\""
+        },
+        "pcomm3_plc_manda_a_oa_fin_de_alimentaci_n_de_pila": {
+            "descripcion": "PComm3 PLC manda a OA fin de alimentación de Pila",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW112\".\"PComm3 PLC manda a OA fin de alimentación de Pila\""
+        },
+        "pcomm3_stackfeedfinish_request_head_status": {
+            "descripcion": "PComm3_StackFeedFinish.Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW114\".\"PComm3_StackFeedFinish.Request Head. Status\""
+        },
+        "pcomm3_stackfeedfinish_request_wo_identifier_id": {
+            "descripcion": "PComm3_StackFeedFinish.Request. WO_Identifier ID",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9000.DBW138\".\"PComm3_StackFeedFinish.Request. WO_Identifier ID\""
+        },
+        "pcomm3_stackfeedfinish_request_stack_id_number": {
+            "descripcion": "PComm3_StackFeedFinish.Request.Stack ID number",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW142\".\"PComm3_StackFeedFinish.Request.Stack ID number\""
+        },
+        "pcomm3_stackfeedfinish_response_head_confirmation": {
+            "descripcion": "PComm3_StackFeedFinish.Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW144\".\"PComm3_StackFeedFinish.Response Head. Confirmation\""
+        },
+        "pcomm3_stackfeedfinish_response_head_status": {
+            "descripcion": "PComm3_StackFeedFinish.Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW146\".\"PComm3_StackFeedFinish.Response Head. Status\""
+        },
+        "pcomm4_plc_manda_a_oa_comienzo_apilado_de_pila_en_apilador_1": {
+            "descripcion": "PComm4 PLC manda a OA Comienzo apilado de Pila en apilador 1",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW148\".\"PComm4 PLC manda a OA Comienzo apilado de Pila en apilador 1\""
+        },
+        "pcomm4_1ststackerstart_request_head_status": {
+            "descripcion": "PComm4_1stStackerStart.Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW150\".\"PComm4_1stStackerStart.Request Head. Status\""
+        },
+        "pcomm4_1ststackerstart_request_wo_identifier_id": {
+            "descripcion": "PComm4_1stStackerStart.Request. WO_Identifier ID",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9000.DBW174\".\"PComm4_1stStackerStart.Request. WO_Identifier ID\""
+        },
+        "pcomm4_1ststackerstart_request_stack_id_number": {
+            "descripcion": "PComm4_1stStackerStart.Request.Stack ID number",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW178\".\"PComm4_1stStackerStart.Request.Stack ID number\""
+        },
+        "pcomm4_1ststackerstart_response_head_confirmation": {
+            "descripcion": "PComm4_1stStackerStart.Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW180\".\"PComm4_1stStackerStart.Response Head. Confirmation\""
+        },
+        "pcomm4_1ststackerstart_response_head_status": {
+            "descripcion": "PComm4_1stStackerStart.Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW182\".\"PComm4_1stStackerStart.Response Head. Status\""
+        },
+        "pcomm5_plc_manda_a_oa_fin_apilado_de_pila_en_apilador_1": {
+            "descripcion": "PComm5 PLC manda a OA Fin apilado de Pila en apilador 1",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW184\".\"PComm5 PLC manda a OA Fin apilado de Pila en apilador 1\""
+        },
+        "pcomm5_1ststackerfinish_request_head_status": {
+            "descripcion": "PComm5_1stStackerFinish.Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW186\".\"PComm5_1stStackerFinish.Request Head. Status\""
+        },
+        "pcomm5_1ststackerfinish_request_wo_identifier_id": {
+            "descripcion": "PComm5_1stStackerFinish.Request. WO_Identifier ID",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9000.DBW210\".\"PComm5_1stStackerFinish.Request. WO_Identifier ID\""
+        },
+        "pcomm5_1ststackerfinish_request_stack_id_number": {
+            "descripcion": "PComm5_1stStackerFinish.Request.Stack ID number",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW214\".\"PComm5_1stStackerFinish.Request.Stack ID number\""
+        },
+        "pcomm5_1ststackerfinish_response_head_confirmation": {
+            "descripcion": "PComm5_1stStackerFinish.Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW216\".\"PComm5_1stStackerFinish.Response Head. Confirmation\""
+        },
+        "pcomm5_1ststackerfinish_response_head_status": {
+            "descripcion": "PComm5_1stStackerFinish.Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW218\".\"PComm5_1stStackerFinish.Response Head. Status\""
+        }
+    },
+    "b0489_plc912000": {
+        "pcomm0_watchdog_request_head_trigger": {
+            "descripcion": "PComm0_Watchdog. Request Head.Trigger",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW0\".\"PComm0_Watchdog. Request Head.Trigger\""
+        },
+        "pcomm0_watchdog_request_head_status": {
+            "descripcion": "PComm0_Watchdog. Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW2\".\"PComm0_Watchdog. Request Head. Status\""
+        },
+        "pcomm0_watchdog_request_value": {
+            "descripcion": "PComm0_Watchdog. Request Value",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW4\".\"PComm0_Watchdog. Request Value\""
+        },
+        "pcomm0_watchdog_response_head_confirmation": {
+            "descripcion": "PComm0_Watchdog. Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW6\".\"PComm0_Watchdog. Response Head. Confirmation\""
+        },
+        "pcomm0_watchdog_response_head_status": {
+            "descripcion": "PComm0_Watchdog. Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW8\".\"PComm0_Watchdog. Response Head. Status\""
+        },
+        "pcomm0_watchdog_response_value": {
+            "descripcion": "PComm0_Watchdog. Response Value",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW10\".\"PComm0_Watchdog. Response Value\""
+        },
+        "pcomm1_oa_env_a_el_work_order_para_empezar_la_producci_n_en_el_strip_cutting": {
+            "descripcion": "PComm1  OA envía el Work Order para empezar la producción EN EL STRIP CUTTING",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW70\".\"PComm1  OA envía el Work Order para empezar la producción EN EL STRIP CUTTING\""
+        },
+        "pcomm1_workorder_request_head_status": {
+            "descripcion": "PComm1_WorkOrder.Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW72\".\"PComm1_WorkOrder.Request Head. Status\""
+        },
+        "pcomm1_workorder_request_wo_identifier_id": {
+            "descripcion": "PComm1_WorkOrder.Request. WO_Identifier ID",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9000.DBW74\".\"PComm1_WorkOrder.Request. WO_Identifier ID\""
+        },
+        "pcomm1_workorder_response_head_confirmation": {
+            "descripcion": "PComm1_WorkOrder.Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW76\".\"PComm1_WorkOrder.Response Head. Confirmation\""
+        },
+        "si_el_material_no_coincide_con_lo_que_hay_en_la_l_nea_error_1_si_la_receta_no_la_encuentra_en_la_lista_2_situaci_n_inicial_o_todo_bien_0": {
+            "descripcion": "Si el material no coincide con lo que hay en la línea - Error [-1].  Si la receta no la encuentra en la lista.[-2].  Situación inicial o todo bien [0]",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW78\".\"Si el material no coincide con lo que hay en la línea - Error [-1].  Si la receta no la encuentra en la lista.[-2].  Situación inicial o todo bien [0]\""
+        },
+        "pcomm2_plc_manda_a_oa_comienzo_de_alimentaci_n_de_pila": {
+            "descripcion": "PComm2  PLC manda a OA comienzo de alimentación de Pila",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW12\".\"PComm2  PLC manda a OA comienzo de alimentación de Pila\""
+        },
+        "pcomm2_stackfeedstart_request_head_status": {
+            "descripcion": "PComm2_StackFeedStart.Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW14\".\"PComm2_StackFeedStart.Request Head. Status\""
+        },
+        "pcomm2_stackfeedstart_request_wo_identifier_id": {
+            "descripcion": "PComm2_StackFeedStart.Request. WO_Identifier ID",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9000.DBW16\".\"PComm2_StackFeedStart.Request. WO_Identifier ID\""
+        },
+        "pcomm2_stackfeedstart_response_head_confirmation": {
+            "descripcion": "PComm2_StackFeedStart.Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW34\".\"PComm2_StackFeedStart.Response Head. Confirmation\""
+        },
+        "pcomm2_stackfeedstart_response_head_status": {
+            "descripcion": "PComm2_StackFeedStart.Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW36\".\"PComm2_StackFeedStart.Response Head. Status\""
+        },
+        "pcomm3_plc_manda_a_oa_fin_de_alimentaci_n_de_pila": {
+            "descripcion": "PComm3  PLC manda a OA fin de alimentación de Pila",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW38\".\"PComm3  PLC manda a OA fin de alimentación de Pila\""
+        },
+        "pcomm3_stackfeedfinish_request_head_status": {
+            "descripcion": "PComm3_StackFeedFinish.Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW40\".\"PComm3_StackFeedFinish.Request Head. Status\""
+        },
+        "pcomm3_stackfeedfinish_request_wo_identifier_id": {
+            "descripcion": "PComm3_StackFeedFinish.Request. WO_Identifier ID",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9000.DBW42\".\"PComm3_StackFeedFinish.Request. WO_Identifier ID\""
+        },
+        "pcomm3_stackfeedfinish_response_head_confirmation": {
+            "descripcion": "PComm3_StackFeedFinish.Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW70\".\"PComm3_StackFeedFinish.Response Head. Confirmation\""
+        },
+        "pcomm3_stackfeedfinish_response_head_status": {
+            "descripcion": "PComm3_StackFeedFinish.Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW72\".\"PComm3_StackFeedFinish.Response Head. Status\""
+        },
+        "pcomm4_plc_manda_a_oa_comienzo_apilado_de_pila_en_apilador_1": {
+            "descripcion": "PComm4  PLC manda a OA Comienzo apilado de Pila en apilador 1",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW74\".\"PComm4  PLC manda a OA Comienzo apilado de Pila en apilador 1\""
+        },
+        "pcomm4_1ststackerstart_request_head_status": {
+            "descripcion": "PComm4_1stStackerStart.Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW76\".\"PComm4_1stStackerStart.Request Head. Status\""
+        },
+        "pcomm4_1ststackerstart_request_wo_identifier_id": {
+            "descripcion": "PComm4_1stStackerStart.Request. WO_Identifier ID",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9000.DBW78\".\"PComm4_1stStackerStart.Request. WO_Identifier ID\""
+        },
+        "pcomm4_1ststackerstart_response_head_confirmation": {
+            "descripcion": "PComm4_1stStackerStart.Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW96\".\"PComm4_1stStackerStart.Response Head. Confirmation\""
+        },
+        "pcomm4_1ststackerstart_response_head_status": {
+            "descripcion": "PComm4_1stStackerStart.Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW98\".\"PComm4_1stStackerStart.Response Head. Status\""
+        },
+        "pcomm5_plc_manda_a_oa_fin_apilado_de_pila_en_apilador_1": {
+            "descripcion": "PComm5  PLC manda a OA Fin apilado de Pila en apilador 1",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW100\".\"PComm5  PLC manda a OA Fin apilado de Pila en apilador 1\""
+        },
+        "pcomm5_1ststackerfinish_request_head_status": {
+            "descripcion": "PComm5_1stStackerFinish.Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW102\".\"PComm5_1stStackerFinish.Request Head. Status\""
+        },
+        "pcomm5_1ststackerfinish_request_wo_identifier_id": {
+            "descripcion": "PComm5_1stStackerFinish.Request. WO_Identifier ID",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9000.DBW104\".\"PComm5_1stStackerFinish.Request. WO_Identifier ID\""
+        },
+        "pcomm5_1ststackerfinish_request_stack_piece_quantity": {
+            "descripcion": "PComm5_1stStackerFinish.Request.Stack Piece Quantity",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW110\".\"PComm5_1stStackerFinish.Request.Stack Piece Quantity\""
+        },
+        "pcomm5_1ststackerfinish_response_head_confirmation": {
+            "descripcion": "PComm5_1stStackerFinish.Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW124\".\"PComm5_1stStackerFinish.Response Head. Confirmation\""
+        },
+        "pcomm5_1ststackerfinish_response_head_status": {
+            "descripcion": "PComm5_1stStackerFinish.Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW126\".\"PComm5_1stStackerFinish.Response Head. Status\""
+        },
+        "pcomm6_plc_manda_a_oa_comienzo_apilado_de_pila_en_apilador_2": {
+            "descripcion": "PComm6  PLC manda a OA Comienzo apilado de Pila en apilador 2",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW128\".\"PComm6  PLC manda a OA Comienzo apilado de Pila en apilador 2\""
+        },
+        "pcomm6_2ndstackerstart_request_head_status": {
+            "descripcion": "PComm6_2ndStackerStart.Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW130\".\"PComm6_2ndStackerStart.Request Head. Status\""
+        },
+        "pcomm6_2ndstackerstart_request_wo_identifier_id": {
+            "descripcion": "PComm6_2ndStackerStart.Request. WO_Identifier ID",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9000.DBW132\".\"PComm6_2ndStackerStart.Request. WO_Identifier ID\""
+        },
+        "pcomm6_2ndstackerstart_response_head_confirmation": {
+            "descripcion": "PComm6_2ndStackerStart.Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW160\".\"PComm6_2ndStackerStart.Response Head. Confirmation\""
+        },
+        "pcomm6_2ndstackerstart_response_head_status": {
+            "descripcion": "PComm6_2ndStackerStart.Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW162\".\"PComm6_2ndStackerStart.Response Head. Status\""
+        },
+        "pcomm7_plc_manda_a_oa_fin_apilado_de_pila_en_apilador_2": {
+            "descripcion": "PComm7  PLC manda a OA Fin apilado de Pila en apilador 2",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW164\".\"PComm7  PLC manda a OA Fin apilado de Pila en apilador 2\""
+        },
+        "pcomm7_2ndstackerfinish_request_head_status": {
+            "descripcion": "PComm7_2ndStackerFinish.Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW166\".\"PComm7_2ndStackerFinish.Request Head. Status\""
+        },
+        "pcomm7_2ndstackerfinish_request_wo_identifier_id": {
+            "descripcion": "PComm7_2ndStackerFinish.Request. WO_Identifier ID",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9000.DBW168\".\"PComm7_2ndStackerFinish.Request. WO_Identifier ID\""
+        },
+        "pcomm7_2ndstackerfinish_request_stack_piece_quantity": {
+            "descripcion": "PComm7_2ndStackerFinish.Request.Stack Piece Quantity",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW174\".\"PComm7_2ndStackerFinish.Request.Stack Piece Quantity\""
+        },
+        "pcomm7_2ndstackerfinish_response_head_confirmation": {
+            "descripcion": "PComm7_2ndStackerFinish.Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW198\".\"PComm7_2ndStackerFinish.Response Head. Confirmation\""
+        },
+        "pcomm7_2ndstackerfinish_response_head_status": {
+            "descripcion": "PComm7_2ndStackerFinish.Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW200\".\"PComm7_2ndStackerFinish.Response Head. Status\""
+        },
+        "pcomm8_plc_manda_a_oa_comienzo_apilado_de_pila_en_apilador_3": {
+            "descripcion": "PComm8  PLC manda a OA Comienzo apilado de Pila en apilador 3",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW200\".\"PComm8  PLC manda a OA Comienzo apilado de Pila en apilador 3\""
+        },
+        "pcomm8_3rdstackerstart_request_head_status": {
+            "descripcion": "PComm8_3rdStackerStart.Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW204\".\"PComm8_3rdStackerStart.Request Head. Status\""
+        },
+        "pcomm8_3rdstackerstart_request_wo_identifier_id": {
+            "descripcion": "PComm8_3rdStackerStart.Request. WO_Identifier ID",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9000.DBW206\".\"PComm8_3rdStackerStart.Request. WO_Identifier ID\""
+        },
+        "pcomm8_3rdstackerstart_response_head_confirmation": {
+            "descripcion": "PComm8_3rdStackerStart.Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW234\".\"PComm8_3rdStackerStart.Response Head. Confirmation\""
+        },
+        "pcomm8_3rdstackerstart_response_head_status": {
+            "descripcion": "PComm8_3rdStackerStart.Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW236\".\"PComm8_3rdStackerStart.Response Head. Status\""
+        },
+        "pcomm9_plc_manda_a_oa_fin_apilado_de_pila_en_apilador_3": {
+            "descripcion": "PComm9  PLC manda a OA Fin apilado de Pila en apilador 3",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW238\".\"PComm9  PLC manda a OA Fin apilado de Pila en apilador 3\""
+        },
+        "pcomm9_3rdstackerfinish_request_head_status": {
+            "descripcion": "PComm9_3rdStackerFinish.Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW240\".\"PComm9_3rdStackerFinish.Request Head. Status\""
+        },
+        "pcomm9_3rdstackerfinish_request_wo_identifier_id": {
+            "descripcion": "PComm9_3rdStackerFinish.Request. WO_Identifier ID",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9000.DBW242\".\"PComm9_3rdStackerFinish.Request. WO_Identifier ID\""
+        },
+        "pcomm9_3rdstackerfinish_request_stack_piece_quantity": {
+            "descripcion": "PComm9_3rdStackerFinish.Request.Stack Piece Quantity",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW248\".\"PComm9_3rdStackerFinish.Request.Stack Piece Quantity\""
+        },
+        "pcomm9_3rdstackerfinish_response_head_confirmation": {
+            "descripcion": "PComm9_3rdStackerFinish.Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW262\".\"PComm9_3rdStackerFinish.Response Head. Confirmation\""
+        },
+        "pcomm9_3rdstackerfinish_response_head_status": {
+            "descripcion": "PComm9_3rdStackerFinish.Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW264\".\"PComm9_3rdStackerFinish.Response Head. Status\""
+        },
+        "status_zone_feeder": {
+            "descripcion": "Status Zone Feeder",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049. DBW000\".\"Status Zone Feeder\""
+        },
+        "status_zone_saw": {
+            "descripcion": "Status Zone Saw",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049. DBW002\".\"Status Zone Saw\""
+        },
+        "status_zone_transport": {
+            "descripcion": "Status Zone Transport",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049. DBW004\".\"Status Zone Transport\""
+        },
+        "status_zone_stacker_1": {
+            "descripcion": "Status Zone Stacker 1",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049. DBW006\".\"Status Zone Stacker 1\""
+        },
+        "status_zone_out_stacker_1": {
+            "descripcion": "Status Zone Out Stacker 1",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049. DBW010\".\"Status Zone Out Stacker 1\""
+        },
+        "status_zone_stacker_2": {
+            "descripcion": "Status Zone Stacker 2",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049. DBW012\".\"Status Zone Stacker 2\""
+        },
+        "status_zone_out_stacker_2": {
+            "descripcion": "Status Zone Out Stacker 2",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049. DBW014\".\"Status Zone Out Stacker 2\""
+        },
+        "status_zone_stacker_3": {
+            "descripcion": "Status Zone Stacker 3",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049. DBW016\".\"Status Zone Stacker 3\""
+        },
+        "status_zone_out_stacker_3": {
+            "descripcion": "Status Zone Out Stacker 3",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049. DBW018\".\"Status Zone Out Stacker 3\""
+        }
+    },
+    "b0489_plc911000": {
+        "pcomm0_watchdog_request_head_trigger": {
+            "descripcion": "PComm0_Watchdog. Request Head.Trigger",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm0_Watchdog. Request Head.Trigger\""
+        },
+        "pcomm0_watchdog_request_head_status": {
+            "descripcion": "PComm0_Watchdog. Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm0_Watchdog. Request Head. Status\""
+        },
+        "pcomm0_watchdog_request_value": {
+            "descripcion": "PComm0_Watchdog. Request Value",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm0_Watchdog. Request Value\""
+        },
+        "pcomm0_watchdog_response_head_confirmation": {
+            "descripcion": "PComm0_Watchdog. Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm0_Watchdog. Response Head. Confirmation\""
+        },
+        "pcomm0_watchdog_response_head_status": {
+            "descripcion": "PComm0_Watchdog. Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm0_Watchdog. Response Head. Status\""
+        },
+        "pcomm0_watchdog_response_value": {
+            "descripcion": "PComm0_Watchdog. Response Value",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm0_Watchdog. Response Value\""
+        },
+        "pcomm1_a_maquina_1_oa_deja_disponible_la_informaci_n_del_material_que_est_siendo_introducido_en_la_l_nea_pd_no_se_env_an_cantidades": {
+            "descripcion": "PComm1 - A [Maquina 1] OA deja disponible la información del material que está siendo introducido en la línea.   PD: No se envían cantidades",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm1 - A [Maquina 1] OA deja disponible la información del material que está siendo introducido en la línea.   PD: No se envían cantidades\""
+        },
+        "pcomm1_workorder_request_head_status": {
+            "descripcion": "PComm1_WorkOrder.Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm1_WorkOrder.Request Head. Status\""
+        },
+        "pcomm1_workorder_request_wo_identifier_id": {
+            "descripcion": "PComm1_WorkOrder.Request. WO_Identifier ID",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm1_WorkOrder.Request. WO_Identifier ID\""
+        },
+        "pcomm1_workorder_response_head_status": {
+            "descripcion": "PComm1_WorkOrder.Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm1_WorkOrder.Response Head. Status\""
+        },
+        "igualar_la_confirmaci_n_al_trigger_cuando_se_han_cambiado_los_datos_y_el_plc_ha_recibido_el_cambio": {
+            "descripcion": "Igualar la confirmación al trigger cuando se han cambiado los datos y el plc ha recibido el cambio",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"Igualar la confirmación al trigger cuando se han cambiado los datos y el plc ha recibido el cambio\""
+        },
+        "pcomm2_b_maquina_10_oa_deja_disponible_la_informaci_n_del_material_que_est_siendo_introducido_en_la_l_nea_pd_no_se_env_an_cantidades": {
+            "descripcion": "PComm2 - B [Maquina 10] OA deja disponible la información del material que está siendo introducido en la línea.   PD: No se envían cantidades",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm2 - B [Maquina 10] OA deja disponible la información del material que está siendo introducido en la línea.   PD: No se envían cantidades\""
+        },
+        "pcomm2_workorder_request_head_status": {
+            "descripcion": "PComm2_WorkOrder.Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW72\".\"PComm2_WorkOrder.Request Head. Status\""
+        },
+        "pcomm2_workorder_request_wo_identifier_id": {
+            "descripcion": "PComm2_WorkOrder.Request. WO_Identifier ID",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW74\".\"PComm2_WorkOrder.Request. WO_Identifier ID\""
+        },
+        "pcomm2_workorder_response_head_status": {
+            "descripcion": "PComm2_WorkOrder.Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW80\".\"PComm2_WorkOrder.Response Head. Status\""
+        },
+        "pcommx_plc_env_a_el_work_order_y_el_identificador_de_la_pila_cuando_se_incorpora_a_la_linea_posible_mejora_durante_la_puesta_en_marcha_contrastar_con_cliente_en_el_caso_de_que_haya": {
+            "descripcion": "PCommX  PLC envía el Work Order y el identificador de la pila cuando se incorpora a la linea. Posible mejora durante la puesta en marcha - contrastar con cliente en el caso de que haya",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW70\".\"PCommX  PLC envía el Work Order y el identificador de la pila cuando se incorpora a la linea. Posible mejora durante la puesta en marcha - contrastar con cliente en el caso de que haya\""
+        },
+        "pcomm2_workorder_request_stack_id": {
+            "descripcion": "PComm2_WorkOrder.Request. Stack ID",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW76\".\"PComm2_WorkOrder.Request. Stack ID\""
+        },
+        "pcomm2_workorder_response_head_confirmation": {
+            "descripcion": "PComm2_WorkOrder.Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000.DBW78\".\"PComm2_WorkOrder.Response Head. Confirmation\""
+        },
+        "zona_robot": {
+            "descripcion": "Zona robot",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049. DBW000\".\"Zona robot\""
+        },
+        "zona_boogie": {
+            "descripcion": "Zona Boogie",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049. DBW002\".\"Zona Boogie\""
+        },
+        "buffer_0": {
+            "descripcion": "Buffer 0",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Buffer 0\""
+        }
+    },
+    "wrapping_plc_8_10": {
+        "pcomm0_watchdog_request_head_trigger": {
+            "descripcion": "PComm0_Watchdog. Request Head.Trigger",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm0_Watchdog. Request Head.Trigger\""
+        },
+        "pcomm0_watchdog_request_head_status": {
+            "descripcion": "PComm0_Watchdog. Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm0_Watchdog. Request Head. Status\""
+        },
+        "pcomm0_watchdog_request_value": {
+            "descripcion": "PComm0_Watchdog. Request Value",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm0_Watchdog. Request Value\""
+        },
+        "pcomm0_watchdog_response_head_confirmation": {
+            "descripcion": "PComm0_Watchdog. Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm0_Watchdog. Response Head. Confirmation\""
+        },
+        "pcomm0_watchdog_response_head_status": {
+            "descripcion": "PComm0_Watchdog. Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm0_Watchdog. Response Head. Status\""
+        },
+        "pcomm0_watchdog_response_value": {
+            "descripcion": "PComm0_Watchdog. Response Value",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm0_Watchdog. Response Value\""
+        },
+        "pcomm1_oa_env_a_el_work_order_para_empezar_la_producci_n_en_el_wrapping": {
+            "descripcion": "PComm1  OA envía el Work Order para empezar la producción en el Wrapping",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm1  OA envía el Work Order para empezar la producción en el Wrapping\""
+        },
+        "pcomm1_workorder_request_head_status": {
+            "descripcion": "PComm1_WorkOrder.Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm1_WorkOrder.Request Head. Status\""
+        },
+        "pcomm1_workorder_request_head_wo_identifier_id": {
+            "descripcion": "PComm1_WorkOrder.Request Head. WO_Identifier ID",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm1_WorkOrder.Request Head. WO_Identifier ID\""
+        },
+        "pcomm1_workorder_response_head_confirmation": {
+            "descripcion": "PComm1_WorkOrder.Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm1_WorkOrder.Response Head. Confirmation\""
+        },
+        "si_el_material_no_coincide_con_lo_que_hay_en_la_l_nea_error_1_si_la_receta_no_la_encuentra_en_la_lista_2_situaci_n_inicial_o_todo_bien_0": {
+            "descripcion": "Si el material no coincide con lo que hay en la línea - Error [-1].  Si la receta no la encuentra en la lista.[-2].  Situación inicial o todo bien [0]",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"Si el material no coincide con lo que hay en la línea - Error [-1].  Si la receta no la encuentra en la lista.[-2].  Situación inicial o todo bien [0]\""
+        },
+        "pcomm2_plc_manda_a_oa_comienzo_de_alimentaci_n_de_pila": {
+            "descripcion": "PComm2  PLC manda a OA comienzo de alimentación de Pila",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm2  PLC manda a OA comienzo de alimentación de Pila\""
+        },
+        "pcomm2_stackfeedstart_request_head_status": {
+            "descripcion": "PComm2_StackFeedStart.Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm2_StackFeedStart.Request Head. Status\""
+        },
+        "pcomm2_stackfeedstart_request_wo_identifier_id": {
+            "descripcion": "PComm2_StackFeedStart.Request. WO_Identifier ID",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm2_StackFeedStart.Request. WO_Identifier ID\""
+        },
+        "pcomm2_stackfeedstart_request_stack_id_number": {
+            "descripcion": "PComm2_StackFeedStart.Request.Stack ID number",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm2_StackFeedStart.Request.Stack ID number\""
+        },
+        "pcomm2_stackfeedstart_response_head_confirmation": {
+            "descripcion": "PComm2_StackFeedStart.Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm2_StackFeedStart.Response Head. Confirmation\""
+        },
+        "pcomm2_stackfeedstart_response_head_status": {
+            "descripcion": "PComm2_StackFeedStart.Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm2_StackFeedStart.Response Head. Status\""
+        },
+        "pcomm3_plc_manda_a_oa_fin_de_alimentaci_n_de_pila": {
+            "descripcion": "PComm3  PLC manda a OA fin de alimentación de Pila",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm3  PLC manda a OA fin de alimentación de Pila\""
+        },
+        "pcomm3_stackfeedfinish_request_head_status": {
+            "descripcion": "PComm3_StackFeedFinish.Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm3_StackFeedFinish.Request Head. Status\""
+        },
+        "pcomm3_stackfeedfinish_request_wo_identifier_id": {
+            "descripcion": "PComm3_StackFeedFinish.Request. WO_Identifier ID",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm3_StackFeedFinish.Request. WO_Identifier ID\""
+        },
+        "pcomm3_stackfeedfinish_request_stack_id_number": {
+            "descripcion": "PComm3_StackFeedFinish.Request.Stack ID number",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm3_StackFeedFinish.Request.Stack ID number\""
+        },
+        "pcomm3_stackfeedfinish_response_head_confirmation": {
+            "descripcion": "PComm3_StackFeedFinish.Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm3_StackFeedFinish.Response Head. Confirmation\""
+        },
+        "pcomm3_stackfeedfinish_response_head_status": {
+            "descripcion": "PComm3_StackFeedFinish.Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm3_StackFeedFinish.Response Head. Status\""
+        },
+        "alimentador_infeed_zone": {
+            "descripcion": "Alimentador Infeed Zone",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049. DBW016\".\"Alimentador Infeed Zone\""
+        },
+        "pusher_feeder": {
+            "descripcion": "Pusher feeder",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049. DBW018\".\"Pusher feeder\""
+        },
+        "outfeed_conveyors": {
+            "descripcion": "Outfeed Conveyors",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049. DBW020\".\"Outfeed Conveyors\""
+        }
+    },
+    "edgebanding_plc_4_5": {
+        "samuel_martinez_s_martinez_marzola_es": {
+            "descripcion": "Samuel Martinez s.martinez@marzola.es",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Samuel Martinez s.martinez@marzola.es\""
+        },
+        "pcomm0_watchdog_request_head_status": {
+            "descripcion": "PComm0_Watchdog. Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"PComm0_Watchdog. Request Head. Status\""
+        },
+        "pcomm0_watchdog_request_value": {
+            "descripcion": "PComm0_Watchdog. Request Value",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"PComm0_Watchdog. Request Value\""
+        },
+        "pcomm0_watchdog_response_head_confirmation": {
+            "descripcion": "PComm0_Watchdog. Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"PComm0_Watchdog. Response Head. Confirmation\""
+        },
+        "pcomm0_watchdog_response_head_status": {
+            "descripcion": "PComm0_Watchdog. Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"PComm0_Watchdog. Response Head. Status\""
+        },
+        "pcomm0_watchdog_response_value": {
+            "descripcion": "PComm0_Watchdog. Response Value",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"PComm0_Watchdog. Response Value\""
+        },
+        "pcomm1_oa_env_a_el_work_order_para_empezar_la_producci_n_en_el_edge_banding": {
+            "descripcion": "PComm1  OA envía el Work Order para empezar la producción en el Edge banding",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"PComm1  OA envía el Work Order para empezar la producción en el Edge banding\""
+        },
+        "pcomm4_plc_manda_a_oa_comienzo_apilado_de_pila_en_apilador_2_piezas_buenas": {
+            "descripcion": "PComm4  PLC manda a OA Comienzo apilado de Pila en apilador 2(Piezas buenas)",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"PComm4  PLC manda a OA Comienzo apilado de Pila en apilador 2(Piezas buenas)\""
+        },
+        "pcomm1_workorder_request_head_wo_identifier_id": {
+            "descripcion": "PComm1_WorkOrder.Request Head. WO_Identifier ID",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9049\".\"PComm1_WorkOrder.Request Head. WO_Identifier ID\""
+        },
+        "report_number_ltimo_stack_a_la_salid_de_la_l_nea": {
+            "descripcion": "Report Number + último stack a la salid de la línea",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9049\".\"Report Number + último stack a la salid de la línea\""
+        },
+        "pcomm4_1ststackerstart_request_stack_article_out": {
+            "descripcion": "PComm4_1stStackerStart.Request.Stack Article_Out",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"PComm4_1stStackerStart.Request.Stack Article_Out\""
+        },
+        "si_el_material_no_coincide_con_lo_que_hay_en_la_l_nea_error_1_si_la_receta_no_la_encuentra_en_la_lista_2_situaci_n_inicial_o_todo_bien_0": {
+            "descripcion": "Si el material no coincide con lo que hay en la línea - Error [-1].  Si la receta no la encuentra en la lista.[-2].  Situación inicial o todo bien [0]",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Si el material no coincide con lo que hay en la línea - Error [-1].  Si la receta no la encuentra en la lista.[-2].  Situación inicial o todo bien [0]\""
+        },
+        "pcomm4_1ststackerstart_response_head_status": {
+            "descripcion": "PComm4_1stStackerStart.Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"PComm4_1stStackerStart.Response Head. Status\""
+        },
+        "pcomm5_plc_manda_a_oa_fin_apilado_de_pila_en_apilador_2_piezas_buenas": {
+            "descripcion": "PComm5  PLC manda a OA Fin apilado de Pila en apilador 2 (Piezas buenas)",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"PComm5  PLC manda a OA Fin apilado de Pila en apilador 2 (Piezas buenas)\""
+        },
+        "pcomm5_1ststackerfinish_request_head_status": {
+            "descripcion": "PComm5_1stStackerFinish.Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"PComm5_1stStackerFinish.Request Head. Status\""
+        },
+        "pcomm5_1ststackerfinish_request_wo_identifier_id": {
+            "descripcion": "PComm5_1stStackerFinish.Request. WO_Identifier ID",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9049\".\"PComm5_1stStackerFinish.Request. WO_Identifier ID\""
+        },
+        "pcomm5_1ststackerfinish_request_stack_piece_quantity": {
+            "descripcion": "PComm5_1stStackerFinish.Request.Stack Piece Quantity",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"PComm5_1stStackerFinish.Request.Stack Piece Quantity\""
+        },
+        "pcomm2_stackfeedstart_response_head_confirmation": {
+            "descripcion": "PComm2_StackFeedStart.Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"PComm2_StackFeedStart.Response Head. Confirmation\""
+        },
+        "pcomm5_1ststackerfinish_response_head_confirmation": {
+            "descripcion": "PComm5_1stStackerFinish.Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"PComm5_1stStackerFinish.Response Head. Confirmation\""
+        },
+        "pcomm5_1ststackerfinish_response_head_status": {
+            "descripcion": "PComm5_1stStackerFinish.Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"PComm5_1stStackerFinish.Response Head. Status\""
+        },
+        "pcomm3_plc_manda_a_oa_fin_de_alimentaci_n_de_pila": {
+            "descripcion": "PComm3  PLC manda a OA fin de alimentación de Pila",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"PComm3  PLC manda a OA fin de alimentación de Pila\""
+        },
+        "pcomm3_stackfeedfinish_request_head_status": {
+            "descripcion": "PComm3_StackFeedFinish.Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"PComm3_StackFeedFinish.Request Head. Status\""
+        },
+        "pcomm3_stackfeedfinish_request_wo_identifier_id": {
+            "descripcion": "PComm3_StackFeedFinish.Request. WO_Identifier ID",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9049\".\"PComm3_StackFeedFinish.Request. WO_Identifier ID\""
+        },
+        "pcomm3_stackfeedfinish_response_head_confirmation": {
+            "descripcion": "PComm3_StackFeedFinish.Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"PComm3_StackFeedFinish.Response Head. Confirmation\""
+        },
+        "pcomm3_stackfeedfinish_response_head_status": {
+            "descripcion": "PComm3_StackFeedFinish.Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"PComm3_StackFeedFinish.Response Head. Status\""
+        },
+        "infeed_tracks": {
+            "descripcion": "Infeed Tracks",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049. DBW000\".\"Infeed Tracks\""
+        },
+        "pusher_feeder": {
+            "descripcion": "Pusher feeder",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049. DBW002\".\"Pusher feeder\""
+        },
+        "outfeed_conveyor": {
+            "descripcion": "Outfeed Conveyor",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049. DBW004\".\"Outfeed Conveyor\""
+        },
+        "db9049_dbw006": {
+            "descripcion": "DB9049. DBW006",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049. DBW168\".\"DB9049. DBW006\""
+        }
+    },
+    "buffer2_b4083_911000": {
+        "jon_irigioen_j_irigoien_biele_com": {
+            "descripcion": "Jon Irigioen j.irigoien@biele.com",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Jon Irigioen j.irigoien@biele.com\""
+        },
+        "status_roller_row_202_25": {
+            "descripcion": "Status Roller Row 202_25",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Roller Row 202_25\""
+        },
+        "status_roller_row_202_35": {
+            "descripcion": "Status Roller Row 202_35",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Roller Row 202_35\""
+        },
+        "status_roller_row_202_45": {
+            "descripcion": "Status Roller Row 202_45",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Roller Row 202_45\""
+        },
+        "status_roller_row_202_55": {
+            "descripcion": "Status Roller Row 202_55",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Roller Row 202_55\""
+        },
+        "status_roller_row_202_65": {
+            "descripcion": "Status Roller Row 202_65",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Roller Row 202_65\""
+        },
+        "status_roller_row_202_75": {
+            "descripcion": "Status Roller Row 202_75",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Roller Row 202_75\""
+        },
+        "status_roller_row_202_85": {
+            "descripcion": "Status Roller Row 202_85",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Roller Row 202_85\""
+        },
+        "status_roller_row_202_95": {
+            "descripcion": "Status Roller Row 202_95",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Roller Row 202_95\""
+        },
+        "status_roller_row_202_105": {
+            "descripcion": "Status Roller Row 202_105",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Roller Row 202_105\""
+        },
+        "status_roller_row_202_115": {
+            "descripcion": "Status Roller Row 202_115",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Roller Row 202_115\""
+        },
+        "status_roller_row_202_125": {
+            "descripcion": "Status Roller Row 202_125",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Roller Row 202_125\""
+        },
+        "status_roller_row_202_135": {
+            "descripcion": "Status Roller Row 202_135",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Roller Row 202_135\""
+        },
+        "status_roller_row_202_145": {
+            "descripcion": "Status Roller Row 202_145",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Roller Row 202_145\""
+        },
+        "status_roller_row_202_155": {
+            "descripcion": "Status Roller Row 202_155",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Roller Row 202_155\""
+        },
+        "status_roller_row_202_165": {
+            "descripcion": "Status Roller Row 202_165",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Roller Row 202_165\""
+        },
+        "status_bogie_201_1": {
+            "descripcion": "Status Bogie 201_1",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Bogie 201_1\""
+        },
+        "status_bogie_201_2": {
+            "descripcion": "Status Bogie 201_2",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Bogie 201_2\""
+        },
+        "status_bogie_204_1": {
+            "descripcion": "Status Bogie 204_1",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Bogie 204_1\""
+        },
+        "status_bogie_204_2": {
+            "descripcion": "Status Bogie 204_2",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Bogie 204_2\""
+        },
+        "status_bogie_203": {
+            "descripcion": "Status Bogie 203",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Bogie 203\""
+        },
+        "status_bogie_205": {
+            "descripcion": "Status Bogie 205",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Bogie 205\""
+        },
+        "plc_publica_qu_est_pidiendo_la_wrapping_1_al_buffer_2_idem_en_los_dem_s_buffers": {
+            "descripcion": "PLC publica qué está pidiendo la Wrapping 1 al buffer 2 [Idem en los demás buffers]",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"PLC publica qué está pidiendo la Wrapping 1 al buffer 2 [Idem en los demás buffers]\""
+        },
+        "plc_publica_qu_est_pidiendo_la_wrapping_2_al_buffer_2_idem_en_los_dem_s_buffers": {
+            "descripcion": "PLC publica qué está pidiendo la Wrapping 2 al buffer 2 [Idem en los demás buffers]",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"PLC publica qué está pidiendo la Wrapping 2 al buffer 2 [Idem en los demás buffers]\""
+        },
+        "watchdog_request_header_trigger": {
+            "descripcion": "Watchdog.Request.Header.Trigger",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9050\".\"Watchdog.Request.Header.Trigger\""
+        },
+        "watchdog_request_header_status": {
+            "descripcion": "Watchdog.Request.Header.Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9050\".\"Watchdog.Request.Header.Status\""
+        },
+        "watchdog_response_header_trigger": {
+            "descripcion": "Watchdog.Response.Header.Trigger",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9050\".\"Watchdog.Response.Header.Trigger\""
+        },
+        "watchdog_response_header_status": {
+            "descripcion": "Watchdog.Response.Header.Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9050\".\"Watchdog.Response.Header.Status\""
+        },
+        "oa_recibe_los_datos_del_lector_de_c_digo_de_barras_situado_en_el_buffer_2_y_lo_env_a_al_plc": {
+            "descripcion": "OA recibe los datos del lector de código de barras situado en el buffer 2  y lo envía al PLC",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9050\".\"OA recibe los datos del lector de código de barras situado en el buffer 2  y lo envía al PLC\""
+        },
+        "pcommx_barcoderead_response_header_wo_identifier_id": {
+            "descripcion": "PCommX_BarcodeRead.Response. Header.WO_Identifier ID",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9050\".\"PCommX_BarcodeRead.Response. Header.WO_Identifier ID\""
+        },
+        "pcommx_barcoderead_response_header_producttype": {
+            "descripcion": "PCommX_BarcodeRead.Response Header.ProductType",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9050\".\"PCommX_BarcodeRead.Response Header.ProductType\""
+        },
+        "se_va_a_hacer_una_pantalla_en_oa_para_reimprimir_las_etiquetas_que_no_se_hayan_podido_imprimir_valinge": {
+            "descripcion": "Se va a hacer una pantalla en OA para reimprimir las etiquetas  que no se hayan podido imprimir [Valinge]",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9050\".\"Se va a hacer una pantalla en OA para reimprimir las etiquetas  que no se hayan podido imprimir [Valinge]\""
+        },
+        "pcommx_barcoderead_response_header_status": {
+            "descripcion": "PCommX_BarcodeRead.Response Header.Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9050\".\"PCommX_BarcodeRead.Response Header.Status\""
+        },
+        "plc_env_a_los_datos_de_la_pila_a_oa_para_almacenar_los_datos_y_lanzar_la_impresi_n_de_la_etiqueta": {
+            "descripcion": "PLC envía los datos de la pila a OA para almacenar los datos y  lanzar la impresión de la etiqueta",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9050\".\"PLC envía los datos de la pila a OA para almacenar los datos y  lanzar la impresión de la etiqueta\""
+        },
+        "pcommx_barcoderead_request_header_producttype": {
+            "descripcion": "PCommX_BarcodeRead.Request.Header.ProductType",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"PCommX_BarcodeRead.Request.Header.ProductType\""
+        },
+        "pcommx_barcoderead_response_header_confirmation": {
+            "descripcion": "PCommX_BarcodeRead.Response Header.Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9050\".\"PCommX_BarcodeRead.Response Header.Confirmation\""
+        }
+    },
+    "wrapping_plc_9_11": {
+        "aleson_usama_j_aleson_biele_com_u_sajjad_biele_com": {
+            "descripcion": "Aleson / Usama  j.aleson@biele.com u.sajjad@biele.com",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"Aleson / Usama  j.aleson@biele.com u.sajjad@biele.com\""
+        },
+        "pcomm0_watchdog_request_head_status": {
+            "descripcion": "PComm0_Watchdog. Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm0_Watchdog. Request Head. Status\""
+        },
+        "pcomm0_watchdog_request_value": {
+            "descripcion": "PComm0_Watchdog. Request Value",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm0_Watchdog. Request Value\""
+        },
+        "pcomm0_watchdog_response_head_confirmation": {
+            "descripcion": "PComm0_Watchdog. Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm0_Watchdog. Response Head. Confirmation\""
+        },
+        "pcomm0_watchdog_response_head_status": {
+            "descripcion": "PComm0_Watchdog. Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm0_Watchdog. Response Head. Status\""
+        },
+        "pcomm0_watchdog_response_value": {
+            "descripcion": "PComm0_Watchdog. Response Value",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm0_Watchdog. Response Value\""
+        },
+        "pcomm4_plc_manda_a_oa_comienzo_apilado_de_pila_en_apilador_1": {
+            "descripcion": "PComm4  PLC manda a OA Comienzo apilado de Pila en apilador 1",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm4  PLC manda a OA Comienzo apilado de Pila en apilador 1\""
+        },
+        "pcomm4_1ststackerstart_request_head_status": {
+            "descripcion": "PComm4_1stStackerStart.Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm4_1stStackerStart.Request Head. Status\""
+        },
+        "pcomm4_1ststackerstart_request_wo_identifier_id": {
+            "descripcion": "PComm4_1stStackerStart.Request. WO_Identifier ID",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm4_1stStackerStart.Request. WO_Identifier ID\""
+        },
+        "pcomm4_1ststackerstart_request_stack_id_number": {
+            "descripcion": "PComm4_1stStackerStart.Request.Stack ID number",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm4_1stStackerStart.Request.Stack ID number\""
+        },
+        "pcomm4_1ststackerstart_response_head_confirmation": {
+            "descripcion": "PComm4_1stStackerStart.Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm4_1stStackerStart.Response Head. Confirmation\""
+        },
+        "pcomm4_1ststackerstart_response_head_status": {
+            "descripcion": "PComm4_1stStackerStart.Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm4_1stStackerStart.Response Head. Status\""
+        },
+        "pcomm5_plc_manda_a_oa_fin_apilado_de_pila_en_apilador_1": {
+            "descripcion": "PComm5  PLC manda a OA Fin apilado de Pila en apilador 1",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm5  PLC manda a OA Fin apilado de Pila en apilador 1\""
+        },
+        "pcomm5_1ststackerfinish_request_head_status": {
+            "descripcion": "PComm5_1stStackerFinish.Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm5_1stStackerFinish.Request Head. Status\""
+        },
+        "pcomm5_1ststackerfinish_request_wo_identifier_id": {
+            "descripcion": "PComm5_1stStackerFinish.Request. WO_Identifier ID",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm5_1stStackerFinish.Request. WO_Identifier ID\""
+        },
+        "pcomm5_1ststackerfinish_request_stack_id_number": {
+            "descripcion": "PComm5_1stStackerFinish.Request.Stack ID number",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm5_1stStackerFinish.Request.Stack ID number\""
+        },
+        "pcomm5_1ststackerfinish_request_stack_piece_quantity": {
+            "descripcion": "PComm5_1stStackerFinish.Request.Stack Piece Quantity",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm5_1stStackerFinish.Request.Stack Piece Quantity\""
+        },
+        "pcomm5_1ststackerfinish_response_head_confirmation": {
+            "descripcion": "PComm5_1stStackerFinish.Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm5_1stStackerFinish.Response Head. Confirmation\""
+        },
+        "pcomm5_1ststackerfinish_response_head_status": {
+            "descripcion": "PComm5_1stStackerFinish.Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm5_1stStackerFinish.Response Head. Status\""
+        },
+        "pcomm6_plc_manda_a_oa_comienzo_apilado_de_pila_en_apilador_2": {
+            "descripcion": "PComm6 PLC manda a OA Comienzo apilado de Pila en apilador 2",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm6 PLC manda a OA Comienzo apilado de Pila en apilador 2\""
+        },
+        "pcomm7_plc_manda_a_oa_fin_apilado_de_pila_en_apilador_2": {
+            "descripcion": "PComm7  PLC manda a OA Fin apilado de Pila en apilador 2",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm7  PLC manda a OA Fin apilado de Pila en apilador 2\""
+        },
+        "apilador_infeed_zone": {
+            "descripcion": "Apilador Infeed Zone",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049. DBW000\".\"Apilador Infeed Zone\""
+        },
+        "apilador_transfer_zone": {
+            "descripcion": "Apilador Transfer Zone",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049. DBW004\".\"Apilador Transfer Zone\""
+        },
+        "apilador_stacker_zone": {
+            "descripcion": "Apilador Stacker Zone",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049. DBW006\".\"Apilador Stacker Zone\""
+        },
+        "apilador_outfeed_stack_zone": {
+            "descripcion": "Apilador Outfeed Stack Zone",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049. DBW012\".\"Apilador Outfeed Stack Zone\""
+        },
+        "baseboard_feeder_zone": {
+            "descripcion": "Baseboard feeder zone",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049. DBW014\".\"Baseboard feeder zone\""
+        }
+    },
+    "buffer3_l_b4083_914000": {
+        "status_roller_row_302_21": {
+            "descripcion": "Status Roller Row 302_21",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Roller Row 302_21\""
+        },
+        "status_roller_row_302_22": {
+            "descripcion": "Status Roller Row 302_22",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Roller Row 302_22\""
+        },
+        "status_roller_row_302_23": {
+            "descripcion": "Status Roller Row 302_23",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Roller Row 302_23\""
+        },
+        "status_roller_row_302_24": {
+            "descripcion": "Status Roller Row 302_24",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Roller Row 302_24\""
+        },
+        "status_roller_row_302_25": {
+            "descripcion": "Status Roller Row 302_25",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Roller Row 302_25\""
+        },
+        "status_bogie_301_01": {
+            "descripcion": "Status Bogie 301_01",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Bogie 301_01\""
+        },
+        "status_bogie_301_02": {
+            "descripcion": "Status Bogie 301_02",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Bogie 301_02\""
+        },
+        "status_bogie_303": {
+            "descripcion": "Status Bogie 303",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Bogie 303\""
+        },
+        "status_reject_zone": {
+            "descripcion": "Status Reject zone",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Reject zone\""
+        },
+        "exchange_zone": {
+            "descripcion": "Exchange Zone",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Exchange Zone\""
+        },
+        "plc_publica_qu_est_pidiendo_la_format_saw_line_1": {
+            "descripcion": "PLC publica qué está pidiendo la format saw line 1",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9049\".\"PLC publica qué está pidiendo la format saw line 1\""
+        }
+    },
+    "buffer3_r_b4083_915000": {
+        "status_roller_row_302_31": {
+            "descripcion": "Status Roller Row 302_31",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Roller Row 302_31\""
+        },
+        "status_roller_row_302_32": {
+            "descripcion": "Status Roller Row 302_32",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Roller Row 302_32\""
+        },
+        "status_roller_row_302_33": {
+            "descripcion": "Status Roller Row 302_33",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Roller Row 302_33\""
+        },
+        "status_roller_row_302_34": {
+            "descripcion": "Status Roller Row 302_34",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Roller Row 302_34\""
+        },
+        "status_roller_row_302_35": {
+            "descripcion": "Status Roller Row 302_35",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Roller Row 302_35\""
+        },
+        "status_bogie_304": {
+            "descripcion": "Status Bogie 304",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9049\".\"Status Bogie 304\""
+        },
+        "plc_publica_qu_est_pidiendo_la_format_saw_line_2": {
+            "descripcion": "PLC publica qué está pidiendo la format saw line 2",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9049\".\"PLC publica qué está pidiendo la format saw line 2\""
+        }
+    },
+    "format_saw": {
+        "pcomm0_watchdog_request_head_trigger": {
+            "descripcion": "PComm0_Watchdog. Request Head.Trigger",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm0_Watchdog. Request Head.Trigger\""
+        },
+        "pcomm0_watchdog_request_head_status": {
+            "descripcion": "PComm0_Watchdog. Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm0_Watchdog. Request Head. Status\""
+        },
+        "pcomm0_watchdog_request_value": {
+            "descripcion": "PComm0_Watchdog. Request Value",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm0_Watchdog. Request Value\""
+        },
+        "pcomm0_watchdog_response_head_confirmation": {
+            "descripcion": "PComm0_Watchdog. Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm0_Watchdog. Response Head. Confirmation\""
+        },
+        "pcomm0_watchdog_response_head_status": {
+            "descripcion": "PComm0_Watchdog. Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm0_Watchdog. Response Head. Status\""
+        },
+        "pcomm0_watchdog_response_value": {
+            "descripcion": "PComm0_Watchdog. Response Value",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm0_Watchdog. Response Value\""
+        },
+        "pcomm1_oa_env_a_el_work_order_para_empezar_la_producci_n_en_el_format_saw": {
+            "descripcion": "PComm1  OA envía el Work Order para empezar la producción en el format saw",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm1  OA envía el Work Order para empezar la producción en el format saw\""
+        },
+        "pcomm1_workorder_request_head_status": {
+            "descripcion": "PComm1_WorkOrder.Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm1_WorkOrder.Request Head. Status\""
+        },
+        "pcomm1_workorder_request_head_wo_identifier_id": {
+            "descripcion": "PComm1_WorkOrder.Request Head. WO_Identifier ID",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm1_WorkOrder.Request Head. WO_Identifier ID\""
+        },
+        "pcomm1_workorder_response_head_confirmation": {
+            "descripcion": "PComm1_WorkOrder.Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm1_WorkOrder.Response Head. Confirmation\""
+        },
+        "si_el_material_no_coincide_con_lo_que_hay_en_la_l_nea_error_1_si_la_receta_no_la_encuentra_en_la_lista_2_situaci_n_inicial_o_todo_bien_0": {
+            "descripcion": "Si el material no coincide con lo que hay en la línea - Error [-1].  Si la receta no la encuentra en la lista.[-2].  Situación inicial o todo bien [0]",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"Si el material no coincide con lo que hay en la línea - Error [-1].  Si la receta no la encuentra en la lista.[-2].  Situación inicial o todo bien [0]\""
+        },
+        "pcomm2_plc_manda_a_oa_comienzo_de_alimentaci_n_de_pila_1": {
+            "descripcion": "PComm2  PLC manda a OA comienzo de alimentación de Pila 1",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm2  PLC manda a OA comienzo de alimentación de Pila 1\""
+        },
+        "pcomm2_stackfeedstart_request_head_status": {
+            "descripcion": "PComm2_StackFeedStart.Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm2_StackFeedStart.Request Head. Status\""
+        },
+        "pcomm2_stackfeedstart_request_wo_identifier_id": {
+            "descripcion": "PComm2_StackFeedStart.Request. WO_Identifier ID",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm2_StackFeedStart.Request. WO_Identifier ID\""
+        },
+        "pcomm2_stackfeedstart_response_head_confirmation": {
+            "descripcion": "PComm2_StackFeedStart.Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm2_StackFeedStart.Response Head. Confirmation\""
+        },
+        "pcomm2_stackfeedstart_response_head_status": {
+            "descripcion": "PComm2_StackFeedStart.Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm2_StackFeedStart.Response Head. Status\""
+        },
+        "pcomm3_plc_manda_a_oa_fin_de_alimentaci_n_de_pila_1": {
+            "descripcion": "PComm3  PLC manda a OA fin de alimentación de Pila 1",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm3  PLC manda a OA fin de alimentación de Pila 1\""
+        },
+        "pcomm3_stackfeedfinish_request_head_status": {
+            "descripcion": "PComm3_StackFeedFinish.Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm3_StackFeedFinish.Request Head. Status\""
+        },
+        "pcomm3_stackfeedfinish_request_wo_identifier_id": {
+            "descripcion": "PComm3_StackFeedFinish.Request. WO_Identifier ID",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm3_StackFeedFinish.Request. WO_Identifier ID\""
+        },
+        "pcomm3_stackfeedfinish_response_head_confirmation": {
+            "descripcion": "PComm3_StackFeedFinish.Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm3_StackFeedFinish.Response Head. Confirmation\""
+        },
+        "pcomm3_stackfeedfinish_response_head_status": {
+            "descripcion": "PComm3_StackFeedFinish.Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm3_StackFeedFinish.Response Head. Status\""
+        },
+        "pcomm4_plc_manda_a_oa_comienzo_de_alimentaci_n_de_pila_2": {
+            "descripcion": "PComm4  PLC manda a OA comienzo de alimentación de Pila 2",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm4  PLC manda a OA comienzo de alimentación de Pila 2\""
+        },
+        "pcomm5_plc_manda_a_oa_fin_de_alimentaci_n_de_pila_2": {
+            "descripcion": "PComm5  PLC manda a OA fin de alimentación de Pila 2",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm5  PLC manda a OA fin de alimentación de Pila 2\""
+        },
+        "pcomm6_plc_manda_a_oa_comienzo_apilado_de_pila_en_apilador_1": {
+            "descripcion": "PComm6  PLC manda a OA Comienzo apilado de Pila en apilador 1",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm6  PLC manda a OA Comienzo apilado de Pila en apilador 1\""
+        },
+        "pcomm4_1ststackerstart_request_head_status": {
+            "descripcion": "PComm4_1stStackerStart.Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm4_1stStackerStart.Request Head. Status\""
+        },
+        "pcomm4_1ststackerstart_request_wo_identifier_id": {
+            "descripcion": "PComm4_1stStackerStart.Request. WO_Identifier ID",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm4_1stStackerStart.Request. WO_Identifier ID\""
+        },
+        "pcomm4_1ststackerstart_response_head_confirmation": {
+            "descripcion": "PComm4_1stStackerStart.Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm4_1stStackerStart.Response Head. Confirmation\""
+        },
+        "pcomm4_1ststackerstart_response_head_status": {
+            "descripcion": "PComm4_1stStackerStart.Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm4_1stStackerStart.Response Head. Status\""
+        },
+        "pcomm7_plc_manda_a_oa_fin_apilado_de_pila_en_apilador_1": {
+            "descripcion": "PComm7 PLC manda a OA Fin apilado de Pila en apilador 1",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm7 PLC manda a OA Fin apilado de Pila en apilador 1\""
+        },
+        "pcomm5_1ststackerfinish_request_head_status": {
+            "descripcion": "PComm5_1stStackerFinish.Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm5_1stStackerFinish.Request Head. Status\""
+        },
+        "pcomm5_1ststackerfinish_request_wo_identifier_id": {
+            "descripcion": "PComm5_1stStackerFinish.Request. WO_Identifier ID",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm5_1stStackerFinish.Request. WO_Identifier ID\""
+        },
+        "pcomm5_1ststackerfinish_request_stack_piece_quantity": {
+            "descripcion": "PComm5_1stStackerFinish.Request.Stack Piece Quantity",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm5_1stStackerFinish.Request.Stack Piece Quantity\""
+        },
+        "pcomm5_1ststackerfinish_response_head_confirmation": {
+            "descripcion": "PComm5_1stStackerFinish.Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm5_1stStackerFinish.Response Head. Confirmation\""
+        },
+        "pcomm5_1ststackerfinish_response_head_status": {
+            "descripcion": "PComm5_1stStackerFinish.Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm5_1stStackerFinish.Response Head. Status\""
+        },
+        "pcomm8_plc_manda_a_oa_comienzo_apilado_de_pila_en_apilador_2": {
+            "descripcion": "PComm8  PLC manda a OA Comienzo apilado de Pila en apilador 2",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm8  PLC manda a OA Comienzo apilado de Pila en apilador 2\""
+        },
+        "pcomm9_plc_manda_a_oa_fin_apilado_de_pila_en_apilador_2": {
+            "descripcion": "PComm9  PLC manda a OA Fin apilado de Pila en apilador 2",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB9000\".\"PComm9  PLC manda a OA Fin apilado de Pila en apilador 2\""
+        }
+    },
+    "buffer4_r_b4083_916000": {
+        "pcomm0_watchdog_request_head_trigger": {
+            "descripcion": "PComm0_Watchdog. Request Head.Trigger",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB\".\"PComm0_Watchdog. Request Head.Trigger\""
+        },
+        "pcomm0_watchdog_request_head_status": {
+            "descripcion": "PComm0_Watchdog. Request Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"PComm0_Watchdog. Request Head. Status\""
+        },
+        "pcomm0_watchdog_request_value": {
+            "descripcion": "PComm0_Watchdog. Request Value",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"PComm0_Watchdog. Request Value\""
+        },
+        "pcomm0_watchdog_response_head_confirmation": {
+            "descripcion": "PComm0_Watchdog. Response Head. Confirmation",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"PComm0_Watchdog. Response Head. Confirmation\""
+        },
+        "pcomm0_watchdog_response_head_status": {
+            "descripcion": "PComm0_Watchdog. Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"PComm0_Watchdog. Response Head. Status\""
+        },
+        "pcomm0_watchdog_response_value": {
+            "descripcion": "PComm0_Watchdog. Response Value",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"PComm0_Watchdog. Response Value\""
+        },
+        "status_roller_row_402_21": {
+            "descripcion": "Status Roller Row 402_21",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_21\""
+        },
+        "status_roller_row_402_22": {
+            "descripcion": "Status Roller Row 402_22",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_22\""
+        },
+        "status_roller_row_402_23": {
+            "descripcion": "Status Roller Row 402_23",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_23\""
+        },
+        "status_roller_row_402_24": {
+            "descripcion": "Status Roller Row 402_24",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_24\""
+        },
+        "status_roller_row_402_25": {
+            "descripcion": "Status Roller Row 402_25",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_25\""
+        },
+        "status_roller_row_402_26": {
+            "descripcion": "Status Roller Row 402_26",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_26\""
+        },
+        "status_roller_row_402_27": {
+            "descripcion": "Status Roller Row 402_27",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_27\""
+        },
+        "status_roller_row_402_28": {
+            "descripcion": "Status Roller Row 402_28",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_28\""
+        },
+        "status_roller_row_402_29": {
+            "descripcion": "Status Roller Row 402_29",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_29\""
+        },
+        "status_roller_row_402_210": {
+            "descripcion": "Status Roller Row 402_210",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_210\""
+        },
+        "status_roller_row_402_211": {
+            "descripcion": "Status Roller Row 402_211",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_211\""
+        },
+        "status_roller_row_402_212": {
+            "descripcion": "Status Roller Row 402_212",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_212\""
+        },
+        "status_roller_row_409": {
+            "descripcion": "Status Roller Row 409",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 409\""
+        },
+        "status_bogie_404_1": {
+            "descripcion": "Status Bogie 404_1",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Bogie 404_1\""
+        },
+        "status_bogie_404_2": {
+            "descripcion": "Status Bogie 404_2",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Bogie 404_2\""
+        }
+    },
+    "buffer4_l_b4083_917000": {
+        "falta_todo_lo_relacionado_con_los_stacks_que_se_introducen_en_las_lineas_y_cambio_de_of_biele_aclarar_con_jon_las_variables": {
+            "descripcion": "Falta todo lo relacionado con los stacks que se introducen en las lineas y cambio de OF [Biele] - Aclarar con Jon las variables",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB\".\"Falta todo lo relacionado con los stacks que se introducen en las lineas y cambio de OF [Biele] - Aclarar con Jon las variables\""
+        },
+        "stack_enviado_a_ima_entrada_salida_biele": {
+            "descripcion": "Stack enviado a IMA entrada/salida - Biele",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Stack enviado a IMA entrada/salida - Biele\""
+        },
+        "estado_de_la_linea_de_ima_biele": {
+            "descripcion": "Estado de la linea de IMA [Biele?]",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Estado de la linea de IMA [Biele?]\""
+        },
+        "los_datos_de_primer_y_ltimo_tablero_apilar_desapilar_ima": {
+            "descripcion": "Los datos de primer y último tablero(apilar/desapilar)[IMA]",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Los datos de primer y último tablero(apilar/desapilar)[IMA]\""
+        },
+        "pcomm0_watchdog_response_head_status": {
+            "descripcion": "PComm0_Watchdog. Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"PComm0_Watchdog. Response Head. Status\""
+        },
+        "pcomm0_watchdog_response_value": {
+            "descripcion": "PComm0_Watchdog. Response Value",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"PComm0_Watchdog. Response Value\""
+        },
+        "estados_30_rollers_y_5_boggies": {
+            "descripcion": "Estados. 30 rollers y 5 boggies",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Estados. 30 rollers y 5 boggies\""
+        },
+        "status_roller_row_402_12": {
+            "descripcion": "Status Roller Row 402_12",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_12\""
+        },
+        "status_roller_row_402_13": {
+            "descripcion": "Status Roller Row 402_13",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_13\""
+        },
+        "status_roller_row_402_14": {
+            "descripcion": "Status Roller Row 402_14",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_14\""
+        },
+        "status_roller_row_402_15": {
+            "descripcion": "Status Roller Row 402_15",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_15\""
+        },
+        "status_roller_row_402_16": {
+            "descripcion": "Status Roller Row 402_16",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_16\""
+        },
+        "status_roller_row_402_17": {
+            "descripcion": "Status Roller Row 402_17",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_17\""
+        },
+        "status_roller_row_402_18": {
+            "descripcion": "Status Roller Row 402_18",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_18\""
+        },
+        "status_roller_row_402_19": {
+            "descripcion": "Status Roller Row 402_19",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_19\""
+        },
+        "status_roller_row_402_110": {
+            "descripcion": "Status Roller Row 402_110",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_110\""
+        },
+        "status_roller_row_402_111": {
+            "descripcion": "Status Roller Row 402_111",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_111\""
+        },
+        "status_roller_row_402_112": {
+            "descripcion": "Status Roller Row 402_112",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_112\""
+        },
+        "status_roller_row_402_113": {
+            "descripcion": "Status Roller Row 402_113",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_113\""
+        },
+        "status_roller_row_402_114": {
+            "descripcion": "Status Roller Row 402_114",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_114\""
+        },
+        "status_roller_row_402_115": {
+            "descripcion": "Status Roller Row 402_115",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_115\""
+        },
+        "status_roller_row_402_116": {
+            "descripcion": "Status Roller Row 402_116",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_116\""
+        },
+        "status_roller_row_402_117": {
+            "descripcion": "Status Roller Row 402_117",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_117\""
+        },
+        "status_roller_row_402_118": {
+            "descripcion": "Status Roller Row 402_118",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_118\""
+        },
+        "status_roller_row_402_119": {
+            "descripcion": "Status Roller Row 402_119",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_119\""
+        },
+        "status_roller_row_402_120": {
+            "descripcion": "Status Roller Row 402_120",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_120\""
+        },
+        "status_roller_row_402_121": {
+            "descripcion": "Status Roller Row 402_121",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_121\""
+        },
+        "status_roller_row_402_122": {
+            "descripcion": "Status Roller Row 402_122",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_122\""
+        },
+        "status_roller_row_402_123": {
+            "descripcion": "Status Roller Row 402_123",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_123\""
+        },
+        "status_roller_row_402_124": {
+            "descripcion": "Status Roller Row 402_124",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 402_124\""
+        },
+        "status_roller_row_407_1": {
+            "descripcion": "Status Roller Row 407_1",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 407_1\""
+        },
+        "status_roller_row_406_1": {
+            "descripcion": "Status Roller Row 406_1",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 406_1\""
+        },
+        "status_roller_row_406_2": {
+            "descripcion": "Status Roller Row 406_2",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 406_2\""
+        },
+        "status_roller_row_406_3": {
+            "descripcion": "Status Roller Row 406_3",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 406_3\""
+        },
+        "status_roller_row_406_4": {
+            "descripcion": "Status Roller Row 406_4",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 406_4\""
+        },
+        "status_roller_row_406_5": {
+            "descripcion": "Status Roller Row 406_5",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Roller Row 406_5\""
+        },
+        "status_bogie_405_1": {
+            "descripcion": "Status Bogie 405_1",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Bogie 405_1\""
+        },
+        "status_bogie_405_2": {
+            "descripcion": "Status Bogie 405_2",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Bogie 405_2\""
+        },
+        "status_bogie_405_3": {
+            "descripcion": "Status Bogie 405_3",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Bogie 405_3\""
+        },
+        "status_bogie_408_1": {
+            "descripcion": "Status Bogie 408_1",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Bogie 408_1\""
+        },
+        "status_bogie_408_2": {
+            "descripcion": "Status Bogie 408_2",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Status Bogie 408_2\""
+        },
+        "oa_lanza_al_plc_a_la_entrada_del_buffer_4_la_of_ima_drilling_sideboards": {
+            "descripcion": "OA lanza al PLC a la entrada del buffer 4 la OF  - IMA DRILLING SIDEBOARDS",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"OA lanza al PLC a la entrada del buffer 4 la OF  - IMA DRILLING SIDEBOARDS\""
+        },
+        "oa_lanza_al_plc_a_la_entrada_del_buffer_4_la_of_ima_drilling_shelves_1": {
+            "descripcion": "OA lanza al PLC a la entrada del buffer 4 la OF  - IMA DRILLING SHELVES 1",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"OA lanza al PLC a la entrada del buffer 4 la OF  - IMA DRILLING SHELVES 1\""
+        },
+        "oa_lanza_al_plc_a_la_entrada_del_buffer_4_la_of_ima_drilling_shelves_2": {
+            "descripcion": "OA lanza al PLC a la entrada del buffer 4 la OF  - IMA DRILLING SHELVES 2",
+            "tipo_dato": "DINT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"OA lanza al PLC a la entrada del buffer 4 la OF  - IMA DRILLING SHELVES 2\""
+        }
+    },
+    "buffer5_b4083_918000": {
+        "falta_todo_lo_relacionado_con_los_stacks_que_se_introducen_en_las_lineas_y_cambio_de_of_biele_aclarar_con_jon_las_variables": {
+            "descripcion": "Falta todo lo relacionado con los stacks que se introducen en las lineas y cambio de OF [Biele] - Aclarar con Jon las variables",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB\".\"Falta todo lo relacionado con los stacks que se introducen en las lineas y cambio de OF [Biele] - Aclarar con Jon las variables\""
+        },
+        "stack_enviado_a_ima_entrada_salida_biele": {
+            "descripcion": "Stack enviado a IMA entrada/salida - Biele",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Stack enviado a IMA entrada/salida - Biele\""
+        },
+        "estado_de_la_linea_de_ima_biele": {
+            "descripcion": "Estado de la linea de IMA [Biele?]",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Estado de la linea de IMA [Biele?]\""
+        },
+        "los_datos_de_primer_y_ltimo_tablero_apilar_desapilar_ima": {
+            "descripcion": "Los datos de primer y último tablero(apilar/desapilar)[IMA]",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Los datos de primer y último tablero(apilar/desapilar)[IMA]\""
+        },
+        "pcomm0_watchdog_response_head_status": {
+            "descripcion": "PComm0_Watchdog. Response Head. Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"PComm0_Watchdog. Response Head. Status\""
+        },
+        "pcomm0_watchdog_response_value": {
+            "descripcion": "PComm0_Watchdog. Response Value",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"PComm0_Watchdog. Response Value\""
+        },
+        "biele_plc_comunica_a_oa_informaci_n_del_paquete_de_salida_trigger": {
+            "descripcion": "Biele PLC comunica a OA información del paquete de salida - Trigger",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Biele PLC comunica a OA información del paquete de salida - Trigger\""
+        },
+        "biele_plc_comunica_a_oa_informaci_n_del_paquete_de_salida_trigger_status": {
+            "descripcion": "Biele PLC comunica a OA información del paquete de salida - Trigger Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Biele PLC comunica a OA información del paquete de salida - Trigger Status\""
+        },
+        "biele_oa_comunica_da_el_status_de_la_confirmaci_n_status": {
+            "descripcion": "Biele OA comunica da el status de la confirmación - Status",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Biele OA comunica da el status de la confirmación - Status\""
+        },
+        "biele_oa_comunica_da_la_confirmaci_n_confirm": {
+            "descripcion": "Biele OA comunica da la confirmación - Confirm",
+            "tipo_dato": "INT",
+            "node_id": "ns=3;s=\"DB_Generico\".\"Biele OA comunica da la confirmación - Confirm\""
+        }
+    }
+}

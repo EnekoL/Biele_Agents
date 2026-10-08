@@ -5,11 +5,13 @@ import os
 from pathlib import Path
 from conocimiento.motor_rag import MotorRAG
 from conectores.herramienta_opcua import buscar_en_catalogo, leer_variable_plc
+from conectores.lector_logs import consultar_logs_tiempo_real
 
 # IMPORTAMOS EL NUEVO MÓDULO SEPARADO
 from conocimiento.mapeador_bd import generar_mapa_bd, cargar_contexto_sql 
 from conocimiento.generador_catalogo_definitivo import generar_catalogo_ia
 from conocimiento.mapeador_bd import generar_mapa_bd, cargar_contexto_sql
+
 
 class AsistenteOperacionalBieleHibrido:
     def __init__(self):
@@ -72,16 +74,19 @@ class AsistenteOperacionalBieleHibrido:
 
         self.agente_doc = autogen.AssistantAgent(
             name="Agente_Documentacion",
-            system_message="Eres el especialista en manuales técnicos. Usa 'consultar_manual_mantenimiento' en el RAG.",
+            system_message="""Eres el especialista en conocimiento y registros del sistema.
+            - Si el usuario pide consultar manuales técnicos o instrucciones de mantenimiento, usa 'consultar_manual_mantenimiento' (que usa RAG).
+            - Si el usuario pide revisar errores informáticos, caídas de software o qué está pasando en los logs de la aplicación, usa 'consultar_logs_tiempo_real'.""",
             llm_config=self.llm_config_azure,
         )
 
+        terminacion_func = lambda x: x.get("content", "") and "TERMINATE" in x.get("content", "")
+
         self.operario = autogen.UserProxyAgent(
-            name="Operario", 
-            human_input_mode="NEVER", 
-            max_consecutive_auto_reply=15, 
-            is_termination_msg=lambda x: x.get("content", "") and x.get("content", "").rstrip().endswith("TERMINATE"),
+            name="Operario",
+            human_input_mode="NEVER",
             code_execution_config=False,
+            is_termination_msg=terminacion_func
         )
 
         def ejecutar_consulta_libre_sql(query: str, db_id: str) -> str:
@@ -127,12 +132,19 @@ class AsistenteOperacionalBieleHibrido:
         autogen.agentchat.register_function(ejecutar_consulta_libre_sql, caller=self.agente_sql, executor=self.operario, name="ejecutar_consulta_libre_sql", description="Ejecuta SELECT en SQL Server.")
         autogen.agentchat.register_function(consultar_rag, caller=self.agente_doc, executor=self.operario, name="consultar_manual_mantenimiento", description="Busca en RAG.")
         autogen.agentchat.register_function(
+            consultar_logs_tiempo_real, 
+            caller=self.agente_doc, 
+            executor=self.operario, 
+            name="consultar_logs_tiempo_real", 
+            description="Lee las últimas líneas del archivo de log más reciente en vivo de la aplicación OA. Útil para buscar errores o ver qué hace el software informático. Puedes pasar una palabra_clave (ej. 'Exception') y el número de líneas."
+        )
+        """ autogen.agentchat.register_function(
             consultar_logs, 
             caller=self.agente_doc, 
             executor=self.operario, 
             name="consultar_logs_os", 
             description="Busca errores, advertencias o eventos recientes en los Logs del Sistema Operativo (OS)."
-        )
+        ) """
 
         self.groupchat = autogen.GroupChat(
             agents=[self.operario, self.orquestador, self.agente_plc, self.agente_sql, self.agente_doc],

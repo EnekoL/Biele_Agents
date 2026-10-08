@@ -1,7 +1,7 @@
 {
     "local": {
         "[dbo].[Warnings]": {
-            "filas": 20214,
+            "filas": 24734,
             "columnas": [
                 "Id (int)",
                 "Type (nvarchar)",
@@ -266,7 +266,7 @@
             ]
         },
         "[dbo].[EventHistory]": {
-            "filas": 15763,
+            "filas": 16087,
             "columnas": [
                 "IdHisEvent (bigint)",
                 "IdEvent (bigint)",

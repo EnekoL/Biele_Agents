@@ -1,0 +1,332 @@
+{
+    "local": {
+        "[dbo].[Warnings]": {
+            "filas": 20214,
+            "columnas": [
+                "Id (int)",
+                "Type (nvarchar)",
+                "Date (datetimeoffset)",
+                "Info (nvarchar)",
+                "Status (nvarchar)",
+                "FinishDate (datetimeoffset)",
+                "Source (int)",
+                "Db (int)",
+                "Code (nvarchar)",
+                "CatalogId (int)"
+            ]
+        },
+        "[Monitor].[Part]": {
+            "filas": 2,
+            "columnas": [
+                "Id (bigint)",
+                "PartNumber (nvarchar)",
+                "PurchaseQuantityPerPackage (decimal)",
+                "Description (nvarchar)",
+                "CreatedDate (datetime2)",
+                "ModifiedDate (datetime2)"
+            ]
+        },
+        "[BieleOrders].[Packages]": {
+            "filas": 6,
+            "columnas": [
+                "Date (datetime2)",
+                "Barcode (nvarchar)",
+                "PartNumberIn (nvarchar)",
+                "OrderNumber (nvarchar)",
+                "ReportNumber (bigint)",
+                "StackQuantity (int)",
+                "LoadingStation (nvarchar)"
+            ]
+        },
+        "[Monitor].[ProductRecord]": {
+            "filas": 3,
+            "columnas": [
+                "Id (bigint)",
+                "SerialNo (nvarchar)",
+                "PartId (bigint)",
+                "CreatedDate (datetime2)"
+            ]
+        },
+        "[Traceability].[Traceability]": {
+            "filas": 10,
+            "columnas": [
+                "Id (bigint)",
+                "Typ (int)",
+                "Status (int)",
+                "JsonData (nvarchar)",
+                "SkapadTid (datetime2)",
+                "OrderNumber (nvarchar)",
+                "BatchNumber (nvarchar)",
+                "ArticleNumber (nvarchar)",
+                "Area (nvarchar)",
+                "BieleId (bigint)",
+                "InFeedStartDate (datetime2)",
+                "InFeedFinishDate (datetime2)",
+                "OutFeedStartDate (datetime2)",
+                "OutFeedFinishDate (datetime2)",
+                "StackId (int)",
+                "Quantity (decimal)",
+                "OrbNum (nvarchar)",
+                "BatchNum (nvarchar)"
+            ]
+        },
+        "[Traceability].[TraceabilityTypes]": {
+            "filas": 3,
+            "columnas": [
+                "Typ (int)",
+                "TypeName (nvarchar)",
+                "Description (nvarchar)"
+            ]
+        },
+        "[BieleOrders].[Orders]": {
+            "filas": 6,
+            "columnas": [
+                "Id (bigint)",
+                "Workcenter (nvarchar)",
+                "OrderNumber (nvarchar)",
+                "ReportNumber (bigint)",
+                "Priority (int)",
+                "Status (int)",
+                "PartNumber (nvarchar)",
+                "PlannedQuantity (decimal)",
+                "ReportedQuantity (decimal)",
+                "RestQuantity (decimal)",
+                "PartNumberIdx (nvarchar)",
+                "WorkcenterIdx (nvarchar)"
+            ]
+        },
+        "[BieleOrders].[Materials]": {
+            "filas": 9,
+            "columnas": [
+                "Id (bigint)",
+                "ReportNumber (bigint)",
+                "PartNumber (nvarchar)",
+                "PlannedQuantity (decimal)",
+                "ReportedQuantity (decimal)",
+                "RestQuantity (decimal)"
+            ]
+        },
+        "[BieleOA].[LabelPrintJobs]": {
+            "filas": 6,
+            "columnas": [
+                "Id (bigint)",
+                "BieleId (bigint)",
+                "OrderNumber (nvarchar)",
+                "ArticleNumber (nvarchar)",
+                "LabelDate (datetime2)",
+                "ProductType (int)",
+                "Quantity (decimal)",
+                "ReceivedDate (datetime2)",
+                "PrintStatus (int)",
+                "PrintedDate (datetime2)",
+                "Attempts (int)",
+                "LastError (nvarchar)"
+            ]
+        },
+        "[BieleOA].[Positions]": {
+            "filas": 7,
+            "columnas": [
+                "Id (bigint)",
+                "Position (int)",
+                "Batchnumber (nvarchar)",
+                "PartNumber (nvarchar)",
+                "Quantity (decimal)",
+                "LastUpdated (datetime2)",
+                "Status (int)"
+            ]
+        },
+        "[BieleOA].[EventQueue]": {
+            "filas": 0,
+            "columnas": [
+                "Id (bigint)",
+                "EventType (nvarchar)",
+                "Typ (int)",
+                "Status (int)",
+                "JsonData (nvarchar)",
+                "CreatedDate (datetime2)",
+                "Processed (bit)",
+                "ProcessedDate (datetime2)",
+                "ErrorMessage (nvarchar)"
+            ]
+        },
+        "[BieleOA].[Configuration]": {
+            "filas": 4,
+            "columnas": [
+                "Id (int)",
+                "ConfigKey (nvarchar)",
+                "ConfigValue (nvarchar)",
+                "Description (nvarchar)",
+                "ModifiedDate (datetime2)"
+            ]
+        },
+        "[dbo].[DefEvent]": {
+            "filas": 3,
+            "columnas": [
+                "IdEvent (bigint)",
+                "Name (nvarchar)",
+                "Description (nvarchar)",
+                "IdText (bigint)",
+                "IdEventFamily (int)",
+                "Active (bit)",
+                "CreationDate (datetimeoffset)",
+                "CreationUser (nvarchar)",
+                "ModificationDate (datetimeoffset)",
+                "ModificationUser (nvarchar)"
+            ]
+        },
+        "[dbo].[DefEventFamily]": {
+            "filas": 1,
+            "columnas": [
+                "IdEventFamily (int)",
+                "Description (nvarchar)",
+                "IdText (bigint)",
+                "Active (bit)",
+                "CreationDate (datetimeoffset)",
+                "CreationUser (nvarchar)",
+                "ModificationDate (datetimeoffset)",
+                "ModificationUser (nvarchar)"
+            ]
+        },
+        "[dbo].[FaultWarningCatalog]": {
+            "filas": 10372,
+            "columnas": [
+                "Id (int)",
+                "Db (int)",
+                "Class (nvarchar)",
+                "Code (int)",
+                "CodeLabel (nvarchar)",
+                "TriggerTag (nvarchar)",
+                "TriggerBit (int)",
+                "Byte (int)",
+                "Bit (int)",
+                "GroupName (nvarchar)",
+                "Name (nvarchar)",
+                "Description (nvarchar)",
+                "SourceFile (nvarchar)",
+                "ImportedUtc (datetimeoffset)",
+                "Plc (int)",
+                "DescriptionSv (nvarchar)"
+            ]
+        },
+        "[dbo].[DefLanguage]": {
+            "filas": 3,
+            "columnas": [
+                "IdLanguage (bigint)",
+                "Description (nvarchar)",
+                "Locale (nvarchar)",
+                "Active (bit)"
+            ]
+        },
+        "[dbo].[DefMachineProperty]": {
+            "filas": 26,
+            "columnas": [
+                "idMac (smallint)",
+                "Property (bigint)",
+                "Value (nvarchar)",
+                "CreationDate (datetimeoffset)",
+                "CreationUser (nvarchar)",
+                "ModificationDate (datetimeoffset)",
+                "ModificationUser (nvarchar)",
+                "Name (nvarchar)"
+            ]
+        },
+        "[dbo].[DefRol]": {
+            "filas": 2,
+            "columnas": [
+                "IdRol (bigint)",
+                "Description (nvarchar)",
+                "Active (bit)",
+                "Rol (nvarchar)",
+                "CreationDate (datetimeoffset)",
+                "CreationUser (nvarchar)",
+                "ModificationDate (datetimeoffset)",
+                "ModificationUser (nvarchar)"
+            ]
+        },
+        "[dbo].[DefText]": {
+            "filas": 387,
+            "columnas": [
+                "IdText (bigint)"
+            ]
+        },
+        "[dbo].[DefUser]": {
+            "filas": 1,
+            "columnas": [
+                "Username (nvarchar)",
+                "Showname (nvarchar)",
+                "salt (char)",
+                "hash (char)",
+                "Active (bit)",
+                "IdLanguage (bigint)",
+                "IdRol (bigint)",
+                "CreationDate (datetimeoffset)",
+                "CreationUser (nvarchar)",
+                "ModificationDate (datetimeoffset)",
+                "ModificationUser (nvarchar)"
+            ]
+        },
+        "[dbo].[EventHistory]": {
+            "filas": 15763,
+            "columnas": [
+                "IdHisEvent (bigint)",
+                "IdEvent (bigint)",
+                "DateEvent (datetimeoffset)",
+                "Info (nvarchar)"
+            ]
+        },
+        "[dbo].[HMIEventFamily]": {
+            "filas": 0,
+            "columnas": [
+                "HMI (int)",
+                "IdEventFamily (bigint)",
+                "Active (bit)"
+            ]
+        },
+        "[dbo].[LanguageText]": {
+            "filas": 774,
+            "columnas": [
+                "IdText (bigint)",
+                "IdLanguage (bigint)",
+                "Text (nvarchar)"
+            ]
+        },
+        "[dbo].[TextID]": {
+            "filas": 387,
+            "columnas": [
+                "TextID (nvarchar)",
+                "IdText (bigint)"
+            ]
+        },
+        "[dbo].[ClientImportWatermark]": {
+            "filas": 3,
+            "columnas": [
+                "TableName (nvarchar)",
+                "LastClientId (bigint)",
+                "LastRunUtc (datetime2)",
+                "LastRowCount (int)",
+                "LastError (nvarchar)"
+            ]
+        }
+    },
+    "ClientTraceability": {
+        "[dbo].[Traceability]": {
+            "filas": 20,
+            "columnas": [
+                "Id (bigint)",
+                "Typ (int)",
+                "Status (int)",
+                "JsonData (nvarchar)",
+                "SkapadTid (datetime2)"
+            ]
+        }
+    },
+    "ClientMonitor": {
+        "Monitor": {
+            "filas": 3,
+            "columnas": [
+                "Id (integer)",
+                "Name (varchar)"
+            ]
+        }
+    }
+}

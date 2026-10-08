@@ -1,0 +1,1913 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<service name="" starttype="">
+	<servermanager image="" class="" args="">
+		<items>
+			<item name="lm" image="Biele.Helper.dll" class="Biele.Helper.LoggingManager">
+				<logger id="a" image="Biele.Helper.dll" class="Biele.Helper.BufferedLogger" logname="Server" logpath="log" />
+				<logger id="b" image="Biele.Helper.dll" class="Biele.Helper.BufferedLogger" logname="Comm" logpath="log" />
+				<logger id="ScadaSimulator" image="Biele.Helper.dll" class="Biele.Helper.BufferedLogger" logname="ScadaSimulator" logpath="log" />
+				<rule pattern="*" id="a" mask="1,2,3,4" />
+				<rule pattern="B4571.*" id="a" mask="1,2,3,4" />
+				<rule pattern="B4571.RestService.*" id="ScadaSimulator" mask="1,2,3,4" />
+			</item>
+			<item name="tagDB" image="Biele.DS.dll" class="Biele.DS.TagDBManager"/>
+			<item name="DBconn" image="Biele.Logic.dll" class="Biele.Logic.DBConnectionManager">
+				<connection id="local" type="sqlserver" conn="Data Source=localhost;Integrated security=true;Initial catalog=B4571;"/>
+				<connection id="ClientTraceability" type="sqlserver" conn="Data Source=localhost;Integrated security=true;Initial catalog=B4571_Trace_sim;"/>
+				<connection id="ClientMonitor" type="odbc" conn="Driver={SQL Anywhere 17};UID=DBA;PWD=sqldemo;Host=localhost:2638;DBN=monitor;ServerName=monitor_eng;"/>
+			</item>
+			<item name="DBTags" image="Biele.Logic.dll" class="Biele.Logic.CFGManager">
+
+				<!--<field name="CLN.Period" type="string" machine="0" item="1"/>
+				<field name="CLN.File_Days" type="double" machine="0" item="5"/>
+				<field name="CLN.Database_Days" type="double" machine="0" item="6"/>
+
+				<field name="CLN.LastCleaning" type="date" machine="0" item="7"/>
+				<field name="FI.LastImport" type="date" machine="0" item="8"/>
+				<field name="FI.LastFile" type="string" machine="0" item="9"/>
+
+
+				<field name="FI.LastExportToERP" type="date" machine="0" item="14"/>
+				<field name="FI.PathToExportToERP" type="string" machine="0" item="15"/>
+				<field name="Backup.Period" type="string" machine="0" item="16"/>
+				<field name="Backup.File" type="string" machine="0" item="17"/>
+				<field name="Backup.LastRun" type="datetimeoffset" machine="0" item="18"/>
+				<field name="CLN.PathFiles" type="string" machine="0" item="19"/>
+
+				<field name="FI.PathToImportDataFromLimab" type="string" machine="0" item="20"/>
+				<field name="FI.PathForErrorFiles_CoreBoards" type="string" machine="0" item="21"/>
+				<field name="FI.PathForErrorFiles_SideBoards" type="string" machine="0" item="22"/>
+
+				<field name="Label.Design" type="string" machine="1" item="1"/>
+				<field name="PRINTER_BARCODE.CoreZone_NoStrapped" type="string" machine="1" item="2"/>
+				<field name="PRINTER_BARCODE.CoreZone_Strapped" type="string" machine="1" item="3"/>
+				<field name="PRINTER_BARCODE.SideZone_NoStrapped" type="string" machine="1" item="4"/>
+				<field name="PRINTER_BARCODE.SideZone_Strapped" type="string" machine="1" item="5"/>-->
+
+				<field name="DatabaseBackup.Period" type="string" machine="2" item="0"/>
+				<field name="DatabaseBackup.File" type="string" machine="2" item="1"/>
+				<field name="DatabaseBackup.LastRun" type="datetimeoffset" machine="2" item="2"/>
+				<field name="DatabaseBackup.DaysOld" type="integer" machine="2" item="3"/>
+				<field name="Logs.DaysOld" type="string" machine="2" item="4"/>
+
+				<field name="LineParameters.TimeRefresh" type="integer" machine="3" item="0"/>
+			</item>
+
+			<item name="installer" image="Biele.Logic.dll" class="Biele.Logic.InstallerManager">
+				<!-- Cada instalador va a tener un app config diferente -->
+				<application name="HMI1" production="Installer\HMI1"/>
+				<application name="HMI2" production="Installer\HMI2"/>
+				<application name="HMI3" production="Installer\HMI3"/>
+				<application name="HMI4" production="Installer\HMI4"/>
+				<application name="HMI5" production="Installer\HMI5"/>
+				<application name="HMI6" production="Installer\HMI6"/>
+				<application name="HMI7" production="Installer\HMI7"/>
+				<application name="HMI8" production="Installer\HMI8"/>
+				<application name="HMI9" production="Installer\HMI9"/>
+			</item>
+			<item name="GlobalItemProvider" image="Biele.Server.Core.dll" class="Biele.Server.Core.GlobalItemProvider" />
+			<item name="DALManager" image="Biele.Server.Core.dll" class="Biele.Server.Core.DALManager" conn="local" />
+			<item name="EventManager" image="B4571.dll" class="B4571.B4571EventManager" />
+			<item name="VisionRestClient" image="B4571.dll" class="B4571.VisionRestClientItem" host="http://localhost:9000/api/" ignoreBadSSL="true" />
+		</items>
+
+
+
+
+		<processes>
+
+			<process name="PLC_LineInput" image="Biele.Communication.dll" class="Biele.Communication.S7Process" ip="10.139.221.19" slot="0" rack="0" interval="500" wordlen="8" simulation="1">
+
+				<group dbnumber="9000" interval="100" start="0">
+					<field name="LineInput.Watchdog.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="LineInput.Watchdog.RequestHead.Status" type="INT" offset="0" />
+					<field name="LineInput.Watchdog.RequestValue" type="INT" offset="0" />
+					<field name="LineInput.Watchdog.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="LineInput.Watchdog.ResponseHead.Status" type="INT" offset="0" />
+					<field name="LineInput.Watchdog.ResponseValue" type="INT" offset="0" />
+
+					<field name="LineInput.WorkOrderA.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="LineInput.WorkOrderA.RequestHead.Status" type="INT" offset="0" />
+					<field name="LineInput.WorkOrderA.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="LineInput.WorkOrderA.Request.ReportNumber" type="LINT" offset="0" />
+					<field name="LineInput.WorkOrderA.Request.RecipeIdentifierRecordName" type="STRING[20]" offset="0" />
+					<field name="LineInput.WorkOrderA.ResponseHead.Status" type="INT" offset="0" />
+					<field name="LineInput.WorkOrderA.ResponseHead.Confirmation" type="INT" offset="0" />
+
+					<field name="LineInput.WorkOrderB.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="LineInput.WorkOrderB.RequestHead.Status" type="INT" offset="0" />
+					<field name="LineInput.WorkOrderB.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="LineInput.WorkOrderB.Request.ReportNumber" type="LINT" offset="0" />
+					<field name="LineInput.WorkOrderB.Request.RecipeIdentifierRecordName" type="STRING[20]" offset="0" />
+					<field name="LineInput.WorkOrderB.ResponseHead.Status" type="INT" offset="0" />
+					<field name="LineInput.WorkOrderB.ResponseHead.Confirmation" type="INT" offset="0" />
+
+					<!--<field name="LineInput.StackFeedIdentify.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="LineInput.StackFeedIdentify.RequestHead.Status" type="INT" offset="0" />
+					<field name="LineInput.StackFeedIdentify.Request.WO_IdentifierID" type="INT" offset="0" />
+					<field name="LineInput.StackFeedIdentify.Request.StackID" type="INT" offset="0" />
+					<field name="LineInput.StackFeedIdentify.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="LineInput.StackFeedIdentify.ResponseHead.Status" type="INT" offset="0" />-->
+
+				</group>
+
+				<!-- ==================== Zone Status ==================== -->
+				<group dbnumber="9049" interval="100" start="0">
+					<field name="LineInput.Status.ZonaRobot" type="INT" offset="0" />
+					<field name="LineInput.Status.ZonaBoogie" type="INT" offset="0" />
+					<field name="LineInput.Status.Buffer0" type="INT" offset="0" />
+					<field name="LineInput.Status.IsOAEnabled" type="INT" offset="0" />
+				</group>
+
+			</process>
+
+			<process name="PLC_StripCutting" image="Biele.Communication.dll" class="Biele.Communication.S7Process" ip="10.139.221.2" slot="0" rack="0" interval="500" wordlen="8" simulation="1">
+				<group dbnumber="9000" interval="100" start="0">
+					<field name="StripCutting.Watchdog.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="StripCutting.Watchdog.RequestHead.Status" type="INT" offset="0" />
+					<field name="StripCutting.Watchdog.RequestValue" type="INT" offset="0" />
+					<field name="StripCutting.Watchdog.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="StripCutting.Watchdog.ResponseHead.Status" type="INT" offset="0" />
+					<field name="StripCutting.Watchdog.ResponseValue" type="INT" offset="0" />
+
+					<field name="StripCutting.WorkOrder.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="StripCutting.WorkOrder.RequestHead.Status" type="INT" offset="0" />
+					<field name="StripCutting.WorkOrder.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="StripCutting.WorkOrder.Request.ReportNumber" type="LINT" offset="0" />
+					<field name="StripCutting.WorkOrder.Request.RecipeIdentifierRecordName" type="STRING[20]" offset="0" />
+					<field name="StripCutting.WorkOrder.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="StripCutting.WorkOrder.ResponseHead.Status" type="INT" offset="0" />
+
+					<field name="StripCutting.StackFeedStart.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="StripCutting.StackFeedStart.RequestHead.Status" type="INT" offset="0" />
+					<field name="StripCutting.StackFeedStart.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="StripCutting.StackFeedStart.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="StripCutting.StackFeedStart.Request.StackArticleIn" type="STRING[20]" offset="0" />
+					<field name="StripCutting.StackFeedStart.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="StripCutting.StackFeedStart.ResponseHead.Status" type="INT" offset="0" />
+
+					<field name="StripCutting.StackFeedFinish.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="StripCutting.StackFeedFinish.RequestHead.Status" type="INT" offset="0" />
+					<field name="StripCutting.StackFeedFinish.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="StripCutting.StackFeedFinish.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="StripCutting.StackFeedFinish.Request.StackArticleIn" type="STRING[20]" offset="0" />
+					<field name="StripCutting.StackFeedFinish.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="StripCutting.StackFeedFinish.ResponseHead.Status" type="INT" offset="0" />
+
+					<field name="StripCutting.1stStackerStart.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="StripCutting.1stStackerStart.RequestHead.Status" type="INT" offset="0" />
+					<field name="StripCutting.1stStackerStart.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="StripCutting.1stStackerStart.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="StripCutting.1stStackerStart.Request.StackArticleOut" type="STRING[20]" offset="0" />
+					<field name="StripCutting.1stStackerStart.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="StripCutting.1stStackerStart.ResponseHead.Status" type="INT" offset="0" />
+
+					<field name="StripCutting.1stStackerFinish.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="StripCutting.1stStackerFinish.RequestHead.Status" type="INT" offset="0" />
+					<field name="StripCutting.1stStackerFinish.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="StripCutting.1stStackerFinish.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="StripCutting.1stStackerFinish.Request.StackPieceQuantity" type="INT" offset="0" />
+					<field name="StripCutting.1stStackerFinish.Request.StackArticleOut" type="STRING[20]" offset="0" />
+					<field name="StripCutting.1stStackerFinish.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="StripCutting.1stStackerFinish.ResponseHead.Status" type="INT" offset="0" />
+
+					<field name="StripCutting.2ndStackerStart.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="StripCutting.2ndStackerStart.RequestHead.Status" type="INT" offset="0" />
+					<field name="StripCutting.2ndStackerStart.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="StripCutting.2ndStackerStart.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="StripCutting.2ndStackerStart.Request.StackArticleOut" type="STRING[20]" offset="0" />
+					<field name="StripCutting.2ndStackerStart.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="StripCutting.2ndStackerStart.ResponseHead.Status" type="INT" offset="0" />
+
+					<field name="StripCutting.2ndStackerFinish.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="StripCutting.2ndStackerFinish.RequestHead.Status" type="INT" offset="0" />
+					<field name="StripCutting.2ndStackerFinish.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="StripCutting.2ndStackerFinish.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="StripCutting.2ndStackerFinish.Request.StackPieceQuantity" type="INT" offset="0" />
+					<field name="StripCutting.2ndStackerFinish.Request.StackArticleOut" type="STRING[20]" offset="0" />
+					<field name="StripCutting.2ndStackerFinish.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="StripCutting.2ndStackerFinish.ResponseHead.Status" type="INT" offset="0" />
+
+					<field name="StripCutting.3rdStackerStart.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="StripCutting.3rdStackerStart.RequestHead.Status" type="INT" offset="0" />
+					<field name="StripCutting.3rdStackerStart.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="StripCutting.3rdStackerStart.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="StripCutting.3rdStackerStart.Request.StackArticleOut" type="STRING[20]" offset="0" />
+					<field name="StripCutting.3rdStackerStart.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="StripCutting.3rdStackerStart.ResponseHead.Status" type="INT" offset="0" />
+
+					<field name="StripCutting.3rdStackerFinish.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="StripCutting.3rdStackerFinish.RequestHead.Status" type="INT" offset="0" />
+					<field name="StripCutting.3rdStackerFinish.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="StripCutting.3rdStackerFinish.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="StripCutting.3rdStackerFinish.Request.StackPieceQuantity" type="INT" offset="0" />
+					<field name="StripCutting.3rdStackerFinish.Request.StackArticleOut" type="STRING[20]" offset="0" />
+					<field name="StripCutting.3rdStackerFinish.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="StripCutting.3rdStackerFinish.ResponseHead.Status" type="INT" offset="0" />
+
+				</group>
+
+				<!-- ==================== DB9049 - Zone Status ==================== -->
+				<group dbnumber="9049" interval="100" start="0">
+					<field name="StripCutting.Status.ZoneFeeder" type="INT" offset="0" />
+					<field name="StripCutting.Status.ZoneSaw" type="INT" offset="0" />
+					<field name="StripCutting.Status.ZoneTransport" type="INT" offset="0" />
+					<field name="StripCutting.Status.ZoneStacker1" type="INT" offset="0" />
+					<field name="StripCutting.Status.ZoneOutStacker1" type="INT" offset="0" />
+					<field name="StripCutting.Status.ZoneStacker2" type="INT" offset="0" />
+					<field name="StripCutting.Status.ZoneOutStacker2" type="INT" offset="0" />
+					<field name="StripCutting.Status.ZoneStacker3" type="INT" offset="0" />
+					<field name="StripCutting.Status.ZoneOutStacker3" type="INT" offset="0" />
+					<field name="StripCutting.Status.IsOAEnabled" type="INT" offset="0" />
+				</group>
+			</process>
+
+			<process name="PLC4_EdgeBanding" image="Biele.Communication.dll" class="Biele.Communication.S7Process" ip="10.139.221.4" slot="0" rack="0" interval="500" wordlen="8" simulation="1">
+				<group dbnumber="9049" interval="100" start="0">
+					<!-- Watchdog (PComm0) -->
+					<field name="PLC4_EdgeBanding.Watchdog.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="PLC4_EdgeBanding.Watchdog.RequestHead.Status" type="INT" offset="0" />
+					<field name="PLC4_EdgeBanding.Watchdog.RequestValue" type="INT" offset="0" />
+					<field name="PLC4_EdgeBanding.Watchdog.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="PLC4_EdgeBanding.Watchdog.ResponseHead.Status" type="INT" offset="0" />
+					<field name="PLC4_EdgeBanding.Watchdog.ResponseValue" type="INT" offset="0" />
+
+					<!-- WorkOrder (PComm1) -->
+					<field name="PLC4_EdgeBanding.WorkOrder.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="PLC4_EdgeBanding.WorkOrder.RequestHead.Status" type="INT" offset="0" />
+					<field name="PLC4_EdgeBanding.WorkOrder.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="PLC4_EdgeBanding.WorkOrder.Request.ReportNumber" type="LINT" offset="0" />
+					<field name="PLC4_EdgeBanding.WorkOrder.Request.RecipeIdentifierRecordName" type="STRING[20]" offset="0" />
+					<field name="PLC4_EdgeBanding.WorkOrder.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="PLC4_EdgeBanding.WorkOrder.ResponseHead.Status" type="INT" offset="0" />
+
+					<!-- StackFeedStart (PComm2) -->
+					<field name="PLC4_EdgeBanding.StackFeedStart.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="PLC4_EdgeBanding.StackFeedStart.RequestHead.Status" type="INT" offset="0" />
+					<field name="PLC4_EdgeBanding.StackFeedStart.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="PLC4_EdgeBanding.StackFeedStart.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="PLC4_EdgeBanding.StackFeedStart.Request.StackArticleIn" type="STRING[20]" offset="0" />
+					<field name="PLC4_EdgeBanding.StackFeedStart.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="PLC4_EdgeBanding.StackFeedStart.ResponseHead.Status" type="INT" offset="0" />
+
+					<!-- StackFeedFinish (PComm3) -->
+					<field name="PLC4_EdgeBanding.StackFeedFinish.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="PLC4_EdgeBanding.StackFeedFinish.RequestHead.Status" type="INT" offset="0" />
+					<field name="PLC4_EdgeBanding.StackFeedFinish.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="PLC4_EdgeBanding.StackFeedFinish.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="PLC4_EdgeBanding.StackFeedFinish.Request.StackArticleIn" type="STRING[20]" offset="0" />
+					<field name="PLC4_EdgeBanding.StackFeedFinish.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="PLC4_EdgeBanding.StackFeedFinish.ResponseHead.Status" type="INT" offset="0" />
+
+					<!-- ==================== DB9049 - Zone Status ==================== -->
+					<field name="PLC4_EdgeBanding.Status.InfeedTracks" type="INT" offset="0" />
+					<field name="PLC4_EdgeBanding.Status.PusherFeeder" type="INT" offset="0" />
+					<field name="PLC4_EdgeBanding.Status.OutfeedConveyor" type="INT" offset="0" />
+					<field name="PLC4_EdgeBanding.Status.IsOAEnabled" type="INT" offset="0" />
+				</group>
+			</process>
+
+			<process name="PLC5_EdgeBanding" image="Biele.Communication.dll" class="Biele.Communication.S7Process" ip="10.139.221.5" slot="0" rack="0" interval="500" wordlen="8" simulation="1">
+				<group dbnumber="9049" interval="100" start="0">
+					<!-- Watchdog (PComm0) -->
+					<field name="PLC5_EdgeBanding.Watchdog.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="PLC5_EdgeBanding.Watchdog.RequestHead.Status" type="INT" offset="0" />
+					<field name="PLC5_EdgeBanding.Watchdog.RequestValue" type="INT" offset="0" />
+					<field name="PLC5_EdgeBanding.Watchdog.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="PLC5_EdgeBanding.Watchdog.ResponseHead.Status" type="INT" offset="0" />
+					<field name="PLC5_EdgeBanding.Watchdog.ResponseValue" type="INT" offset="0" />
+
+					<!-- 1stStackerStart (PComm4) -->
+					<field name="PLC5_EdgeBanding.1stStackerStart.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="PLC5_EdgeBanding.1stStackerStart.RequestHead.Status" type="INT" offset="0" />
+					<field name="PLC5_EdgeBanding.1stStackerStart.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="PLC5_EdgeBanding.1stStackerStart.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="PLC5_EdgeBanding.1stStackerStart.Request.StackArticleOut" type="STRING[20]" offset="0" />
+					<field name="PLC5_EdgeBanding.1stStackerStart.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="PLC5_EdgeBanding.1stStackerStart.ResponseHead.Status" type="INT" offset="0" />
+
+					<!-- 1stStackerFinish (PComm5) -->
+					<field name="PLC5_EdgeBanding.1stStackerFinish.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="PLC5_EdgeBanding.1stStackerFinish.RequestHead.Status" type="INT" offset="0" />
+					<field name="PLC5_EdgeBanding.1stStackerFinish.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="PLC5_EdgeBanding.1stStackerFinish.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="PLC5_EdgeBanding.1stStackerFinish.Request.StackPieceQuantity" type="INT" offset="0" />
+					<field name="PLC5_EdgeBanding.1stStackerFinish.Request.StackArticleOut" type="STRING[20]" offset="0" />
+					<field name="PLC5_EdgeBanding.1stStackerFinish.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="PLC5_EdgeBanding.1stStackerFinish.ResponseHead.Status" type="INT" offset="0" />
+
+					<!-- ==================== DB9049 - Zone Status (mismas 3 zonas que PLC4) ==================== -->
+					<field name="PLC5_EdgeBanding.Status.InfeedTracks" type="INT" offset="0" />
+					<field name="PLC5_EdgeBanding.Status.Stackers" type="INT" offset="0" />
+					<field name="PLC5_EdgeBanding.Status.OutfeedConveyor" type="INT" offset="0" />
+				</group>
+			</process>
+
+			<process name="PLC_Buffer2" image="Biele.Communication.dll" class="Biele.Communication.S7Process" ip="10.139.221.3" slot="0" rack="0" interval="500" wordlen="8" simulation="1">
+				<group dbnumber="9049" interval="100" start="0">
+					<!-- Status Roller Rows -->
+					<field name="Buffer2.Status.RollerRow202_15" type="INT" offset="0" />
+					<field name="Buffer2.Status.RollerRow202_25" type="INT" offset="0" />
+					<field name="Buffer2.Status.RollerRow202_35" type="INT" offset="0" />
+					<field name="Buffer2.Status.RollerRow202_45" type="INT" offset="0" />
+					<field name="Buffer2.Status.RollerRow202_55" type="INT" offset="0" />
+					<field name="Buffer2.Status.RollerRow202_65" type="INT" offset="0" />
+					<field name="Buffer2.Status.RollerRow202_75" type="INT" offset="0" />
+					<field name="Buffer2.Status.RollerRow202_85" type="INT" offset="0" />
+					<field name="Buffer2.Status.RollerRow202_95" type="INT" offset="0" />
+					<field name="Buffer2.Status.RollerRow202_105" type="INT" offset="0" />
+					<field name="Buffer2.Status.RollerRow202_115" type="INT" offset="0" />
+					<field name="Buffer2.Status.RollerRow202_125" type="INT" offset="0" />
+					<field name="Buffer2.Status.RollerRow202_135" type="INT" offset="0" />
+					<field name="Buffer2.Status.RollerRow202_145" type="INT" offset="0" />
+					<field name="Buffer2.Status.RollerRow202_155" type="INT" offset="0" />
+					<field name="Buffer2.Status.RollerRow202_165" type="INT" offset="0" />
+
+					<!-- Status Bogies -->
+					<field name="Buffer2.Status.Bogie201_1" type="INT" offset="0" />
+					<field name="Buffer2.Status.Bogie201_2" type="INT" offset="0" />
+					<field name="Buffer2.Status.Bogie204_1" type="INT" offset="0" />
+					<field name="Buffer2.Status.Bogie204_2" type="INT" offset="0" />
+
+					<!-- Buffer Positions (WOs disponibles para Wrapping Lines) -->
+					<field name="Buffer2.Position1.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer2.Position1.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer2.Position2.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer2.Position2.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer2.Position3.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer2.Position3.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer2.Position4.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer2.Position4.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer2.Position5.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer2.Position5.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer2.Position6.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer2.Position6.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer2.Position7.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer2.Position7.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer2.Position8.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer2.Position8.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer2.Position9.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer2.Position9.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer2.Position10.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer2.Position10.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer2.Position11.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer2.Position11.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer2.Position12.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer2.Position12.ArticleName" type="STRING[20]" offset="0" />
+
+					<!-- Wrapping lines -->
+					<field name="Buffer2.WrappingLine1.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer2.WrappingLine1.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer2.WrappingLine2.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer2.WrappingLine2.ArticleName" type="STRING[20]" offset="0" />
+
+					<!-- Spare -->
+					<!-- <field name="Buffer2.Spare" type="BYTE[140]" offset="0" /> -->
+				</group>
+				<group dbnumber="9050" interval="100" start="0">
+					<field name="Buffer2.BarcodeRead.Watchdog.RequestHeader.Trigger" type="INT" offset="0" />
+					<field name="Buffer2.BarcodeRead.Watchdog.RequestHeader.Status" type="INT" offset="0" />
+					<field name="Buffer2.BarcodeRead.Watchdog.ResponseHeader.Trigger" type="INT" offset="0" />
+					<field name="Buffer2.BarcodeRead.Watchdog.ResponseHeader.Status" type="INT" offset="0" />
+					<!-- Lectura de código de barras etiquetas -->
+					<field name="Buffer2.BarcodeRead.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="Buffer2.BarcodeRead.RequestHead.BarcodeStack" type="LINT" offset="0" />
+					<field name="Buffer2.BarcodeRead.ResponseHead.StackIDNumber" type="LINT" offset="0" />
+					<field name="Buffer2.BarcodeRead.ResponseHead.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="Buffer2.BarcodeRead.ResponseHead.RecipeIdentifierRecordName" type="STRING[20]" offset="0" />
+					<field name="Buffer2.BarcodeRead.ResponseHead.ProductType" type="DINT" offset="0" />
+					<field name="Buffer2.BarcodeRead.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="Buffer2.BarcodeRead.ResponseHead.Status" type="INT" offset="0" />
+
+					<!-- Impresión etiquetas -->
+					<field name="Buffer2.BarcodeWrite.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="Buffer2.BarcodeWrite.RequestHead.StackIDnumber" type="LINT" offset="0" />
+					<field name="Buffer2.BarcodeWrite.RequestHead.RecipeIdentifierRecordName" type="STRING[20]" offset="0" />
+					<field name="Buffer2.BarcodeWrite.ResponseHead.ProductType" type="DINT" offset="0" />
+					<field name="Buffer2.BarcodeWrite.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="Buffer2.BarcodeWrite.ResponseHead.Status" type="INT" offset="0" />
+
+				</group>
+			</process>
+
+
+			<process name="PLC8_WrappingLine1" image="Biele.Communication.dll" class="Biele.Communication.S7Process" ip="10.139.221.8" slot="0" rack="0" interval="500" wordlen="8" simulation="1">
+				<group dbnumber="9000" interval="100" start="0">
+					<field name="PLC8_WrappingLine1.Watchdog.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="PLC8_WrappingLine1.Watchdog.RequestHead.Status" type="INT" offset="0" />
+					<field name="PLC8_WrappingLine1.Watchdog.RequestValue" type="INT" offset="0" />
+					<field name="PLC8_WrappingLine1.Watchdog.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="PLC8_WrappingLine1.Watchdog.ResponseHead.Status" type="INT" offset="0" />
+					<field name="PLC8_WrappingLine1.Watchdog.ResponseValue" type="INT" offset="0" />
+
+					<field name="PLC8_WrappingLine1.WorkOrder.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="PLC8_WrappingLine1.WorkOrder.RequestHead.Status" type="INT" offset="0" />
+					<field name="PLC8_WrappingLine1.WorkOrder.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="PLC8_WrappingLine1.WorkOrder.Request.ReportNumber" type="LINT" offset="0" />
+					<field name="PLC8_WrappingLine1.WorkOrder.Request.RecipeIdentifierRecordName" type="STRING[20]" offset="0" />
+					<field name="PLC8_WrappingLine1.WorkOrder.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="PLC8_WrappingLine1.WorkOrder.ResponseHead.Status" type="INT" offset="0" />
+
+					<field name="PLC8_WrappingLine1.StackFeedStart.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="PLC8_WrappingLine1.StackFeedStart.RequestHead.Status" type="INT" offset="0" />
+					<field name="PLC8_WrappingLine1.StackFeedStart.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="PLC8_WrappingLine1.StackFeedStart.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="PLC8_WrappingLine1.StackFeedStart.Request.StackArticleIn" type="STRING[20]" offset="0" />
+					<field name="PLC8_WrappingLine1.StackFeedStart.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="PLC8_WrappingLine1.StackFeedStart.ResponseHead.Status" type="INT" offset="0" />
+
+					<field name="PLC8_WrappingLine1.StackFeedFinish.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="PLC8_WrappingLine1.StackFeedFinish.RequestHead.Status" type="INT" offset="0" />
+					<field name="PLC8_WrappingLine1.StackFeedFinish.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="PLC8_WrappingLine1.StackFeedFinish.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="PLC8_WrappingLine1.StackFeedFinish.Request.StackArticleIn" type="STRING[20]" offset="0" />
+					<field name="PLC8_WrappingLine1.StackFeedFinish.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="PLC8_WrappingLine1.StackFeedFinish.ResponseHead.Status" type="INT" offset="0" />
+
+				</group>
+
+				<group dbnumber="9049" interval="100" start="0">
+					<field name="PLC8_WrappingLine1.Status.AlimentadorInfeedZone" type="INT" offset="0" />
+					<field name="PLC8_WrappingLine1.Status.PusherFeeder" type="INT" offset="0" />
+					<field name="PLC8_WrappingLine1.Status.OutfeedConveyors" type="INT" offset="0" />
+				</group>
+
+			</process>
+
+			<process name="PLC10_WrappingLine2" image="Biele.Communication.dll" class="Biele.Communication.S7Process" ip="10.139.221.10" slot="0" rack="0" interval="500" wordlen="8" simulation="1">
+				<group dbnumber="9000" interval="100" start="0">
+					<field name="PLC10_WrappingLine2.Watchdog.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="PLC10_WrappingLine2.Watchdog.RequestHead.Status" type="INT" offset="0" />
+					<field name="PLC10_WrappingLine2.Watchdog.RequestValue" type="INT" offset="0" />
+					<field name="PLC10_WrappingLine2.Watchdog.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="PLC10_WrappingLine2.Watchdog.ResponseHead.Status" type="INT" offset="0" />
+					<field name="PLC10_WrappingLine2.Watchdog.ResponseValue" type="INT" offset="0" />
+
+					<field name="PLC10_WrappingLine2.WorkOrder.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="PLC10_WrappingLine2.WorkOrder.RequestHead.Status" type="INT" offset="0" />
+					<field name="PLC10_WrappingLine2.WorkOrder.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="PLC10_WrappingLine2.WorkOrder.Request.ReportNumber" type="LINT" offset="0" />
+					<field name="PLC10_WrappingLine2.WorkOrder.Request.RecipeIdentifierRecordName" type="STRING[20]" offset="0" />
+					<field name="PLC10_WrappingLine2.WorkOrder.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="PLC10_WrappingLine2.WorkOrder.ResponseHead.Status" type="INT" offset="0" />
+
+					<field name="PLC10_WrappingLine2.StackFeedStart.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="PLC10_WrappingLine2.StackFeedStart.RequestHead.Status" type="INT" offset="0" />
+					<field name="PLC10_WrappingLine2.StackFeedStart.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="PLC10_WrappingLine2.StackFeedStart.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="PLC10_WrappingLine2.StackFeedStart.Request.StackArticleIn" type="STRING[20]" offset="0" />
+					<field name="PLC10_WrappingLine2.StackFeedStart.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="PLC10_WrappingLine2.StackFeedStart.ResponseHead.Status" type="INT" offset="0" />
+
+					<field name="PLC10_WrappingLine2.StackFeedFinish.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="PLC10_WrappingLine2.StackFeedFinish.RequestHead.Status" type="INT" offset="0" />
+					<field name="PLC10_WrappingLine2.StackFeedFinish.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="PLC10_WrappingLine2.StackFeedFinish.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="PLC10_WrappingLine2.StackFeedFinish.Request.StackArticleIn" type="STRING[20]" offset="0" />
+					<field name="PLC10_WrappingLine2.StackFeedFinish.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="PLC10_WrappingLine2.StackFeedFinish.ResponseHead.Status" type="INT" offset="0" />
+
+				</group>
+
+				<group dbnumber="9049" interval="100" start="0">
+					<field name="PLC10_WrappingLine2.Status.AlimentadorInfeedZone" type="INT" offset="0" />
+					<field name="PLC10_WrappingLine2.Status.PusherFeeder" type="INT" offset="0" />
+					<field name="PLC10_WrappingLine2.Status.OutfeedConveyors" type="INT" offset="0" />
+				</group>
+
+			</process>
+
+			<process name="PLC9_WrappingLine1" image="Biele.Communication.dll" class="Biele.Communication.S7Process" ip="10.139.222.9" slot="0" rack="0" interval="500" wordlen="8" simulation="1">
+
+				<group dbnumber="9000" interval="100" start="0">
+					<field name="PLC9_WrappingLine1.Watchdog.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="PLC9_WrappingLine1.Watchdog.RequestHead.Status" type="INT" offset="0" />
+					<field name="PLC9_WrappingLine1.Watchdog.RequestValue" type="INT" offset="0" />
+					<field name="PLC9_WrappingLine1.Watchdog.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="PLC9_WrappingLine1.Watchdog.ResponseHead.Status" type="INT" offset="0" />
+					<field name="PLC9_WrappingLine1.Watchdog.ResponseValue" type="INT" offset="0" />
+
+					<field name="PLC9_WrappingLine1.1stStackerStart.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="PLC9_WrappingLine1.1stStackerStart.RequestHead.Status" type="INT" offset="0" />
+					<field name="PLC9_WrappingLine1.1stStackerStart.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="PLC9_WrappingLine1.1stStackerStart.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="PLC9_WrappingLine1.1stStackerStart.Request.StackArticleOut" type="STRING[20]" offset="0" />
+					<field name="PLC9_WrappingLine1.1stStackerStart.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="PLC9_WrappingLine1.1stStackerStart.ResponseHead.Status" type="INT" offset="0" />
+
+					<field name="PLC9_WrappingLine1.1stStackerFinish.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="PLC9_WrappingLine1.1stStackerFinish.RequestHead.Status" type="INT" offset="0" />
+					<field name="PLC9_WrappingLine1.1stStackerFinish.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="PLC9_WrappingLine1.1stStackerFinish.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="PLC9_WrappingLine1.1stStackerFinish.Request.StackPieceQuantity" type="INT" offset="0" />
+					<field name="PLC9_WrappingLine1.1stStackerFinish.Request.StackArticleOut" type="STRING[20]" offset="0" />
+					<field name="PLC9_WrappingLine1.1stStackerFinish.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="PLC9_WrappingLine1.1stStackerFinish.ResponseHead.Status" type="INT" offset="0" />
+
+					<field name="PLC9_WrappingLine1.2ndStackerStart.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="PLC9_WrappingLine1.2ndStackerStart.RequestHead.Status" type="INT" offset="0" />
+					<field name="PLC9_WrappingLine1.2ndStackerStart.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="PLC9_WrappingLine1.2ndStackerStart.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="PLC9_WrappingLine1.2ndStackerStart.Request.StackArticleOut" type="STRING[20]" offset="0" />
+					<field name="PLC9_WrappingLine1.2ndStackerStart.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="PLC9_WrappingLine1.2ndStackerStart.ResponseHead.Status" type="INT" offset="0" />
+
+					<field name="PLC9_WrappingLine1.2ndStackerFinish.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="PLC9_WrappingLine1.2ndStackerFinish.RequestHead.Status" type="INT" offset="0" />
+					<field name="PLC9_WrappingLine1.2ndStackerFinish.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="PLC9_WrappingLine1.2ndStackerFinish.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="PLC9_WrappingLine1.2ndStackerFinish.Request.StackPieceQuantity" type="INT" offset="0" />
+					<field name="PLC9_WrappingLine1.2ndStackerFinish.Request.StackArticleOut" type="STRING[20]" offset="0" />
+					<field name="PLC9_WrappingLine1.2ndStackerFinish.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="PLC9_WrappingLine1.2ndStackerFinish.ResponseHead.Status" type="INT" offset="0" />
+				</group>
+				<!-- Zone Status -->
+				<group dbnumber="9049" interval="100" start="0">
+
+					<field name="PLC9_WrappingLine1.Status.ApiladorInfeedZone" type="INT" offset="0" />
+					<field name="PLC9_WrappingLine1.Status.ApiladorTransferZone" type="INT" offset="0" />
+					<field name="PLC9_WrappingLine1.Status.ApiladorStackerZone" type="INT" offset="0" />
+					<field name="PLC9_WrappingLine1.Status.ApiladorRejectZone" type="INT" offset="0" />
+					<field name="PLC9_WrappingLine1.Status.ApiladorOutfeedStackZone" type="INT" offset="0" />
+					<field name="PLC9_WrappingLine1.Status.BaseboardZone" type="INT" offset="0" />
+					<field name="PLC9_WrappingLine1.Status.BaseboardFeederZone" type="INT" offset="0" />
+
+				</group>
+
+			</process>
+
+			<process name="PLC11_WrappingLine2" image="Biele.Communication.dll" class="Biele.Communication.S7Process" ip="10.139.222.11" slot="0" rack="0" interval="500" wordlen="8" simulation="1">
+
+				<group dbnumber="9000" interval="100" start="0">
+					<field name="PLC11_WrappingLine2.Watchdog.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="PLC11_WrappingLine2.Watchdog.RequestHead.Status" type="INT" offset="0" />
+					<field name="PLC11_WrappingLine2.Watchdog.RequestValue" type="INT" offset="0" />
+					<field name="PLC11_WrappingLine2.Watchdog.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="PLC11_WrappingLine2.Watchdog.ResponseHead.Status" type="INT" offset="0" />
+					<field name="PLC11_WrappingLine2.Watchdog.ResponseValue" type="INT" offset="0" />
+
+					<field name="PLC11_WrappingLine2.1stStackerStart.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="PLC11_WrappingLine2.1stStackerStart.RequestHead.Status" type="INT" offset="0" />
+					<field name="PLC11_WrappingLine2.1stStackerStart.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="PLC11_WrappingLine2.1stStackerStart.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="PLC11_WrappingLine2.1stStackerStart.Request.StackArticleOut" type="STRING[20]" offset="0" />
+					<field name="PLC11_WrappingLine2.1stStackerStart.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="PLC11_WrappingLine2.1stStackerStart.ResponseHead.Status" type="INT" offset="0" />
+
+					<field name="PLC11_WrappingLine2.1stStackerFinish.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="PLC11_WrappingLine2.1stStackerFinish.RequestHead.Status" type="INT" offset="0" />
+					<field name="PLC11_WrappingLine2.1stStackerFinish.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="PLC11_WrappingLine2.1stStackerFinish.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="PLC11_WrappingLine2.1stStackerFinish.Request.StackPieceQuantity" type="INT" offset="0" />
+					<field name="PLC11_WrappingLine2.1stStackerFinish.Request.StackArticleOut" type="STRING[20]" offset="0" />
+					<field name="PLC11_WrappingLine2.1stStackerFinish.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="PLC11_WrappingLine2.1stStackerFinish.ResponseHead.Status" type="INT" offset="0" />
+
+					<field name="PLC11_WrappingLine2.2ndStackerStart.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="PLC11_WrappingLine2.2ndStackerStart.RequestHead.Status" type="INT" offset="0" />
+					<field name="PLC11_WrappingLine2.2ndStackerStart.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="PLC11_WrappingLine2.2ndStackerStart.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="PLC11_WrappingLine2.2ndStackerStart.Request.StackArticleOut" type="STRING[20]" offset="0" />
+					<field name="PLC11_WrappingLine2.2ndStackerStart.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="PLC11_WrappingLine2.2ndStackerStart.ResponseHead.Status" type="INT" offset="0" />
+
+					<field name="PLC11_WrappingLine2.2ndStackerFinish.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="PLC11_WrappingLine2.2ndStackerFinish.RequestHead.Status" type="INT" offset="0" />
+					<field name="PLC11_WrappingLine2.2ndStackerFinish.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="PLC11_WrappingLine2.2ndStackerFinish.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="PLC11_WrappingLine2.2ndStackerFinish.Request.StackPieceQuantity" type="INT" offset="0" />
+					<field name="PLC11_WrappingLine2.2ndStackerFinish.Request.StackArticleOut" type="STRING[20]" offset="0" />
+					<field name="PLC11_WrappingLine2.2ndStackerFinish.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="PLC11_WrappingLine2.2ndStackerFinish.ResponseHead.Status" type="INT" offset="0" />
+				</group>
+				<!-- Zone Status -->
+				<group dbnumber="9049" interval="100" start="0">
+					<field name="PLC11_WrappingLine2.Status.ApiladorInfeedZone" type="INT" offset="0" />
+					<field name="PLC11_WrappingLine2.Status.ApiladorTransferZone" type="INT" offset="0" />
+					<field name="PLC11_WrappingLine2.Status.ApiladorStackerZone" type="INT" offset="0" />
+					<field name="PLC11_WrappingLine2.Status.ApiladorRejectZone" type="INT" offset="0" />
+					<field name="PLC11_WrappingLine2.Status.ApiladorOutfeedStackZone" type="INT" offset="0" />
+					<field name="PLC11_WrappingLine2.Status.BaseboardZone" type="INT" offset="0" />
+					<field name="PLC11_WrappingLine2.Status.BaseboardFeederZone" type="INT" offset="0" />
+				</group>
+
+			</process>
+
+			<process name="PLC12_Buffer3" image="Biele.Communication.dll" class="Biele.Communication.S7Process" ip="10.139.222.12" slot="0" rack="0" interval="500" wordlen="8" simulation="1">
+
+				<group dbnumber="9049" interval="100" start="0">
+
+					<field name="Buffer3.PLC12.Status.RollerRow302_21" type="INT" offset="0" />
+					<field name="Buffer3.PLC12.Status.RollerRow302_22" type="INT" offset="0" />
+					<field name="Buffer3.PLC12.Status.RollerRow302_23" type="INT" offset="0" />
+					<field name="Buffer3.PLC12.Status.RollerRow302_24" type="INT" offset="0" />
+					<field name="Buffer3.PLC12.Status.RollerRow302_25" type="INT" offset="0" />
+
+					<field name="Buffer3.PLC12.Status.Bogie301_01" type="INT" offset="0" />
+					<field name="Buffer3.PLC12.Status.Bogie301_02" type="INT" offset="0" />
+					<field name="Buffer3.PLC12.Status.Bogie303" type="INT" offset="0" />
+
+					<field name="Buffer3.PLC12.Status.RejectZone" type="INT" offset="0" />
+					<field name="Buffer3.PLC12.Status.ExchangeZone" type="INT" offset="0" />
+
+					<field name="Buffer3.PLC12.Position1.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer3.PLC12.Position1.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer3.PLC12.Position2.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer3.PLC12.Position2.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer3.PLC12.Position3.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer3.PLC12.Position3.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer3.PLC12.Position4.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer3.PLC12.Position4.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer3.PLC12.Position5.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer3.PLC12.Position5.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer3.PLC12.FormatSawLine1.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="Buffer3.PLC12.FormatSawLine1.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer3.PLC12.Spare" type="BYTE[172]" offset="0" />
+
+				</group>
+
+			</process>
+
+
+			<process name="PLC14_Buffer3" image="Biele.Communication.dll" class="Biele.Communication.S7Process" ip="10.139.222.14" slot="0" rack="0" interval="500" wordlen="8" simulation="1">
+
+				<group dbnumber="9049" interval="100" start="0">
+
+					<field name="Buffer3.PLC14.Status.RollerRow302_31" type="INT" offset="0" />
+					<field name="Buffer3.PLC14.Status.RollerRow302_32" type="INT" offset="0" />
+					<field name="Buffer3.PLC14.Status.RollerRow302_33" type="INT" offset="0" />
+					<field name="Buffer3.PLC14.Status.RollerRow302_34" type="INT" offset="0" />
+					<field name="Buffer3.PLC14.Status.RollerRow302_35" type="INT" offset="0" />
+
+					<field name="Buffer3.PLC14.Status.Bogie304" type="INT" offset="0" />
+
+					<field name="Buffer3.PLC14.Position1.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer3.PLC14.Position1.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer3.PLC14.Position2.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer3.PLC14.Position2.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer3.PLC14.Position3.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer3.PLC14.Position3.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer3.PLC14.Position4.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer3.PLC14.Position4.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer3.PLC14.Position5.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer3.PLC14.Position5.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer3.PLC14.FormatSawLine2.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="Buffer3.PLC14.FormatSawLine2.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer3.PLC14.Spare" type="BYTE[130]" offset="0" />
+
+					<!-- DB QUE OA SIEMPRE ESTÁ LEYENDO -->
+
+					<!-- Status Zones -->
+					<field name="Buffer3.PLC14.Status.ZoneEntrance" type="INT" offset="0" />
+					<field name="Buffer3.PLC14.Status.ZoneFlatnessMeasurement" type="INT" offset="0" />
+					<field name="Buffer3.PLC14.Status.ZoneBridgeZone" type="INT" offset="0" />
+					<field name="Buffer3.PLC14.Status.ZoneTurnerBogei" type="INT" offset="0" />
+
+					<!-- WO disponibles para alimentar (con recipe record name) -->
+					<field name="Buffer3.PLC14.WorkingWO.IdentifierName" type="STRING[20]" offset="0" />
+					<field name="Buffer3.PLC14.WorkingWO.IdentifierID" type="DINT" offset="0" />
+					<field name="Buffer3.PLC14.WorkingWO.RecipeRecordName" type="STRING[20]" offset="0" />
+
+					<!-- OA manda listado de WO válidos para alimentar Wrapping Line 1 -->
+					<field name="Buffer3.PLC14.WrappingLine1.WO_IdentifierName" type="STRING[20]" offset="0" />
+					<field name="Buffer3.PLC14.WrappingLine1.WO_IdentifierID" type="DINT" offset="0" />
+
+					<!-- OA manda listado de WO válidos para alimentar Wrapping Line 2 -->
+					<field name="Buffer3.PLC14.WrappingLine2.WO_IdentifierName" type="STRING[20]" offset="0" />
+					<field name="Buffer3.PLC14.WrappingLine2.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="Buffer3.PLC14.WorkingWO3.IdentifierID" type="DINT" offset="0" />
+
+				</group>
+
+			</process>
+
+			<process name="PLC16_Buffer4_Right" image="Biele.Communication.dll" class="Biele.Communication.S7Process" ip="10.139.222.16" slot="0" rack="0" interval="500" wordlen="8" simulation="1">
+
+				<group dbnumber="9049" interval="100" start="0">
+
+					<!-- Status Roller Rows -->
+					<field name="Buffer4.Right.Status.RollerRow402_21" type="INT" offset="0" />
+					<field name="Buffer4.Right.Status.RollerRow402_22" type="INT" offset="0" />
+					<field name="Buffer4.Right.Status.RollerRow402_23" type="INT" offset="0" />
+					<field name="Buffer4.Right.Status.RollerRow402_24" type="INT" offset="0" />
+					<field name="Buffer4.Right.Status.RollerRow402_25" type="INT" offset="0" />
+					<field name="Buffer4.Right.Status.RollerRow402_26" type="INT" offset="0" />
+					<field name="Buffer4.Right.Status.RollerRow402_27" type="INT" offset="0" />
+					<field name="Buffer4.Right.Status.RollerRow402_28" type="INT" offset="0" />
+					<field name="Buffer4.Right.Status.RollerRow402_29" type="INT" offset="0" />
+					<field name="Buffer4.Right.Status.RollerRow402_210" type="INT" offset="0" />
+					<field name="Buffer4.Right.Status.RollerRow402_211" type="INT" offset="0" />
+					<field name="Buffer4.Right.Status.RollerRow402_212" type="INT" offset="0" />
+					<field name="Buffer4.Right.Status.RollerRow409" type="INT" offset="0" />
+
+					<!-- Status Bogies -->
+					<field name="Buffer4.Right.Status.Bogie404_1" type="INT" offset="0" />
+					<field name="Buffer4.Right.Status.Bogie404_2" type="INT" offset="0" />
+
+					<!-- Buffer Positions (WO disponibles para alimentar, sin recipe record name) -->
+					<field name="Buffer4.Right.Position1.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Right.Position1.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Right.Position2.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Right.Position2.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Right.Position3.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Right.Position3.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Right.Position4.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Right.Position4.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Right.Position5.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Right.Position5.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Right.Position6.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Right.Position6.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Right.Position7.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Right.Position7.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Right.Position8.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Right.Position8.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Right.Position9.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Right.Position9.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Right.Position10.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Right.Position10.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Right.Position11.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Right.Position11.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Right.Position12.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Right.Position12.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Right.Position13.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Right.Position13.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Right.Position14.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Right.Position14.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Right.Position15.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Right.Position15.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Right.Position16.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Right.Position16.ArticleName" type="STRING[20]" offset="0" />
+
+					<!-- Spare -->
+					<field name="Buffer4.Right.Spare" type="BYTE[64]" offset="0" />
+					<!-- DB9049.DBW436, Array of Byte[424..499] -->
+
+				</group>
+
+			</process>
+
+			<process name="PLC16_Buffer4_Left" image="Biele.Communication.dll" class="Biele.Communication.S7Process" ip="10.139.222.16" slot="0" rack="0" interval="500" wordlen="8" simulation="1">
+
+				<group dbnumber="9049" interval="100" start="0">
+
+					<!-- Status Roller Rows 402_1x (24 rollers) -->
+					<field name="Buffer4.Left.Status.RollerRow402_11" type="INT" offset="0" />
+					<field name="Buffer4.Left.Status.RollerRow402_12" type="INT" offset="0" />
+					<field name="Buffer4.Left.Status.RollerRow402_13" type="INT" offset="0" />
+					<field name="Buffer4.Left.Status.RollerRow402_14" type="INT" offset="0" />
+					<field name="Buffer4.Left.Status.RollerRow402_15" type="INT" offset="0" />
+					<field name="Buffer4.Left.Status.RollerRow402_16" type="INT" offset="0" />
+					<field name="Buffer4.Left.Status.RollerRow402_17" type="INT" offset="0" />
+					<field name="Buffer4.Left.Status.RollerRow402_18" type="INT" offset="0" />
+					<field name="Buffer4.Left.Status.RollerRow402_19" type="INT" offset="0" />
+					<field name="Buffer4.Left.Status.RollerRow402_110" type="INT" offset="0" />
+					<field name="Buffer4.Left.Status.RollerRow402_111" type="INT" offset="0" />
+					<field name="Buffer4.Left.Status.RollerRow402_112" type="INT" offset="0" />
+					<field name="Buffer4.Left.Status.RollerRow402_113" type="INT" offset="0" />
+					<field name="Buffer4.Left.Status.RollerRow402_114" type="INT" offset="0" />
+					<field name="Buffer4.Left.Status.RollerRow402_115" type="INT" offset="0" />
+					<field name="Buffer4.Left.Status.RollerRow402_116" type="INT" offset="0" />
+					<field name="Buffer4.Left.Status.RollerRow402_117" type="INT" offset="0" />
+					<field name="Buffer4.Left.Status.RollerRow402_118" type="INT" offset="0" />
+					<field name="Buffer4.Left.Status.RollerRow402_119" type="INT" offset="0" />
+					<field name="Buffer4.Left.Status.RollerRow402_120" type="INT" offset="0" />
+					<field name="Buffer4.Left.Status.RollerRow402_121" type="INT" offset="0" />
+					<field name="Buffer4.Left.Status.RollerRow402_122" type="INT" offset="0" />
+					<field name="Buffer4.Left.Status.RollerRow402_123" type="INT" offset="0" />
+					<field name="Buffer4.Left.Status.RollerRow402_124" type="INT" offset="0" />
+
+					<!-- Status Roller Row 407 -->
+					<field name="Buffer4.Left.Status.RollerRow407_1" type="INT" offset="0" />
+
+					<!-- Status Roller Rows 406 (5 rollers) -->
+					<field name="Buffer4.Left.Status.RollerRow406_1" type="INT" offset="0" />
+					<field name="Buffer4.Left.Status.RollerRow406_2" type="INT" offset="0" />
+					<field name="Buffer4.Left.Status.RollerRow406_3" type="INT" offset="0" />
+					<field name="Buffer4.Left.Status.RollerRow406_4" type="INT" offset="0" />
+					<field name="Buffer4.Left.Status.RollerRow406_5" type="INT" offset="0" />
+
+					<!-- Status Bogies -->
+					<field name="Buffer4.Left.Status.Bogie405_1" type="INT" offset="0" />
+					<field name="Buffer4.Left.Status.Bogie405_2" type="INT" offset="0" />
+					<field name="Buffer4.Left.Status.Bogie405_3" type="INT" offset="0" />
+					<field name="Buffer4.Left.Status.Bogie408_1" type="INT" offset="0" />
+					<field name="Buffer4.Left.Status.Bogie408_2" type="INT" offset="0" />
+
+					<!-- Drilling Line 1 (PLC publica qué está pidiendo) -->
+					<field name="Buffer4.Left.DrillingLine1.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="Buffer4.Left.DrillingLine1.ArticleName" type="STRING[20]" offset="0" />
+
+					<!-- Drilling Line 2 (PLC publica qué está pidiendo) -->
+					<field name="Buffer4.Left.DrillingLine2.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="Buffer4.Left.DrillingLine2.ArticleName" type="STRING[20]" offset="0" />
+
+
+					<!-- Drilling Line 3 (PLC publica qué está pidiendo) -->
+					<field name="Buffer4.Left.DrillingLine3.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="Buffer4.Left.DrillingLine3.ArticleName" type="STRING[20]" offset="0" />
+
+
+				</group>
+
+				<!-- DB9050: 22 Posiciones de WO (excede 500 bytes de DB9049) -->
+				<group dbnumber="9050" interval="100" start="0">
+
+					<field name="Buffer4.Left.Position1.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Left.Position1.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Left.Position2.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Left.Position2.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Left.Position3.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Left.Position3.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Left.Position4.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Left.Position4.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Left.Position5.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Left.Position5.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Left.Position6.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Left.Position6.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Left.Position7.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Left.Position7.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Left.Position8.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Left.Position8.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Left.Position9.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Left.Position9.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Left.Position10.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Left.Position10.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Left.Position11.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Left.Position11.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Left.Position12.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Left.Position12.ArticleName" type="STRING[20]" offset="0" />>
+
+					<field name="Buffer4.Left.Position13.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Left.Position13.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Left.Position14.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Left.Position14.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Left.Position15.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Left.Position15.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Left.Position16.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Left.Position16.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Left.Position17.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Left.Position17.ArticleName" type="STRING[20]" offset="0" />
+
+					<!-- Posición 18: tiene ArticleName en vez de ReportNumber -->
+					<field name="Buffer4.Left.Position18.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Left.Position18.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Left.Position19.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Left.Position19.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Left.Position20.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Left.Position20.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Left.Position21.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Left.Position21.ArticleName" type="STRING[20]" offset="0" />
+
+					<field name="Buffer4.Left.Position22.Stack_ID" type="LINT" offset="0" />
+					<field name="Buffer4.Left.Position22.ArticleName" type="STRING[20]" offset="0" />
+
+				</group>
+
+			</process>
+
+			<process name="PLC13_FormatSaw" image="Biele.Communication.dll" class="Biele.Communication.S7Process" ip="10.139.222.13" slot="0" rack="0" interval="500" wordlen="8" simulation="1">
+
+				<group dbnumber="9000" interval="100" start="0">
+
+					<!-- PComm0 - Watchdog (OA manda valor de watchdog) -->
+					<field name="FormatSaw.PLC13.Watchdog.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.Watchdog.RequestHead.Status" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.Watchdog.RequestValue" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.Watchdog.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.Watchdog.ResponseHead.Status" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.Watchdog.ResponseValue" type="INT" offset="0" />
+
+					<!-- PComm1 - WorkOrder (OA envía WO para empezar producción en Format Saw) -->
+
+					<field name="FormatSaw.PLC13.WorkOrder.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.WorkOrder.RequestHead.Status" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.WorkOrder.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="FormatSaw.PLC13.WorkOrder.Request.ReportNumber" type="LINT" offset="0" />
+					<field name="FormatSaw.PLC13.WorkOrder.Request.RecipeIdentifierRecordName" type="STRING[20]" offset="0" />
+					<field name="FormatSaw.PLC13.WorkOrder.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.WorkOrder.ResponseHead.Status" type="INT" offset="0" />
+
+					<!-- PComm2 - StackFeedStart Pila 1 (PLC manda a OA comienzo alimentación Pila 1) -->
+					<field name="FormatSaw.PLC13.StackFeedStartPila1.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.StackFeedStartPila1.RequestHead.Status" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.StackFeedStartPila1.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="FormatSaw.PLC13.StackFeedStartPila1.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="FormatSaw.PLC13.StackFeedStartPila1.Request.StackArticleIn" type="STRING[20]" offset="0" />
+					<field name="FormatSaw.PLC13.StackFeedStartPila1.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.StackFeedStartPila1.ResponseHead.Status" type="INT" offset="0" />
+
+					<!-- PComm3 - StackFeedFinish Pila 1 (PLC manda a OA fin alimentación Pila 1) -->
+					<field name="FormatSaw.PLC13.StackFeedFinishPila1.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.StackFeedFinishPila1.RequestHead.Status" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.StackFeedFinishPila1.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="FormatSaw.PLC13.StackFeedFinishPila1.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="FormatSaw.PLC13.StackFeedFinishPila1.Request.StackArticleIn" type="STRING[20]" offset="0" />
+					<field name="FormatSaw.PLC13.StackFeedFinishPila1.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.StackFeedFinishPila1.ResponseHead.Status" type="INT" offset="0" />
+
+					<!-- PComm4 - StackFeedStart Pila 2 (PLC manda a OA comienzo alimentación Pila 2) -->
+					<field name="FormatSaw.PLC13.StackFeedStartPila2.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.StackFeedStartPila2.RequestHead.Status" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.StackFeedStartPila2.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="FormatSaw.PLC13.StackFeedStartPila2.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="FormatSaw.PLC13.StackFeedStartPila2.Request.StackArticleIn" type="STRING[20]" offset="0" />
+					<field name="FormatSaw.PLC13.StackFeedStartPila2.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.StackFeedStartPila2.ResponseHead.Status" type="INT" offset="0" />
+
+					<!-- PComm5 - StackFeedFinish Pila 2 (PLC manda a OA fin alimentación Pila 2) -->
+					<field name="FormatSaw.PLC13.StackFeedFinishPila2.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.StackFeedFinishPila2.RequestHead.Status" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.StackFeedFinishPila2.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="FormatSaw.PLC13.StackFeedFinishPila2.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="FormatSaw.PLC13.StackFeedFinishPila2.Request.StackArticleIn" type="STRING[20]" offset="0" />
+					<field name="FormatSaw.PLC13.StackFeedFinishPila2.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.StackFeedFinishPila2.ResponseHead.Status" type="INT" offset="0" />
+
+					<!-- PComm6 - 1stStackerStart (PLC manda a OA comienzo apilado en apilador 1) -->
+					<field name="FormatSaw.PLC13.1stStackerStart.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.1stStackerStart.RequestHead.Status" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.1stStackerStart.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="FormatSaw.PLC13.1stStackerStart.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="FormatSaw.PLC13.1stStackerStart.Request.StackArticleOut" type="STRING[20]" offset="0" />
+					<field name="FormatSaw.PLC13.1stStackerStart.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.1stStackerStart.ResponseHead.Status" type="INT" offset="0" />
+
+					<!-- PComm7 - 1stStackerFinish (PLC manda a OA fin apilado en apilador 1) -->
+					<field name="FormatSaw.PLC13.1stStackerFinish.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.1stStackerFinish.RequestHead.Status" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.1stStackerFinish.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="FormatSaw.PLC13.1stStackerFinish.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="FormatSaw.PLC13.1stStackerFinish.Request.StackPieceQuantity" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.1stStackerFinish.Request.StackArticleOut" type="STRING[20]" offset="0" />
+					<field name="FormatSaw.PLC13.1stStackerFinish.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.1stStackerFinish.ResponseHead.Status" type="INT" offset="0" />
+
+					<!-- PComm8 - 2ndStackerStart (PLC manda a OA comienzo apilado en apilador 2) -->
+					<field name="FormatSaw.PLC13.2ndStackerStart.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.2ndStackerStart.RequestHead.Status" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.2ndStackerStart.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="FormatSaw.PLC13.2ndStackerStart.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="FormatSaw.PLC13.2ndStackerStart.Request.StackArticleOut" type="STRING[20]" offset="0" />
+					<field name="FormatSaw.PLC13.2ndStackerStart.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.2ndStackerStart.ResponseHead.Status" type="INT" offset="0" />
+
+					<!-- PComm9 - 2ndStackerFinish (PLC manda a OA fin apilado en apilador 2) -->
+					<field name="FormatSaw.PLC13.2ndStackerFinish.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.2ndStackerFinish.RequestHead.Status" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.2ndStackerFinish.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="FormatSaw.PLC13.2ndStackerFinish.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="FormatSaw.PLC13.2ndStackerFinish.Request.StackPieceQuantity" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.2ndStackerFinish.Request.StackArticleOut" type="STRING[20]" offset="0" />
+					<field name="FormatSaw.PLC13.2ndStackerFinish.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.2ndStackerFinish.ResponseHead.Status" type="INT" offset="0" />
+
+				</group>
+
+				<!-- DB9049 - Zone Status -->
+				<group dbnumber="9049" interval="100" start="0">
+					<field name="FormatSaw.PLC13.Status.BaseboardOutfeedZone" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.Status.MaterialFeederZone" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.Status.InfeedRollersZone" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.Status.SawZone" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.Status.LayerTransportZone" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.Status.SawOutfeedZone" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.Status.MaterialStackerZone" type="INT" offset="0" />
+					<field name="FormatSaw.PLC13.Status.BaseboardInfeedZone" type="INT" offset="0" />
+				</group>
+
+			</process>
+
+			<process name="PLC15_FormatSaw" image="Biele.Communication.dll" class="Biele.Communication.S7Process" ip="10.139.222.15" slot="0" rack="0" interval="500" wordlen="8" simulation="1">
+
+				<group dbnumber="9000" interval="100" start="0">
+
+					<!-- PComm0 - Watchdog (OA manda valor de watchdog) -->
+					<field name="FormatSaw.PLC15.Watchdog.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.Watchdog.RequestHead.Status" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.Watchdog.RequestValue" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.Watchdog.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.Watchdog.ResponseHead.Status" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.Watchdog.ResponseValue" type="INT" offset="0" />
+
+					<!-- PComm1 - WorkOrder (OA envía WO para empezar producción en Format Saw) -->
+					<field name="FormatSaw.PLC15.WorkOrder.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.WorkOrder.RequestHead.Status" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.WorkOrder.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="FormatSaw.PLC15.WorkOrder.Request.ReportNumber" type="LINT" offset="0" />
+					<field name="FormatSaw.PLC15.WorkOrder.Request.RecipeIdentifierRecordName" type="STRING[20]" offset="0" />
+					<field name="FormatSaw.PLC15.WorkOrder.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.WorkOrder.ResponseHead.Status" type="INT" offset="0" />
+
+					<!-- PComm2 - StackFeedStart Pila 1 (PLC manda a OA comienzo alimentación Pila 1) -->
+					<field name="FormatSaw.PLC15.StackFeedStartPila1.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.StackFeedStartPila1.RequestHead.Status" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.StackFeedStartPila1.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="FormatSaw.PLC15.StackFeedStartPila1.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="FormatSaw.PLC15.StackFeedStartPila1.Request.StackArticleIn" type="STRING[20]" offset="0" />
+					<field name="FormatSaw.PLC15.StackFeedStartPila1.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.StackFeedStartPila1.ResponseHead.Status" type="INT" offset="0" />
+
+					<!-- PComm3 - StackFeedFinish Pila 1 (PLC manda a OA fin alimentación Pila 1) -->
+					<field name="FormatSaw.PLC15.StackFeedFinishPila1.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.StackFeedFinishPila1.RequestHead.Status" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.StackFeedFinishPila1.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="FormatSaw.PLC15.StackFeedFinishPila1.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="FormatSaw.PLC15.StackFeedFinishPila1.Request.StackArticleIn" type="STRING[20]" offset="0" />
+					<field name="FormatSaw.PLC15.StackFeedFinishPila1.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.StackFeedFinishPila1.ResponseHead.Status" type="INT" offset="0" />
+
+					<!-- PComm4 - StackFeedStart Pila 2 (PLC manda a OA comienzo alimentación Pila 2) -->
+					<field name="FormatSaw.PLC15.StackFeedStartPila2.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.StackFeedStartPila2.RequestHead.Status" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.StackFeedStartPila2.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="FormatSaw.PLC15.StackFeedStartPila2.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="FormatSaw.PLC15.StackFeedStartPila2.Request.StackArticleIn" type="STRING[20]" offset="0" />
+					<field name="FormatSaw.PLC15.StackFeedStartPila2.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.StackFeedStartPila2.ResponseHead.Status" type="INT" offset="0" />
+
+					<!-- PComm5 - StackFeedFinish Pila 2 (PLC manda a OA fin alimentación Pila 2) -->
+					<field name="FormatSaw.PLC15.StackFeedFinishPila2.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.StackFeedFinishPila2.RequestHead.Status" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.StackFeedFinishPila2.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="FormatSaw.PLC15.StackFeedFinishPila2.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="FormatSaw.PLC15.StackFeedFinishPila2.Request.StackArticleIn" type="STRING[20]" offset="0" />
+					<field name="FormatSaw.PLC15.StackFeedFinishPila2.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.StackFeedFinishPila2.ResponseHead.Status" type="INT" offset="0" />
+
+					<!-- PComm6 - 1stStackerStart (PLC manda a OA comienzo apilado en apilador 1) -->
+					<field name="FormatSaw.PLC15.1stStackerStart.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.1stStackerStart.RequestHead.Status" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.1stStackerStart.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="FormatSaw.PLC15.1stStackerStart.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="FormatSaw.PLC15.1stStackerStart.Request.StackArticleOut" type="STRING[20]" offset="0" />
+					<field name="FormatSaw.PLC15.1stStackerStart.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.1stStackerStart.ResponseHead.Status" type="INT" offset="0" />
+
+					<!-- PComm7 - 1stStackerFinish (PLC manda a OA fin apilado en apilador 1) -->
+					<field name="FormatSaw.PLC15.1stStackerFinish.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.1stStackerFinish.RequestHead.Status" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.1stStackerFinish.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="FormatSaw.PLC15.1stStackerFinish.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="FormatSaw.PLC15.1stStackerFinish.Request.StackPieceQuantity" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.1stStackerFinish.Request.StackArticleOut" type="STRING[20]" offset="0" />
+					<field name="FormatSaw.PLC15.1stStackerFinish.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.1stStackerFinish.ResponseHead.Status" type="INT" offset="0" />
+
+					<!-- PComm8 - 2ndStackerStart (PLC manda a OA comienzo apilado en apilador 2) -->
+					<field name="FormatSaw.PLC15.2ndStackerStart.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.2ndStackerStart.RequestHead.Status" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.2ndStackerStart.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="FormatSaw.PLC15.2ndStackerStart.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="FormatSaw.PLC15.2ndStackerStart.Request.StackArticleOut" type="STRING[20]" offset="0" />
+					<field name="FormatSaw.PLC15.2ndStackerStart.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.2ndStackerStart.ResponseHead.Status" type="INT" offset="0" />
+
+					<!-- PComm9 - 2ndStackerFinish (PLC manda a OA fin apilado en apilador 2) -->
+					<field name="FormatSaw.PLC15.2ndStackerFinish.RequestHead.Trigger" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.2ndStackerFinish.RequestHead.Status" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.2ndStackerFinish.Request.WO_IdentifierID" type="DINT" offset="0" />
+					<field name="FormatSaw.PLC15.2ndStackerFinish.Request.StackIDNumber" type="LINT" offset="0" />
+					<field name="FormatSaw.PLC15.2ndStackerFinish.Request.StackPieceQuantity" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.2ndStackerFinish.Request.StackArticleOut" type="STRING[20]" offset="0" />
+					<field name="FormatSaw.PLC15.2ndStackerFinish.ResponseHead.Confirmation" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.2ndStackerFinish.ResponseHead.Status" type="INT" offset="0" />
+
+				</group>
+
+				<!-- DB9049 - Zone Status -->
+				<group dbnumber="9049" interval="100" start="0">
+					<field name="FormatSaw.PLC15.Status.BaseboardOutfeedZone" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.Status.MaterialFeederZone" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.Status.InfeedRollersZone" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.Status.SawZone" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.Status.LayerTransportZone" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.Status.SawOutfeedZone" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.Status.MaterialStackerZone" type="INT" offset="0" />
+					<field name="FormatSaw.PLC15.Status.BaseboardInfeedZone" type="INT" offset="0" />
+				</group>
+
+			</process>
+
+
+			<process name="ds" image="Biele.Server.dll" class="Biele.Server.DS.DSProcess" port="8051" secure="1" onlylocal="0">
+				<manager>
+
+					<item interface="ml" image="Biele.DS.dll" class="Biele.DS.MultiLanguage"/>
+					<item interface="WPFTagDB" image="Biele.DS.dll" class="Biele.DS.WPFTagDB"/>
+					<item interface="TagDB" image="Biele.DS.dll" class="Biele.DS.TagDB"/>
+					<item interface="client" image="Biele.DS.dll" class="Biele.DS.Client"/>
+					<item interface="user" image="Biele.DS.dll" class="Biele.DS.Users"/>
+					<item interface="Installer" image="Biele.DS.dll" class="Biele.DS.Installer"/>
+					<item interface="BinsDS" image="B4571.dll" class="B4571.DS.BinsDS"/>
+					<item interface="StacksDS" image="B4571.dll" class="B4571.DS.StacksDS"/>
+					<item interface="EventsDS" image="B4571.dll" class="B4571.DS.EventsDS"/>
+					<item interface="WorkOrdersDS" image="B4571.dll" class="B4571.DS.WorkOrdersDS"/>
+					<item interface="BoardProductsDS" image="B4571.dll" class="B4571.DS.BoardProductsDS"/>
+					<item interface="Orders" image="B4571.dll" class="B4571.DS.OrdersDS" />
+					<item interface="Traceability" image="B4571.dll" class="B4571.DS.TraceabilityDS" />
+					<item interface="Warnings" image="B4571.dll" class="B4571.DS.WarningsDS" />
+					<item interface="PrintBarcodes" image="B4571.dll" class="B4571.DS.PrintBarcodesDS" />
+					<item interface="Buffer2" image="B4571.dll" class="B4571.DS.Buffer2DS" />
+					<item interface="Buffer3DS" image="B4571.dll" class="B4571.DS.Buffer3DS" />
+					<item interface="LineEvents" image="B4571.dll" class="B4571.DS.LineEventsDS" />
+					<item interface="*" image="B4571.dll" class="B4571.DS.RequestManager"/>
+				</manager>
+			</process>
+
+			<process name="OPCUAServer"
+					 image="Biele.OPCUAServer.dll"
+					 class="Biele.OPCUAServer">
+
+				<node name="B4571" alias="B4571" uri="http://biele.com/UA/B4571/OA/">
+
+					<item type="folder" name="Common">
+						<item name="Article"   link="" type="string" />
+						<item name="WorkOrder" link="" type="string" />
+					</item>
+
+					<!-- =================== DrillingLine1 (Sideboards, WC 451) =================== -->
+					<item type="folder" name="DrillingLine1">
+						<item type="folder" name="LineStatus">
+							<item name="State" link="" type="int32" />
+						</item>
+						<item type="folder" name="Output">
+							<item name="ReportNumber" link="" type="int32" />
+							<item name="StackId"      link="" type="int64" />
+						</item>
+						<item type="folder" name="FeedingStations">
+							<item type="folder" name="Station1">
+								<item name="BieleId"        link="" type="int64" />
+								<item name="ReportNumberIn" link="" type="int32" />
+								<item name="StackId"        link="" type="int32" />
+								<item name="FirstBoardDate" link="" type="datetime" />
+								<item name="LastBoardDate"  link="" type="datetime" />
+							</item>
+							<item type="folder" name="Station2">
+								<item name="BieleId"        link="" type="int64" />
+								<item name="ReportNumberIn" link="" type="int32" />
+								<item name="StackId"        link="" type="int32" />
+								<item name="FirstBoardDate" link="" type="datetime" />
+								<item name="LastBoardDate"  link="" type="datetime" />
+							</item>
+						</item>
+						<item type="folder" name="StackingStations">
+							<item type="folder" name="Station1">
+								<item name="BieleId"         link="" type="int64" />
+								<item name="ReportNumberOut" link="" type="int32" />
+								<item name="StackId"         link="" type="int32" />
+								<item name="FirstBoardDate"  link="" type="datetime" />
+								<item name="LastBoardDate"   link="" type="datetime" />
+							</item>
+							<item type="folder" name="Station2">
+								<item name="BieleId"         link="" type="int64" />
+								<item name="ReportNumberOut" link="" type="int32" />
+								<item name="StackId"         link="" type="int32" />
+								<item name="FirstBoardDate"  link="" type="datetime" />
+								<item name="LastBoardDate"   link="" type="datetime" />
+							</item>
+						</item>
+					</item>
+
+					<!-- =================== DrillingLine2 (ShelvesL1, WC 461) =================== -->
+					<item type="folder" name="DrillingLine2">
+						<item type="folder" name="LineStatus">
+							<item name="State" link="" type="int32" />
+						</item>
+						<item type="folder" name="Output">
+							<item name="ReportNumber" link="" type="int32" />
+							<item name="StackId"      link="" type="int64" />
+						</item>
+						<item type="folder" name="FeedingStations">
+							<item type="folder" name="Station1">
+								<item name="BieleId"        link="" type="int64" />
+								<item name="ReportNumberIn" link="" type="int32" />
+								<item name="StackId"        link="" type="int32" />
+								<item name="FirstBoardDate" link="" type="datetime" />
+								<item name="LastBoardDate"  link="" type="datetime" />
+							</item>
+							<item type="folder" name="Station2">
+								<item name="BieleId"        link="" type="int64" />
+								<item name="ReportNumberIn" link="" type="int32" />
+								<item name="StackId"        link="" type="int32" />
+								<item name="FirstBoardDate" link="" type="datetime" />
+								<item name="LastBoardDate"  link="" type="datetime" />
+							</item>
+						</item>
+						<item type="folder" name="StackingStations">
+							<item type="folder" name="Station1">
+								<item name="BieleId"         link="" type="int64" />
+								<item name="ReportNumberOut" link="" type="int32" />
+								<item name="StackId"         link="" type="int32" />
+								<item name="FirstBoardDate"  link="" type="datetime" />
+								<item name="LastBoardDate"   link="" type="datetime" />
+							</item>
+							<item type="folder" name="Station2">
+								<item name="BieleId"         link="" type="int64" />
+								<item name="ReportNumberOut" link="" type="int32" />
+								<item name="StackId"         link="" type="int32" />
+								<item name="FirstBoardDate"  link="" type="datetime" />
+								<item name="LastBoardDate"   link="" type="datetime" />
+							</item>
+						</item>
+					</item>
+
+					<!-- =================== DrillingLine3 (ShelvesL2, WC 462) =================== -->
+					<item type="folder" name="DrillingLine3">
+						<item type="folder" name="LineStatus">
+							<item name="State" link="" type="int32" />
+						</item>
+						<item type="folder" name="Output">
+							<item name="ReportNumber" link="" type="int32" />
+							<item name="StackId"      link="" type="int64" />
+						</item>
+						<item type="folder" name="FeedingStations">
+							<item type="folder" name="Station1">
+								<item name="BieleId"        link="" type="int64" />
+								<item name="ReportNumberIn" link="" type="int32" />
+								<item name="StackId"        link="" type="int32" />
+								<item name="FirstBoardDate" link="" type="datetime" />
+								<item name="LastBoardDate"  link="" type="datetime" />
+							</item>
+							<item type="folder" name="Station2">
+								<item name="BieleId"        link="" type="int64" />
+								<item name="ReportNumberIn" link="" type="int32" />
+								<item name="StackId"        link="" type="int32" />
+								<item name="FirstBoardDate" link="" type="datetime" />
+								<item name="LastBoardDate"  link="" type="datetime" />
+							</item>
+						</item>
+						<item type="folder" name="StackingStations">
+							<item type="folder" name="Station1">
+								<item name="BieleId"         link="" type="int64" />
+								<item name="ReportNumberOut" link="" type="int32" />
+								<item name="StackId"         link="" type="int32" />
+								<item name="FirstBoardDate"  link="" type="datetime" />
+								<item name="LastBoardDate"   link="" type="datetime" />
+							</item>
+							<item type="folder" name="Station2">
+								<item name="BieleId"         link="" type="int64" />
+								<item name="ReportNumberOut" link="" type="int32" />
+								<item name="StackId"         link="" type="int32" />
+								<item name="FirstBoardDate"  link="" type="datetime" />
+								<item name="LastBoardDate"   link="" type="datetime" />
+							</item>
+						</item>
+					</item>
+
+				</node>
+
+			</process>
+
+			<!-- APAGADO (D8, tramo B del PLAN_UNIFICACION_BD_LOCAL.txt): el codigo de IMA va a rehacerse.
+			     <process name="IMAOPCUAListener"
+					 image="B4571.dll"
+					 class="B4571.Process.IMAOPCUAListener">
+			</process> -->
+
+			<!-- IP DE LA CPU -->
+			<process name="HTTPServer" image="Biele.Server.dll" class="Biele.Server.HTTPServerProcess">
+				<prefix type="local">http://{0}:8053/</prefix>
+				<module path="Installer" image="Biele.Server.dll" class="Biele.Server.HTTPServer.InstallerServer"/>
+				<module path="HMI" basefolder="WebServer/Updates"
+						image="Biele.Server.dll"
+						class="Biele.Server.HTTPServer.FileServer"/>
+			</process>
+
+			<process name="UIClientUpdater"
+					 image="Biele.Server.Core.dll"
+					 class="Biele.Server.UIClientUpdateProcess"
+					 url="HMI/update.xml"
+					 path="WebServer\Updates\update.xml"
+					 interval="1000">
+			</process>
+
+
+
+
+
+			<process name="commS7_PLC1" image="Biele.Communication2.dll" class="Biele.Communication.S7Sharp7ClientProcess" ip="192.168.201.2" slot="0" rack="0" interval="0" wordlen="16" simulation="1">
+
+
+				<types>
+					<type name="Board">
+						<!--12-->
+						<field name=".SortId" type="DINT" offset="0"/>
+						<field name=".Length" type="REAL" offset="4"/>
+						<field name=".Width" type="REAL" offset="8"/>
+						<field name=".Thickness" type="REAL" offset="12"/>
+					</type>
+
+					<!-- <type name="CB_Recipe"> -->
+					<!-- <field name=".ID" type="DINT" offset="0"/> -->
+					<!-- <field name=".CentralBoard" type="Board" offset="4"/> -->
+					<!-- </type> -->
+
+
+					<type name="CB_StackPattern">
+						<!--28-->
+						<field name=".EnableStickMagazine" type="BOOL[16]" offset="0"/>
+						<field name=".Stick_Type" type="BOOL" offset="2"/>
+						<field name=".Stick_Frecuency" type="INT" offset="4"/>
+						<field name=".Stack_Length" type="REAL[1..4]" offset="6"/>
+						<field name=".Stack_width" type="REAL" offset="22"/>
+						<field name=".Stack_layer_quantity" type="INT" offset="26"/>
+						<field name=".Stack_Bits" type="BOOL[16]" offset="28">
+
+							<field name=".Stack_separationBetweenBoards" bit="0"/>
+							<field name=".Stack_EndTrimming" bit="1"/>
+							<field name=".Layer_AntiblueingEnabled" bit="2"/>
+
+						</field>
+					</type>
+
+
+					<type name="CB_Strapping">
+						<!--8-->
+						<field name=".Scantling_Width" type="REAL" offset="0"/>
+						<field name=".Scantling_Thick" type="REAL" offset="4"/>
+						<field name=".StrappingEnabled" type="BOOL" offset="8"/>
+					</type>
+
+				</types>
+
+
+
+
+				<group area="DB" number="9001" startbyte="0" interval="100">
+					<field name="WorkOrderId" type="DINT" offset="0"/>
+					<field name="CB_Board" type="Board" offset="4"/>
+					<field name="CB_StackPattern" type="CB_StackPattern" offset="20"/>
+					<field name="CB_Strapping" type="CB_Strapping" offset="50"/>
+					<field name="TargetQuantity" type="INT" offset="60"/>
+				</group>
+
+				<group area="DB" number="9002" interval="100">
+					<field name="Watchdog_PLC" type="INT" offset="0"/>
+					<field name="Watchdog_OA" type="INT" offset="2"/>
+					<field name="Limab_System_Status_Bit" type="BOOL[16]" offset="4">
+						<field name="Limab_System_Status_Bit.Heartbeat" bit="0"/>
+						<field name="Limab_System_Status_Bit.NewDataAvailable" bit="1"/>
+						<field name="Limab_System_Status_Bit.SensorError" bit="2"/>
+						<field name="Limab_System_Status_Bit.ProductListReceived" bit="3"/>
+					</field>
+
+					<field name="RequestRecipe_TriggerPLC" type="INT" offset="6"/>
+					<field name="RequestRecipe_WorkOrderId" type="DINT" offset="8"/>
+					<field name="RequestRecipe_ConfirmOA" type="INT" offset="12"/>
+					<field name="RequestRecipe_StatusOA" type="INT" offset="14"/>
+
+
+					<field name="EndStack_RequestPLC_CB_TriggerPLC" type="INT" offset="16"/>
+					<field name="EndStack_RequestPLC_CB_WorkOrderId" type="DINT" offset="18"/>
+					<field name="EndStack_RequestPLC_CB_Board" type="Board" offset="22"/>
+					<field name="EndStack_RequestPLC_CB_StackPattern" type="CB_StackPattern" offset="38"/>
+					<field name="EndStack_RequestPLC_CB_Strapping" type="CB_Strapping" offset="68"/>
+					<field name="EndStack_RequestPLC_CB_TargetQuantity" type="INT" offset="78"/>
+					<field name="EndStack_RequestPLC_CB_ConfirmOA" type="INT" offset="80"/>
+					<field name="EndStack_RequestPLC_CB_StatusOA" type="INT" offset="82"/>
+
+
+
+					<field name="EndStack_WithoutStrapping_RequestOA_CB_TriggerOA" type="INT" offset="84"/>
+					<field name="EndStack_WithoutStrapping_RequestOA_CB_WorkOrderId" type="DINT" offset="86"/>
+					<field name="EndStack_WithoutStrapping_RequestOA_CB_Board" type="Board" offset="90"/>
+					<field name="EndStack_WithoutStrapping_RequestOA_CB_StackPattern" type="CB_StackPattern" offset="106"/>
+					<field name="EndStack_WithoutStrapping_RequestOA_CB_Strapping" type="CB_Strapping" offset="136"/>
+					<field name="EndStack_WithoutStrapping_RequestOA_CB_TargetQuantity" type="INT" offset="146"/>
+					<field name="EndStack_WithoutStrapping_RequestOA_CB_ConfirmPLC" type="INT" offset="148"/>
+					<field name="EndStack_WithoutStrapping_RequestOA_CB_StatusPLC" type="INT" offset="150"/>
+
+
+					<field name="EndStack_WithoutStrapping_RequestPLC_CB_TriggerPLC" type="INT" offset="152"/>
+					<field name="EndStack_WithoutStrapping_RequestPLC_CB_WorkOrderId" type="DINT" offset="154"/>
+					<field name="EndStack_WithoutStrapping_RequestPLC_CB_Board" type="Board" offset="158"/>
+					<field name="EndStack_WithoutStrapping_RequestPLC_CB_StackPattern" type="CB_StackPattern" offset="174"/>
+					<field name="EndStack_WithoutStrapping_RequestPLC_CB_Strapping" type="CB_Strapping" offset="204"/>
+					<field name="EndStack_WithoutStrapping_RequestPLC_CB_TargetQuantity" type="INT" offset="214"/>
+
+					<field name="EndStack_WithoutStrapping_RequestPLC_CB_ConfirmOA" type="INT" offset="216"/>
+					<field name="EndStack_WithoutStrapping_RequestPLC_CB_StatusOA" type="INT" offset="218"/>
+
+
+
+					<field name="RequestSaveRecipe_TriggerPLC" type="INT" offset="220"/>
+					<field name="RequestSaveRecipe_WorkOrderId" type="DINT" offset="222"/>
+					<field name="RequestSaveRecipe_ConfirmOA" type="INT" offset="226"/>
+					<field name="RequestSaveRecipe_StatusOA" type="INT" offset="228"/>
+
+					<field name="RequestOARecipe_TriggerOA" type="INT" offset="230"/>
+					<field name="RequestOARecipe_WorkOrderId" type="DINT" offset="232"/>
+					<field name="RequestOARecipe_ConfirmPLC" type="INT" offset="236"/>
+					<field name="RequestOARecipe_StatusPLC" type="INT" offset="238"/>
+				</group>
+
+
+
+				<group area="DB" number="9003" interval="100">
+					<field name="Board_Info_Bits" type="BOOL[16]" offset="0">
+						<field name="Board_Info_Bits.WaneTurnedUp" bit="0"/>
+						<field name="Board_Info_Bits.NoProductMatch" bit="1"/>
+						<field name="Board_Info_Bits.PartOfBoard" bit="2"/>
+						<field name="Board_Info_Bits.RawBoardOutOfProductsTolerances" bit="3"/>
+					</field>
+					<field name="Limab_Sort_ID" type="INT" offset="2"/>
+					<field name="Z100_status" type="INT" offset="4"/>
+					<field name="Z200_status" type="INT" offset="6"/>
+					<field name="Z300_status" type="INT" offset="8"/>
+					<field name="Z310_status" type="INT" offset="10"/>
+					<field name="Z400_status" type="INT" offset="12"/>
+					<field name="Z500_status" type="INT" offset="14"/>
+					<field name="Z600_status" type="INT" offset="16"/>
+					<field name="Z650_status" type="INT" offset="18"/>
+					<field name="Z1800_status" type="INT" offset="20"/>
+				</group>
+
+
+
+			</process>
+
+
+
+			<process name="commS7_PLC2" image="Biele.Communication2.dll" class="Biele.Communication.S7Sharp7ClientProcess" ip="192.168.201.3" slot="0" rack="0" interval="0" wordlen="16" simulation="1">
+
+
+				<types>
+
+
+
+					<type name="Board">
+						<!--12-->
+						<field name=".SortId" type="DINT" offset="0"/>
+						<field name=".Length" type="REAL" offset="4"/>
+						<field name=".Width" type="REAL" offset="8"/>
+						<field name=".Thickness" type="REAL" offset="12"/>
+					</type>
+
+					<type name="B_Recipe">
+						<!--12-->
+						<field name=".SortId" type="DINT" offset="0"/>
+						<field name=".Length" type="REAL" offset="4"/>
+						<field name=".Width" type="REAL" offset="8"/>
+						<field name=".Thickness" type="REAL" offset="12"/>
+						<field name=".StickType" type="BOOL" offset="16"/>
+					</type>
+
+
+
+					<type name="CB_StackPattern">
+						<!--28-->
+						<field name=".EnableStickMagazine" type="BOOL[16]" offset="0"/>
+						<field name=".Stick_Type" type="BOOL" offset="2"/>
+						<field name=".Stick_Frecuency" type="INT" offset="4"/>
+						<field name=".Stack_Length" type="REAL[1..4]" offset="6"/>
+						<field name=".Stack_width" type="REAL" offset="22"/>
+						<field name=".Stack_layer_quantity" type="INT" offset="26"/>
+						<field name=".Stack_Bits" type="BOOL[16]" offset="28">
+
+							<field name=".Stack_separationBetweenBoards" bit="0"/>
+							<field name=".Stack_EndTrimming" bit="1"/>
+							<field name=".Layer_AntiblueingEnabled" bit="2"/>
+
+						</field>
+					</type>
+
+
+
+
+
+					<type name="CB_Strapping">
+						<!--8-->
+						<field name=".Scantling_Width" type="REAL" offset="0"/>
+						<field name=".Scantling_Thick" type="REAL" offset="4"/>
+						<field name=".StrappingEnabled" type="BOOL" offset="8"/>
+					</type>
+
+
+					<type name="SB_Strapping">
+						<!--8-->
+						<field name=".Scantling_Width" type="REAL" offset="0"/>
+						<field name=".Scantling_Thick" type="REAL" offset="4"/>
+						<field name=".StrappingEnabled" type="BOOL" offset="8"/>
+					</type>
+				</types>
+
+
+				<group area="DB" number="9001" startbyte="0" interval="100">
+					<field name="WorkOrderId" type="DINT" offset="0"/>
+					<field name="N_Sideboards_ByTrunk" type="INT" offset="4"/>
+					<field name="N_Coreboards_ByTrunk" type="INT" offset="6"/>
+					<field name="CB_Board" type="Board" offset="8"/>
+					<field name="CB_StackPattern" type="CB_StackPattern" offset="24"/>
+					<field name="CB_Strapping" type="CB_Strapping" offset="54"/>
+					<field name="B_Recipe" type="B_Recipe[1..22]" offset="64"/>
+					<field name="TargetQuantity" type="INT" offset="460"/>
+				</group>
+
+
+				<group area="DB" number="9002" interval="100">
+					<field name="Watchdog_PLC" type="INT" offset="0"/>
+					<field name="Watchdog_OA" type="INT" offset="2"/>
+
+					<field name="RequestRecipe_TriggerPLC" type="INT" offset="4"/>
+					<field name="RequestRecipe_WorkOrderId" type="DINT" offset="6"/>
+					<field name="RequestRecipe_ConfirmOA" type="INT" offset="10"/>
+					<field name="RequestRecipe_StatusOA" type="INT" offset="12"/>
+
+					<field name="DryEntryPoint_RequestRecipe_TriggerOA" type="INT" offset="14"/>
+					<field name="DryEntryPoint_RequestRecipe_WorkOrderId" type="DINT" offset="16"/>
+					<field name="DryEntryPoint_RequestRecipe_ConfirmPLC" type="INT" offset="20"/>
+					<field name="DryEntryPoint_RequestRecipe_StatusPLC" type="INT" offset="22"/>
+
+
+					<field name="RequestSaveRecipe_TriggerPLC" type="INT" offset="24"/>
+					<field name="RequestSaveRecipe_WorkOrderId" type="DINT" offset="26"/>
+					<field name="RequestSaveRecipe_ConfirmOA" type="INT" offset="30"/>
+					<field name="RequestSaveRecipe_StatusOA" type="INT" offset="32"/>
+
+
+					<field name="DryEntryPointEnabledByPlc2" type="BOOL" offset="34"/>
+
+				</group>
+				<group area="DB" number="9003" interval="100">
+					<field name="Z700_status" type="INT" offset="0"/>
+					<field name="Z800_status" type="INT" offset="2"/>
+					<field name="Z900_status" type="INT" offset="4"/>
+				</group>
+
+
+			</process>
+
+
+
+			<process name="commS7_PLC3" image="Biele.Communication2.dll" class="Biele.Communication.S7Sharp7ClientProcess" ip="192.168.201.4" slot="0" rack="0" interval="0" wordlen="16" simulation="1">
+				<types>
+					<type name="Board">
+						<!--12-->
+						<field name=".SortId" type="DINT" offset="0"/>
+						<field name=".Length" type="REAL" offset="4"/>
+						<field name=".Width" type="REAL" offset="8"/>
+						<field name=".Thickness" type="REAL" offset="12"/>
+					</type>
+
+
+
+					<type name="SB_StackPattern">
+						<!--28-->
+						<field name=".EnableStickMagazine" type="BOOL[16]" offset="0"/>
+						<field name=".Stick_Type" type="BOOL" offset="2"/>
+						<field name=".Stick_Frecuency" type="INT" offset="4"/>
+						<field name=".Stack_Length" type="REAL[1..4]" offset="6"/>
+						<field name=".Stack_width" type="REAL" offset="22"/>
+						<field name=".Stack_layer_quantity" type="INT" offset="26"/>
+						<field name=".Stack_Bits" type="BOOL[16]" offset="28">
+
+							<field name=".Stack_separationBetweenBoards" bit="0"/>
+							<field name=".Stack_EndTrimming" bit="1"/>
+							<field name=".Layer_AntiblueingEnabled" bit="2"/>
+
+						</field>
+					</type>
+
+					<type name="SB_Strapping">
+						<!--8-->
+						<field name=".Scantling_Width" type="REAL" offset="0"/>
+						<field name=".Scantling_Thick" type="REAL" offset="4"/>
+						<field name=".StrappingEnabled" type="BOOL" offset="8"/>
+					</type>
+
+					<type name="Bins_Recipe">
+						<!--54 -->
+						<field name=".SB_Recipe" type="Board" offset="0"/>
+						<field name=".SB_StackPattern" type="SB_StackPattern" offset="16"/>
+						<field name=".SB_Strapping" type="SB_Strapping" offset="46"/>
+						<field name=".IsWorking" type="BOOL" offset="56"/>
+						<field name=".TargetQuantity" type="INT" offset="58"/>
+
+					</type>
+
+
+
+					<type name="Bin_Status">
+						<!-- -->
+						<field name=".WorkOrderId" type="DINT" offset="0"/>
+						<field name=".SortId" type="DINT" offset="4"/>
+						<field name="Bin_Status_Bits" type="BOOL[16]" offset="8">
+							<field name="Bin_Status_Bits.IsWorking" bit="0"/>
+							<field name="Bin_Status_Bits.IsEvacuating" bit="1"/>
+							<field name="Bin_Status_Bits.IsFull" bit="2"/>
+						</field>
+						<field name=".ActualQuantity" type="INT" offset="10"/>
+					</type>
+
+
+				</types>
+
+
+				<group area="DB" number="9001" startbyte="0" interval="100">
+					<field name="WorkOrderId" type="DINT" offset="0"/>
+					<field name="Bins_Recipe" type="Bins_Recipe[1..45]" offset="4"/>
+
+				</group>
+				<group area="DB" number="9002" interval="100">
+					<field name="Watchdog_PLC" type="INT" offset="0"/>
+					<field name="Watchdog_OA" type="INT" offset="2"/>
+					<field name="Limab_System_Status_Bit" type="BOOL[16]" offset="4">
+						<field name="Limab_System_Status_Bit.Heartbeat" bit="0"/>
+						<field name="Limab_System_Status_Bit.NewDataAvailable" bit="1"/>
+						<field name="Limab_System_Status_Bit.SensorError" bit="2"/>
+						<field name="Limab_System_Status_Bit.ProductListReceived" bit="3"/>
+					</field>
+					<field name="Z1000_status" type="INT" offset="6"/>
+					<field name="Z1100_status" type="INT" offset="8"/>
+					<field name="Z1110_status" type="INT" offset="10"/>
+					<field name="Z1200_status" type="INT" offset="12"/>
+					<field name="Z1250_status" type="INT" offset="14"/>
+					<field name="Bin_Status" type="Bin_Status[1..45]" offset="16"/>
+					<field name="RequestRecipe_TriggerPLC" type="INT" offset="556"/>
+					<field name="RequestRecipe_WorkOrderId" type="DINT" offset="558"/>
+					<field name="RequestRecipe_ConfirmOA" type="INT" offset="562"/>
+					<field name="RequestRecipe_StatusOA" type="INT" offset="564"/>
+				</group>
+
+			</process>
+
+
+			<process name="commS7_PLC4" image="Biele.Communication2.dll" class="Biele.Communication.S7Sharp7ClientProcess" ip="192.168.201.5" slot="0" rack="0" interval="0" wordlen="16" simulation="1">
+				<types>
+
+					<type name="Board">
+						<!--12-->
+						<field name=".SortId" type="DINT" offset="0"/>
+						<field name=".Length" type="REAL" offset="4"/>
+						<field name=".Width" type="REAL" offset="8"/>
+						<field name=".Thickness" type="REAL" offset="12"/>
+					</type>
+
+					<type name="SB_StackPattern">
+						<!--28-->
+						<field name=".EnableStickMagazine" type="BOOL[16]" offset="0"/>
+						<field name=".Stick_Type" type="BOOL" offset="2"/>
+						<field name=".Stick_Frecuency" type="INT" offset="4"/>
+						<field name=".Stack_Length" type="REAL[1..4]" offset="6"/>
+						<field name=".Stack_width" type="REAL" offset="22"/>
+						<field name=".Stack_layer_quantity" type="INT" offset="26"/>
+						<field name=".Stack_Bits" type="BOOL[16]" offset="28">
+
+							<field name=".Stack_separationBetweenBoards" bit="0"/>
+							<field name=".Stack_EndTrimming" bit="1"/>
+							<field name=".Layer_AntiblueingEnabled" bit="2"/>
+
+						</field>
+					</type>
+
+
+
+					<type name="SB_Strapping">
+						<!--8-->
+						<field name=".Scantling_Width" type="REAL" offset="0"/>
+						<field name=".Scantling_Thick" type="REAL" offset="4"/>
+						<field name=".StrappingEnabled" type="BOOL" offset="8"/>
+					</type>
+
+
+					<type name="SB_Recipe">
+						<!--16-->
+						<field name=".SideBoard" type="Board" offset="4"/>
+					</type>
+
+
+					<type name="Bins_Recipe">
+						<!--54 -->
+						<field name=".SB_Recipe" type="Board" offset="0"/>
+						<field name=".SB_StackPattern" type="SB_StackPattern" offset="16"/>
+						<field name=".SB_Strapping" type="SB_Strapping" offset="46"/>
+						<field name="Bin_Status_Bits" type="BOOL[16]" offset="56">
+							<field name="Bin_Status_Bits.IsWorking" bit="0"/>
+							<field name="Bin_Status_Bits.IsEvacuating" bit="1"/>
+							<field name="Bin_Status_Bits.IsFull" bit="2"/>
+						</field>
+					</type>
+
+				</types>
+
+
+
+
+				<group area="DB" number="9001" startbyte="0" interval="100">
+					<field name="WorkOrderId" type="DINT" offset="0"/>
+					<field name="Board" type="Board" offset="4"/>
+					<field name="SB_StackPattern_WithOutStrapping" type="SB_StackPattern" offset="20"/>
+					<field name="SB_Strapping_WithOutStrapping" type="SB_Strapping" offset="34"/>
+
+				</group>
+
+				<group area="DB" number="9002" interval="100">
+
+					<field name="Watchdog_PLC" type="INT" offset="0"/>
+					<field name="Watchdog_OA" type="INT" offset="2"/>
+
+
+
+					<field name="EndStack_RequestPLC_SB_TriggerPLC" type="INT" offset="4"/>
+					<field name="EndStack_RequestPLC_SB_WorkOrderId" type="DINT" offset="6"/>
+					<field name="EndStack_RequestPLC_SB_Board" type="Board" offset="10"/>
+					<field name="EndStack_RequestPLC_SB_StackPattern" type="SB_StackPattern" offset="26"/>
+					<field name="EndStack_RequestPLC_SB_Strapping" type="SB_Strapping" offset="56"/>
+					<field name="EndStack_RequestPLC_SB_ConfirmOA" type="INT" offset="66"/>
+					<field name="EndStack_RequestPLC_SB_StatusOA" type="INT" offset="68"/>
+
+					<field name="EndStack_WithoutStrapping_RequestOA_SB_TriggerOA" type="INT" offset="70"/>
+					<field name="EndStack_WithoutStrapping_RequestOA_SB_WorkOrderId" type="DINT" offset="72"/>
+					<field name="EndStack_WithoutStrapping_RequestOA_SB_Board" type="Board" offset="76"/>
+					<field name="EndStack_WithoutStrapping_RequestOA_SB_StackPattern" type="SB_StackPattern" offset="92"/>
+					<field name="EndStack_WithoutStrapping_RequestOA_SB_Strapping" type="SB_Strapping" offset="122"/>
+					<field name="EndStack_WithoutStrapping_RequestOA_SB_ConfirmPLC" type="INT" offset="132"/>
+					<field name="EndStack_WithoutStrapping_RequestOA_SB_StatusPLC" type="INT" offset="134"/>
+
+
+					<field name="EndStack_WithoutStrapping_RequestPLC_SB_TriggerPLC" type="INT" offset="136"/>
+					<field name="EndStack_WithoutStrapping_RequestPLC_SB_WorkOrderId" type="DINT" offset="138"/>
+					<field name="EndStack_WithoutStrapping_RequestPLC_SB_Board" type="Board" offset="142"/>
+					<field name="EndStack_WithoutStrapping_RequestPLC_SB_StackPattern" type="SB_StackPattern" offset="158"/>
+					<field name="EndStack_WithoutStrapping_RequestPLC_SB_Strapping" type="SB_Strapping" offset="188"/>
+					<field name="EndStack_WithoutStrapping_RequestPLC_SB_ConfirmOA" type="INT" offset="198"/>
+					<field name="EndStack_WithoutStrapping_RequestPLC_SB_StatusOA" type="INT" offset="200"/>
+				</group>
+				<group area="DB" number="9003" interval="200">
+					<field name="Z1300_status" type="INT" offset="4"/>
+					<field name="Z1400_status" type="INT" offset="6"/>
+					<field name="Z1410_status" type="INT" offset="8"/>
+					<field name="Z1500_status" type="INT" offset="10"/>
+					<field name="Z1600_status" type="INT" offset="12"/>
+					<field name="Z1700_status" type="INT" offset="14"/>
+					<field name="Z1750_status" type="INT" offset="16"/>
+				</group>
+
+			</process>
+
+
+			<!--<process name="OAS_PLC1" printerIO ="192.168.1.1" class="B4571.LineComManagerPLC1@B4571.dll" interval="100"/>
+			<process name="OAS_PLC2" class="B4571.LineComManagerPLC2@B4571.dll" interval="100"/>
+			<process name="OAS_PLC3" class="B4571.LineComManagerPLC3@B4571.dll" interval="100"/>
+			<process name="OAS_PLC4" class="B4571.LineComManagerPLC4@B4571.dll" interval="100"/>-->
+
+			<process name="RestServiceProcess" class="B4571.RestServiceProcess@B4571.dll" isActive="1" host="http://+:9000/" interval="1000" />
+			<process name="PLCLineInputCommManager" image="B4571.dll" class="B4571.PLCLineInputCommManager" communicationitem="PLC_LineInput" interval="1000"></process>
+			<process name="PLCStripCuttingCommManager" image="B4571.dll" class="B4571.PLCStripCuttingCommManager" communicationitem="PLC_StripCutting" interval="1000"></process>
+			<process name="PLC4EdgeBandingCommManager" image="B4571.dll" class="B4571.PLC4EdgeBandingCommManager" communicationitem="PLC4_EdgeBanding" interval="1000"></process>
+			<process name="PLC5EdgeBandingCommManager" image="B4571.dll" class="B4571.PLC5EdgeBandingCommManager" communicationitem="PLC5_EdgeBanding" interval="1000"></process>
+			<process name="PLCBuffer2CommManager" image="B4571.dll" class="B4571.PLCBuffer2CommManager" communicationitem="PLC_Buffer2" interval="1000">
+				<!-- Impresoras de etiquetas (seccion obligatoria). default="true" => impresion automatica (BarcodeWrite) y reimpresion.
+				     Solo impresion por red: ip (+ port, def. 9100), socket RAW enviando el PDF directo
+				     (requiere PDF Direct Print, la Kyocera ECOSYS lo soporta).
+				     pjlCheck (def. true): chequeo @PJL INFO STATUS antes/despues de imprimir (sin papel,
+				     offline...). Best-effort: si la impresora no responde PJL no bloquea; poner "false"
+				     solo si diera problemas con la impresora real.
+				     Pruebas en local: arrancar el simulador Tools\FakeRawPrinter.ps1 (escucha en 9100,
+				     responde PJL y guarda cada trabajo como .pdf; -SimulateError = sin papel) y dejar
+				     la ip en 127.0.0.1. -->
+				<printers>
+					<printer name="Kyocera" ip="127.0.0.1" port="9100" default="true" />
+				</printers>
+			</process>
+			<process name="PLC8WrappingLine1CommManager" image="B4571.dll" class="B4571.PLC8WrappingLine1CommManager" communicationitem="PLC8_WrappingLine1" interval="1000"></process>
+			<process name="PLC10WrappingLine2CommManager" image="B4571.dll" class="B4571.PLC10WrappingLine2CommManager" communicationitem="PLC10_WrappingLine2" interval="1000"></process>
+			<process name="PLC9WrappingLine1CommManager" image="B4571.dll" class="B4571.PLC9WrappingLine1CommManager" communicationitem="PLC9_WrappingLine1" interval="1000"></process>
+			<process name="PLC11WrappingLine2CommManager" image="B4571.dll" class="B4571.PLC11WrappingLine2CommManager" communicationitem="PLC11_WrappingLine2" interval="1000"></process>
+			<process name="PLC12Buffer3CommManager" image="B4571.dll" class="B4571.PLC12Buffer3CommManager" communicationitem="PLC12_Buffer3" interval="1000"></process>
+			<process name="PLC14Buffer3CommManager" image="B4571.dll" class="B4571.PLC14Buffer3CommManager" communicationitem="PLC14_Buffer3" interval="1000"></process>
+			<process name="PLC16Buffer4RightCommManager" image="B4571.dll" class="B4571.PLC16Buffer4RightCommManager" communicationitem="PLC16_Buffer4_Right" interval="1000"></process>
+			<process name="PLC16Buffer4LeftCommManager" image="B4571.dll" class="B4571.PLC16Buffer4LeftCommManager" communicationitem="PLC16_Buffer4_Left" interval="1000"></process>
+			<process name="PLC13FormatSawCommManager" image="B4571.dll" class="B4571.PLC13FormatSawCommManager" communicationitem="PLC13_FormatSaw" interval="1000"></process>
+			<process name="PLC15FormatSawCommManager" image="B4571.dll" class="B4571.PLC15FormatSawCommManager" communicationitem="PLC15_FormatSaw" interval="1000"></process>
+			<!-- APAGADO (D8, tramo B). <process name="IMACommManager" image="B4571.dll" class="B4571.IMACommManager" interval="1000"></process> -->
+			<!-- Alarmas S7CommPlus: un proceso por PLC (catalogo en B4571.Common\Enums\Plc.cs).
+			     LOCAL = simulation="1" (no abre socket, catalogo falso). Anadir PLC futuro = 1 fila
+			     en Plcs.All + 1 linea aqui con plc="<Name>". -->
+			<process name="PlcAlarms_PLC_LineInput"       image="B4571.dll" class="B4571.PlcAlarmsCommManager" interval="500" plc="PLC_LineInput"       simulation="1" simToggleSeconds="10" minAlarmDomain="0"></process>
+			<process name="PlcAlarms_PLC_StripCutting"    image="B4571.dll" class="B4571.PlcAlarmsCommManager" interval="500" plc="PLC_StripCutting"    simulation="1" simToggleSeconds="10" minAlarmDomain="0"></process>
+			<process name="PlcAlarms_PLC4_EdgeBanding"    image="B4571.dll" class="B4571.PlcAlarmsCommManager" interval="500" plc="PLC4_EdgeBanding"    simulation="1" simToggleSeconds="10" minAlarmDomain="0"></process>
+			<process name="PlcAlarms_PLC5_EdgeBanding"    image="B4571.dll" class="B4571.PlcAlarmsCommManager" interval="500" plc="PLC5_EdgeBanding"    simulation="1" simToggleSeconds="10" minAlarmDomain="0"></process>
+			<!-- Fa-Wa en LOCAL: polling + simulacion (no abre socket). -->
+			<process name="PlcFaWa_PLC_Buffer2"           image="B4571.dll" class="B4571.PlcActiveFieldsCommManager" interval="500" plc="PLC_Buffer2"         pollMs="2000" reconnectDelayMs="5000" dbFilter="Fa-Wa" simulation="1" simToggleSeconds="5"></process>
+
+			<!-- Importacion automatica del catalogo Fa-Wa: una subcarpeta por PLC (nombre = Plcs.Name)
+			     con FaWa_Alarms_OA.xlsx + traducciones_*_HMI_Texts.xlsx. Upsert sin delete + DescriptionSv.
+			     TODO: poner la ruta real del share antes de desplegar. Ver PLAN_IMPORTACION_AUTOMATICA_CATALOGO_FAWA.txt. -->
+			<process name="FaWaCatalogImport" image="B4571.dll" class="B4571.FaWaCatalogImportManager" interval="5000" pollMinutes="10" path="\\servidor\share\FaWaCatalogos" />
+
+			<!-- Suscripcion: SOLO con el PLC alcanzable. PlcActiveFieldsSubscriptionManager NO tiene modo
+			     simulacion; sin red se queda ~21s bloqueado en Connect (el timeout del driver no cubre el
+			     connect TCP), el Join(8000) de StopThread expira y al parar el server el hilo de fondo se
+			     aborta dentro del finally (la excepcion aflora en SubscriptionDelete).
+			     Para volver a este modo: comenta la linea de polling de arriba y descomenta esta.
+			<process name="PlcFaWaSub_PLC_Buffer2"        image="B4571.dll" class="B4571.PlcActiveFieldsSubscriptionManager" interval="500" plc="PLC_Buffer2" cycleTime="200" reconnectDelayMs="5000" dbFilter="Fa-Wa"></process>
+			-->
+			<process name="PlcAlarms_PLC8_WrappingLine1"  image="B4571.dll" class="B4571.PlcAlarmsCommManager" interval="500" plc="PLC8_WrappingLine1"  simulation="1" simToggleSeconds="10" minAlarmDomain="0"></process>
+			<process name="PlcAlarms_PLC9_WrappingLine1"  image="B4571.dll" class="B4571.PlcAlarmsCommManager" interval="500" plc="PLC9_WrappingLine1"  simulation="1" simToggleSeconds="10" minAlarmDomain="0"></process>
+			<process name="PlcAlarms_PLC10_WrappingLine2" image="B4571.dll" class="B4571.PlcAlarmsCommManager" interval="500" plc="PLC10_WrappingLine2" simulation="1" simToggleSeconds="10" minAlarmDomain="0"></process>
+			<process name="PlcAlarms_PLC11_WrappingLine2" image="B4571.dll" class="B4571.PlcAlarmsCommManager" interval="500" plc="PLC11_WrappingLine2" simulation="1" simToggleSeconds="10" minAlarmDomain="0"></process>
+			<process name="PlcAlarms_PLC12_Buffer3"       image="B4571.dll" class="B4571.PlcAlarmsCommManager" interval="500" plc="PLC12_Buffer3"       simulation="1" simToggleSeconds="10" minAlarmDomain="0"></process>
+			<process name="PlcAlarms_PLC14_Buffer3"       image="B4571.dll" class="B4571.PlcAlarmsCommManager" interval="500" plc="PLC14_Buffer3"       simulation="1" simToggleSeconds="10" minAlarmDomain="0"></process>
+			<process name="PlcAlarms_PLC13_FormatSaw"     image="B4571.dll" class="B4571.PlcAlarmsCommManager" interval="500" plc="PLC13_FormatSaw"     simulation="1" simToggleSeconds="10" minAlarmDomain="0"></process>
+			<process name="PlcAlarms_PLC15_FormatSaw"     image="B4571.dll" class="B4571.PlcAlarmsCommManager" interval="500" plc="PLC15_FormatSaw"     simulation="1" simToggleSeconds="10" minAlarmDomain="0"></process>
+			<process name="PlcAlarms_PLC16_Buffer4"       image="B4571.dll" class="B4571.PlcAlarmsCommManager" interval="500" plc="PLC16_Buffer4"       simulation="1" simToggleSeconds="10" minAlarmDomain="0"></process>
+			<process name="PLCSimulator1" image="B4571.dll" class="B4571.PLCSimulatorProcess" communicationitem="PLC_StripCutting" interval="500" simWatchdog="1"></process>
+			<process name="PLCSimulator2" image="B4571.dll" class="B4571.PLCSimulatorProcess" communicationitem="PLC4_EdgeBanding" interval="500" simWatchdog="1"></process>
+			<process name="PLCSimulator14" image="B4571.dll" class="B4571.PLCSimulatorProcess" communicationitem="PLC5_EdgeBanding" interval="500" simWatchdog="1"></process>
+			<process name="PLCSimulator3" image="B4571.dll" class="B4571.PLCSimulatorProcess" communicationitem="PLC_Buffer2" interval="500"></process>
+			<process name="PLCSimulator4" image="B4571.dll" class="B4571.PLCSimulatorProcess" communicationitem="PLC8_WrappingLine1" interval="500" simWatchdog="1"></process>
+			<process name="PLCSimulator5" image="B4571.dll" class="B4571.PLCSimulatorProcess" communicationitem="PLC10_WrappingLine2" interval="500" simWatchdog="1"></process>
+			<process name="PLCSimulator6" image="B4571.dll" class="B4571.PLCSimulatorProcess" communicationitem="PLC9_WrappingLine1" interval="500" simWatchdog="1"></process>
+			<process name="PLCSimulator7" image="B4571.dll" class="B4571.PLCSimulatorProcess" communicationitem="PLC11_WrappingLine2" interval="500" simWatchdog="1"></process>
+			<!-- PLC12/PLC14 (Buffer3) SIN simulador de watchdog: en local salen en ERROR (rojo) en la pantalla Network Status.
+			     Para volverlos a "conectados" (verde), descomenta estas dos lineas y reinicia el Server.
+			     Nota: solo aplica en local (simulation="1"); en prod (simulation="0") el estado real de la conexion manda. -->
+			<!-- <process name="PLCSimulator8" image="B4571.dll" class="B4571.PLCSimulatorProcess" communicationitem="PLC12_Buffer3" interval="500"></process> -->
+			<!-- <process name="PLCSimulator9" image="B4571.dll" class="B4571.PLCSimulatorProcess" communicationitem="PLC14_Buffer3" interval="500"></process> -->
+			<process name="PLCSimulatorLineInput" image="B4571.dll" class="B4571.PLCSimulatorProcess" communicationitem="PLC_LineInput" interval="500" simWatchdog="1"></process>
+			<process name="PLCSimulator10" image="B4571.dll" class="B4571.PLCSimulatorProcess" communicationitem="PLC16_Buffer4_Right" interval="500"></process>
+			<process name="PLCSimulator11" image="B4571.dll" class="B4571.PLCSimulatorProcess" communicationitem="PLC16_Buffer4_Left" interval="500"></process>
+			<process name="PLCSimulator12" image="B4571.dll" class="B4571.PLCSimulatorProcess" communicationitem="PLC13_FormatSaw" interval="500" simWatchdog="1"></process>
+			<process name="PLCSimulator13" image="B4571.dll" class="B4571.PLCSimulatorProcess" communicationitem="PLC15_FormatSaw" interval="500" simWatchdog="1"></process>
+
+			<process name="Maintenance"
+				 image="Biele.Server.Core.dll"
+				 class="Biele.Server.Core.MaintenanceProcess"
+				 interval="1000">
+				<folderclean Events="7001,7002,7003"   active="true"  name="LogsClean" cron="0 */2 * * * *"  path=".\Log" mask="*.*" days="{tag:DBTags.Logs.DaysOld}" > </folderclean>
+				<databasebackupclean Events="8001,8002,8003"   active="true"  name="DBBackupClean"  cron="0 */2 * * * *"  path="{tag:DBTags.DatabaseBackup.File}"    days="{tag:DBTags.DatabaseBackup.DaysOld}" />
+				<databaseexecute Events="9001,9002,9003"  active="true"  name="DBDataClean"    cron="0 */2 * * * *"  spname="dbo.DoCleaning" database="local" transanction="true" timeout="200" />
+				<!-- VOLCADO DESDE LAS BD DEL CLIENTE. Tramo A de PLAN_UNIFICACION_BD_LOCAL.txt.
+				     Cron de 6 campos (el primero son segundos): "0 * * * * *" = cada minuto.
+				     Va aqui y no en un job de SQL Server Agent porque la instancia es Express, que
+				     no trae Agent. Ver el comentario largo en ServerManager.local.xml. -->
+				<databaseexecute active="true"  name="VolcadoCliente"  cron="0 * * * * *"  spname="dbo.usp_ImportClientData" database="local" timeout="600" />
+			</process>
+
+
+			<process name="DBBackup" class="Biele.ProjectLogic.DBBackup@Biele.ProjectLogic.dll" database="local" interval="1000" period="DBTags.Backup.Period" file="DBTags.Backup.File" lastrun="DBTags.Backup.LastRun"/>
+
+		</processes>
+
+
+
+	</servermanager>
+</service>
